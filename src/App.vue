@@ -65,7 +65,7 @@
             <img src="./assets/images/product-shot.png">
           </div>
           <div class="col-md-4 col-xs-12">
-            <div class="text">
+            <div class="community-text">
               <h2>助力提升工作效率</h2>
               <p>
                 社团云助手(基于PC端、Android端) 致力于提高社团成员之间的沟通与协作效率，进而提升社团核心竞争力，包括社团线上开会、任务、公告发布以及管理资料等应用。
@@ -169,7 +169,7 @@ header {
   justify-content: center;
   align-items: center;
 }
-.text p {
+.community-text p {
   margin-top: 50px;
 }
 .promote {

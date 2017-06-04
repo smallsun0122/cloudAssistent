@@ -1,43 +1,62 @@
 <template>
-  <div class="bg">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="login-form">
-            <div class="close"> </div>
-            <div class="head-info">
-              <label class="lbl-1"> </label>
-              <label class="lbl-2"> </label>
-              <label class="lbl-3"> </label>
-            </div>
-            <div class="clear"> </div>
-            <div class="portrait">
-              <img src="./assets/images/portrait.png" />
-            </div>
-            <form>
-              <div>
-                <input type="text" class="text" value="userName" v-model="userId">
+  <div class="box">
+    <div class="bg"></div>
+    <div class="login">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="login-form">
+              <div class="close"> </div>
+              <div class="head-info">
+                <label class="lbl-1"> </label>
+                <label class="lbl-2"> </label>
+                <label class="lbl-3"> </label>
               </div>
-              <div class="key">
-                <input type="password" value="password" placeholder="Password" v-model="password" >
+              <div class="clear"> </div>
+              <div class="portrait">
+                <img src="./assets/images/Cloud.png" />
               </div>
-            </form>
-            <div class="signin">
-              <input type="submit" value="Login" @click="register">
+              <form>
+                <div>
+                  <input type="text" class="text" value="userName" placeholder="Email" v-model="userId">
+                </div>
+                <div class="psd">
+                  <input type="password" value="password" placeholder="Password" v-model="password">
+                </div>
+                <div class="psd-again">
+                  <input type="password" value="password" placeholder="Password-again" v-model="conform">
+                </div>
+              </form>
+              <div class="signin">
+                <input type="submit" value="Sign up" @click="register">
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </template>
 
 <style>
+  .box {
+    width: 100%;
+    height: 100%;
+  }
   .bg {
     width: 100%;
     height: 100%;
     background: url("./assets/images/case-bg.jpg") no-repeat;
     background-size: 100% 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+  }
+  .login {
+    width: 100%;
+    height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -62,7 +81,7 @@
     width: 100%;
   }
   .portrait img {
-    margin: 2em 0 0;
+    margin: 20px 0 0;
   }
   .head-info {
     padding: 5px 0;
@@ -81,7 +100,7 @@
     -moz-border-top-right-radius: 10px;
     -o-border-top-right-radius: 10p
   }
-  input[type="text"] {
+  .text {
     width: 70%;
     padding: 1em 2em 1em 3em;
     color: #9199aa;
@@ -93,7 +112,7 @@
     border-bottom: 1px solid#484856;
     margin-top: 2em;
   }
-  input[type="password"]{
+  input[type="password"] {
     width: 70%;
     padding: 1em 2em 1em 3em;
     color: #9199aa;
@@ -103,10 +122,10 @@
     border: none;
     font-weight: 100;
     border-bottom: 1px solid#484856;
-    margin-bottom: 3em;
+    /*margin-bottom: 3em;*/
   }
-  .key {
-    background: url(./assets/images/pass.png) no-repeat 260px 17px;
+  .psd-again {
+    margin-bottom: 3em;
   }
   input[type="submit"]{
     font-size: 30px;
@@ -170,6 +189,37 @@
   }
 </style>
 <script>
+  import Qs from 'qs'
+  export default {
+    name: 'bg',
+    data () {
+      return {
+        userId: '',
+        password: ''
+      }
+    },
+    methods: {
+      register: function () {
+        var userId = this.userId
+        var password = this.password
+        var params = new URLSearchParams()
 
+        params.append('userId', userId)
+        params.append('password', password)
+
+        this.$http
+          .post('/register', Qs.stringify({
+            'userId': userId,
+            'password': password
+          }))
+          .then(function (response) {
+            window.location.href = '../../index.html'
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+    }
+  }
 </script>
 

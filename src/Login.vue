@@ -50,7 +50,7 @@
     position: fixed;
   }
   input:-webkit-autofill {
-    -webkit-box-shadow: 0 0 0 1000px white inset !important;
+     -webkit-box-shadow: 0 0 0 1000px white inset !important;
     border:none !important;
   }
   .login {
@@ -61,16 +61,14 @@
     align-items: center;
   }
   .login-form {
-    /*background: #2b2b36;*/
-    /*opacity: 0.8;*/
     position: relative;
     width: 30%;
     margin: 0 auto;
     text-align: center;
     border-radius: 15px;
-    -webkit-border-radius: 15px;
-    -moz-border-radius: 15px;
-    -o-border-radius: 15px;
+     -webkit-border-radius: 15px;
+     -moz-border-radius: 15px;
+     -o-border-radius: 15px;
   }
   .head img {
     width: 100%;
@@ -84,18 +82,17 @@
     font-weight: 600;
     font-size: 2em;
     color: #fff;
-    /*background: #23232e;*/
     height: 50px;
     border-top-left-radius: 10px;
-    -webkit-border-top-left-radius: 10px;
-    -moz-border-top-left-radius: 10px;
-    -o-border-top-left-radius: 10px;
+     -webkit-border-top-left-radius: 10px;
+     -moz-border-top-left-radius: 10px;
+     -o-border-top-left-radius: 10px;
     border-top-right-radius: 10px;
-    -webkit-border-top-right-radius: 10px;
-    -moz-border-top-right-radius: 10px;
-    -o-border-top-right-radius: 10p
+     -webkit-border-top-right-radius: 10px;
+     -moz-border-top-right-radius: 10px;
+     -o-border-top-right-radius: 10p
   }
-  input[type="text"] {
+  .text {
     width: 70%;
     padding: 1em 2em 1em 3em;
     color: #9199aa;
@@ -116,11 +113,11 @@
     background: url(./assets/images/key.png) no-repeat 10px 23px;
     border: none;
     font-weight: 100;
-    border-bottom: 1px solid#484856;
-    margin-bottom: 3em;
+    border-bottom: 1px solid #484856;
   }
   .key {
     background: url(./assets/images/pass.png) no-repeat 260px 17px;
+    margin-bottom: 3em;
   }
   input[type="submit"]{
     font-size: 30px;
@@ -131,29 +128,29 @@
     width: 100%;
     padding: 18px 0;
     border-bottom-left-radius: 15px;
-    -webkit-border-bottom-left-radius: 15px;
-    -moz-border-bottom-left-radius: 15px;
-    -o-border-bottom-left-radius: 15px;
+     -webkit-border-bottom-left-radius: 15px;
+     -moz-border-bottom-left-radius: 15px;
+     -o-border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    -webkit-border-bottom-right-radius: 15px;
-    -moz-border-bottom-right-radius: 15px;
-    -o-border-bottom-right-radius: 15px;
+     -webkit-border-bottom-right-radius: 15px;
+     -moz-border-bottom-right-radius: 15px;
+     -o-border-bottom-right-radius: 15px;
     cursor: pointer;
   }
   input[type="submit"]:hover {
     background: #ff2775;
     border-bottom-left-radius: 15px;
-    -webkit-border-bottom-left-radius: 15px;
-    -moz-border-bottom-left-radius: 15px;
-    -o-border-bottom-left-radius: 15px;
+     -webkit-border-bottom-left-radius: 15px;
+     -moz-border-bottom-left-radius: 15px;
+     -o-border-bottom-left-radius: 15px;
     border-bottom-right-radius: 15px;
-    -webkit-border-bottom-right-radius: 15px;
-    -moz-border-bottom-right-radius: 15px;
-    -o-border-bottom-right-radius: 15px;
+     -webkit-border-bottom-right-radius: 15px;
+     -moz-border-bottom-right-radius: 15px;
+     -o-border-bottom-right-radius: 15px;
     transition: 1s all;
-    -webkit-transition: 1s all;
-    -moz-transition: 1s all;
-    -o-transition: 1s all;
+     -webkit-transition: 1s all;
+     -moz-transition: 1s all;
+     -o-transition: 1s all;
   }
   label.lbl-1 {
     background: #6756ea;
@@ -184,6 +181,35 @@
   }
 </style>
 
+<!--<template>-->
+  <!--<div id="login">-->
+    <!--<div class="bg"></div>-->
+    <!--<div class="login-view">-->
+      <!--<div class="container">-->
+        <!--<div class="row">-->
+          <!--<div class="col-md-12">-->
+            <!--<div class="form-group pull-left input-username">-->
+              <!--<div class="input-group">-->
+                <!--<input type="text" class="form-control " readonly="readonly" value="Email">-->
+                <!--<span class="input-group-addon"></span>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="form-group pull-right input-password">-->
+              <!--<div class="input-group">-->
+                <!--<input type="password" class="form-control " placeholder="************">-->
+                <!--<span class="input-group-addon"><i class="fa fa-key"></i></span>-->
+              <!--</div>-->
+            <!--</div>-->
+            <!--<div class="avatar">-->
+              <!--<img src="./assets/images/portrait.png">-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</template>-->
+
 <script>
   import Qs from 'qs'
   export default {
@@ -202,14 +228,14 @@
 
         params.append('userId', userId)
         params.append('password', password)
-        alert(this.$http)
+
         this.$http
           .post('/login', Qs.stringify({
             'userId': userId,
             'password': password
           }))
           .then(function (response) {
-            window.location.href = '../../index.html'
+            window.location.href = '../../mainView.html'
           })
           .catch(function (error) {
             console.log(error)

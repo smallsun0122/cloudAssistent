@@ -12,7 +12,8 @@ module.exports = {
   entry: {
     app: './src/main.js',
     login: './src/login.js',
-    register:'./src/register.js'
+    register: './src/register.js',
+    mainView: './src/mainView.js'
   },
   plugins: [
     new webpack.ProvidePlugin({
