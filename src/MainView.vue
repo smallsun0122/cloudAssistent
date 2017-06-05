@@ -46,7 +46,7 @@
           <!--Menu-->
           <ul class="nav nav-list">
             <li v-bind:class="active">
-              <a href="#">
+              <a href="#/meeting">
                 <img src="./assets/images/meet.png">
                 <span class="hidden-minibar">会议</span>
               </a>
@@ -111,7 +111,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   #mainView {
     width: 100%;
     height: 100%;

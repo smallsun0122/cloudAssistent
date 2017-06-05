@@ -39,7 +39,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   .box {
     width: 100%;
     height: 100%;
