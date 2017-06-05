@@ -15,7 +15,7 @@
                 专为社团打造。
               </p>
               <div class="btn-center">
-                <button type="button" class="btn btn-primary" @click="registerView">免费注册</button>
+                <button type="button" class="btn btn-primary btn-top" @click="registerView">免费注册</button>
               </div>
             </div>
           </div>
@@ -70,7 +70,7 @@
               <p>
                 社团云助手(基于PC端、Android端) 致力于提高社团成员之间的沟通与协作效率，进而提升社团核心竞争力，包括社团线上开会、任务、公告发布以及管理资料等应用。
               </p>
-              <button type="button" class="btn btn-primary">查看详情</button>
+              <button type="button" class="btn btn-primary btn-top">查看详情</button>
             </div>
           </div>
         </div>
@@ -83,7 +83,7 @@
           <div class="col-md-12">
             <h1>提升社团成员工作效率，提升社团竞争力</h1>
             <div class="btn-color">
-              <button type="button" class="btn btn-primary" @click="registerView">免费注册</button>
+              <button type="button" class="btn btn-primary btn-top" @click="registerView">免费注册</button>
             </div>
           </div>
         </div>
@@ -139,7 +139,7 @@ header {
   text-align: center;
   color:#fff;
 }
-.btn {
+.btn-top {
   margin-top: 50px;
 }
 .btn-center {

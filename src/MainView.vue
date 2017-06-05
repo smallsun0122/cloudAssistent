@@ -1,11 +1,13 @@
-<template>
+<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div id="mainView">
     <nav class="navbar  navbar-default nav-delighted " role="navigation">
+
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
-        <a class="navbar-brand" href="#">
-          <img src="./assets/images/Cloud_small.png"></a>
-        <span>社团云助手</span>
+        <div class="navbar-brand header-flex">
+          <img src="./assets/images/Cloud_small.png" alt="">
+          <span>社团云助手</span>
+        </div>
       </div>
 
       <!-- Collect the nav links, forms, and other content for toggling -->
@@ -32,101 +34,124 @@
     <div class="box-holder">
       <div class="left-sidebar">
         <div class="sidebar-holder">
-          <!-- User   -->
+          <!--User-->
           <div class="user-menu">
-            <img src="./assets/images/portrait.png" class="avatar">
+            <img src="./assets/images/portrait.png" alt="" class="avatar">
             <div class="user-info">
               <div class="welcome">Welcome,</div>
               <div class="username">小太阳</div>
             </div>
           </div>
-          <!-- /.User   -->
-
-          <!-- Menu -->
-          <ul class="nav  nav-list">
-            <li class="active">
-              <router-link to="./Announcement">
+          <!--User-->
+          <!--Menu-->
+          <ul class="nav nav-list">
+            <li v-bind:class="active">
+              <a href="#">
                 <img src="./assets/images/meet.png">
                 <span class="hidden-minibar">会议</span>
-              </router-link>
+              </a>
             </li>
             <li class="">
-              <a href="#" data-original-title="Portlets">
+              <a href="#">
                 <img src="./assets/images/task1.png">
                 <span class="hidden-minibar">任务</span>
               </a>
             </li>
-            <li class="">
-              <a href="#" data-original-title="Typography">
+            <!--<li class="">-->
+              <!--<router-link to="./Announcement">-->
+                <!--<img src="./assets/images/notice1.png">-->
+                <!--<span class="hidden-minibar">公告</span>-->
+              <!--</router-link>-->
+            <!--</li>-->
+            <li class="submenu current">
+              <router-link to="./Announcement" class="dropdown" onclick="return false;"  data-original-title="Delighted-Gold">
                 <img src="./assets/images/notice1.png">
-                <span class="hidden-minibar">公告</span>
-              </a>
+                <span class="hidden-minibar">
+                  公告
+                  <i class="glyphicon glyphicon-menu-right" @click="getSociety"></i>
+                </span>
+              </router-link>
+              <ul class="animated fadeInDown" >
+                <li v-for="(society,index) in societys" class="">
+                  <a href="#">
+                    <span class="hidden-minibar">{{society.name}}</span>
+                  </a>
+                </li>
+              </ul>
             </li>
             <li class="">
-              <a href="#" data-original-title="Documentation">
+              <a href="#">
                 <img src="./assets/images/set.png">
                 <span class="hidden-minibar">设置</span>
               </a>
             </li>
             <li class="">
-              <a href="#" data-original-title="Documentation">
+              <a href="#">
                 <img src="./assets/images/add1.png">
                 <span class="hidden-minibar">邀请成员</span>
               </a>
             </li>
             <li class="">
-              <a href="#" data-original-title="Documentation">
+              <a href="#">
                 <img src="./assets/images/book.png">
                 <span class="hidden-minibar">社团资料</span>
               </a>
             </li>
           </ul>
-          <!-- /.Menu -->
+          <!--Menu-->
+
         </div>
-        <!-- /.left-sidebar Holder-->
       </div>
+      <!--content-->
+      <div class="content animated fadeInBig">
+        <router-view></router-view>
+      </div>
+      <!--content-->
     </div>
   </div>
 </template>
 
 <style>
+  #mainView {
+    width: 100%;
+    height: 100%;
+  }
+  .navbar {
+    width: 100%;
+    position: fixed;
+  }
   .navbar.nav-delighted.navbar-default {
-    height:60px;
+    height: 60px;
     border-width: 0px;
     border-radius: 0px;
     margin-bottom: 0px;
   }
-  .navbar-default {
-    background-color: #f8f8f8;
-    border-color: #e7e7e7;
+  .navbar.nav-delighted.navbar-default .navbar-brand {
+    font-size: 18px;
+    font-family: 'Droid Sans', sans-serif;
+    padding: 0px;
+    line-height: 60px;
+    width: 220px;
+    text-align: center;
   }
-  .navbar {
-    position: relative;
-    min-height: 50px;
-    margin-bottom: 20px;
-    border: 1px solid transparent;
+  .header-flex {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
   }
-  .navbar-header {
-     display: flex;
-     justify-content: center;
-     align-items: center;
-     margin-left: 20px;
-   }
-  .navbar-header img {
+  .header-flex img {
     width: 42px;
     height: 30px;
     display: block;
   }
-  .navbar-header span {
-    margin-top: 10px;
-    font-size: 16px;
+  .header-flex span {
+    margin-left: 10px;
   }
   .navbar.nav-delighted.navbar-default .search-form {
     margin-top: 13px;
     margin-right: 34px;
-  }
-  .form-group {
-    margin-bottom: 15px;
   }
   .navbar.nav-delighted.navbar-default .search-form input {
     height: 32px;
@@ -144,7 +169,7 @@
     margin-top: 21px;
     margin-left: 10px;
     position: absolute;
-    /*font-size: 20px;*/
+    font-size: 14px;
   }
   .navbar.nav-delighted.navbar-default a.logout {
     font-size: 24px;
@@ -157,9 +182,12 @@
     -o-transition: 300ms ease;
     transition: 300ms ease;
   }
-
+  .box-holder {
+    min-height: 1200px !important;
+  }
   .left-sidebar {
-    position: absolute;
+    position: fixed;
+    margin-top: 60px;
     background-color: #232b2d;
     width: 220px;
     z-index: 1001;
@@ -174,8 +202,7 @@
   .left-sidebar .user-menu {
     width: 100%;
     height: 90px;
-    padding-top: 20px;
-    padding-left: 25px;
+    padding-top: 5px;
     border-bottom: 1px solid #2e393b;
     -webkit-transition: 300ms ease;
     -moz-transition: 300ms ease;
@@ -183,15 +210,11 @@
     transition: 300ms ease;
   }
   .left-sidebar .user-menu img.avatar {
-    float: left;
     border: 2px solid #23bab5;
     border-radius: 50%;
     margin-right: 10px;
     width: 50px;
     height: 50px;
-  }
-  img {
-    vertical-align: middle;
   }
   .left-sidebar .user-menu .user-info {
     padding-top: 8px;
@@ -208,8 +231,13 @@
     font-size: 18px;
     font-weight: 700;
     overflow: hidden;
-    height: 25px;
+    height: 30px;
     color: #80969c;
+  }
+  .user-menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .left-sidebar .sidebar-holder .nav li.active > a {
     text-decoration: none;
@@ -231,24 +259,101 @@
     -moz-transition: all 0.1s ease;
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
+    padding-left: 50px;
   }
-  .nav {
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-  }
-  ul, ol {
-    margin-top: 0;
-    margin-bottom: 10px;
+  .left-sidebar .sidebar-holder .nav li.active > a img {
+    color: #ffffff;
   }
   .left-sidebar .sidebar-holder .nav li a img {
     display: inline-block;
     font-size: 14px;
-    margin: 0 10px 0 20px;
+    margin: 0 10px;
     text-align: center;
     width: 20px;
   }
-  .left-sidebar .sidebar-holder .nav li a span {
-    font-size: 16px;
+  .left-sidebar .sidebar-holder .nav li a .glyphicon-menu-right {
+    color: #445458;
+    font-size: 10px;
+    float: right;
+    line-height: 20px;
+    padding: 0 5px;
+  }
+  .left-sidebar .sidebar-holder .nav li a i {
+    display: inline-block;
+    font-size: 14px;
+    margin: 0 10px;
+    text-align: center;
+    width: 20px;
+  }
+  .left-sidebar .sidebar-holder .nav > li ul > li > a {
+    font-size: 14px;
+    font-weight: 400;
+    padding: 10px 5px;
+    display: block;
+    color: #80969c;
+  }
+  .content {
+    padding: 80px 0 0 280px;
+    -webkit-transition: 500ms ease;
+    -moz-transition: 500ms ease;
+    -o-transition: 500ms ease;
+    transition: 500ms ease;
+  }
+  /*.left-sidebar .sidebar-holder .nav > li ul > li > a {*/
+    /*font-size: 14px;*/
+    /*font-weight: 400;*/
+    /*padding: 10px 5px;*/
+    /*display: block;*/
+    /*color: #80969c;*/
+  /*}*/
+  /*.left-sidebar .sidebar-holder .nav li a {*/
+    /*color: #80969c;*/
+    /*font-size: 14px;*/
+    /*font-weight: 400;*/
+    /*padding: 13px 10px;*/
+    /*font-family: 'Open Sans', sans-serif;*/
+    /*-webkit-transition: all 0.1s ease;*/
+    /*-moz-transition: all 0.1s ease;*/
+    /*-o-transition: all 0.1s ease;*/
+    /*transition: all 0.1s ease;*/
+  /*}*/
+  /*.left-sidebar .sidebar-holder .nav > li ul {*/
+    /*list-style: none;*/
+    /*padding-left: 0px;*/
+    /*display: none;*/
+    /*background-color: #2a3336;*/
+    /*margin-left: -1px;*/
+  /*}*/
+  ul li {
+    list-style-type: none;
   }
 </style>
+
+<script>
+  //  import Qs from 'qs'
+  export default {
+    data () {
+      return {
+        societyId: '',
+        societys: [{
+          name: '',
+          id: 0
+        }]
+      }
+    },
+    methods: {
+      getSociety: function () {
+        let self = this
+        this.$http.get('society/user')
+          .then(function (res) {
+            console.log(res.data)
+            self.societys = res.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+    }
+  }
+</script>
+
