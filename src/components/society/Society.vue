@@ -25,10 +25,10 @@
 
 <template>
   <div id="society">
-    <div style="float: left">
+    <div>
       <p>我的所有社团: </p>
       <ul>
-        <li style="margin:" v-for="item in mySociety">
+        <li v-for="item in mySociety">
           <p>{{item.id}}</p>
           <p>{{item.name}}</p>
           <p>{{item.summary}}</p>
@@ -38,7 +38,7 @@
           <p>{{item.principal.userLogo}}</p>
           <p>{{new Date(item.createTime)}}</p>
 
-          <h3 >社团申请:</h3 >
+          <h3>社团申请:</h3>
           <!--传入社团Id-->
           <society-apply :societyId="item.id"></society-apply>
         </li>
@@ -49,13 +49,12 @@
       <search-society></search-society>
     </div>
 
-    <div style="float: left">
-
-    </div>
-
   </div>
 </template>
 
-<style>
+<style scoped>
+  #society {
+    background: #f0ad4e;
+  }
 
 </style>

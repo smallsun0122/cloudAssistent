@@ -6,6 +6,7 @@
         ws: null,
         roomId: -1,
         roomTitle: '',
+        message: '',
         members: [{
           userId: 'helloworld.wen@gmail.com',
           logo: 'https://cn.vuejs.org/images/logo.png',
@@ -135,7 +136,7 @@
        */
       sendMessage: function () {
         var message = {
-          message: '123'
+          message: this.message
         }
         this.ws.send(JSON.stringify(message))
 
@@ -154,15 +155,17 @@
 <template>
   <div id="room">
 
-    <div class="room-wrap">
+    <div class="room-wrap container">
 
       <!--头部-->
       <div class="room-head">
-        <p class="room-title">房间名：{{roomTitle}}</p>
+        <p class="room-title">
+          <i class="fa fa-users" aria-hidden="true"></i>
+          房间名：{{roomTitle}}</p>
         <p class="room-number">房间号：{{roomId}}</p>
       </div>
 
-      <div>
+      <div class="room-content">
         <!--文本内容-->
         <div class="room-content">
           <!--内容-->
@@ -178,6 +181,9 @@
                 {{item.date}}
               </br>
                 {{item.self}}
+
+
+
               </li>
             </ul>
           </div>
@@ -192,36 +198,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           <div v-for="member in members">
             {{member.userId}}
             </br>
@@ -231,43 +207,31 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
           </div>
         </div>
+
+        <input type="text" v-model="message"/>
+        <button v-on:click="sendMessage">发送消息</button>
+
+
       </div>
 
-      <button v-on:click="sendMessage">发送消息</button>
+
     </div>
   </div>
 </template>
 
 <style>
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/font-awesome.css";
 
   .room-head {
-    background: #929d9a;
+    background: #ed9f45;
+    padding: 30px 15px;
+  }
+
+  .room-content{
+    background: #f2dede;
   }
 
   .room-list {

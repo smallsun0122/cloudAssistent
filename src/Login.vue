@@ -224,10 +224,10 @@
       login: function () {
         var userId = this.userId
         var password = this.password
-        var params = new URLSearchParams()
-
-        params.append('userId', userId)
-        params.append('password', password)
+//        var params = new URLSearchParams()
+//
+//        params.append('userId', userId)
+//        params.append('password', password)
 
         this.$http
           .post('/login', Qs.stringify({

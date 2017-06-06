@@ -1,30 +1,31 @@
-<template>
+<template xmlns:>
 
   <div id="meeting">
+    <div class="container-fluid">
 
-    <div class="wrap">
 
 
-      <div class="box" v-for="meeting in allMeeting">
+      <!--每个会议-->
+      <div class="col-md-3 box" v-for="meeting in allMeeting">
         <router-link
           :to="{path:'/room',query:{roomId:meeting.room.roomId,roomTitle:meeting.room.name}}">
-          <div class="box-content">
 
-            <p> 会议名字： {{meeting.name}} </p>
-            <p>会议主题 {{meeting.theme}} </p>
+          <div class="box-content">
+            <h2> 会议名字： {{meeting.name}} </h2>
+            <h4>会议主题 {{meeting.theme}} </h4>
 
             <div class="publish">
               <div class="user-logo">
                 <img :src="meeting.publisher.userLogo"/>
               </div>
-              <p>{{meeting.publisher.nickName}}</p>
+              <p class="publish-name">{{meeting.publisher.nickName}}</p>
             </div>
 
           </div>
         </router-link>
       </div>
 
-      <div class="box" v-on:click="createMeeting">
+      <div style="margin-top: 300px" v-on:click="createMeeting">
         <div class="box-content">
           <router-link to="/meeting/create">
             <img src="../../assets/add.png">
@@ -39,36 +40,59 @@
 </template>
 
 <style scoped>
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/font-awesome.css";
+
+  a {
+    text-decoration: none;
+  }
 
   .box {
-    float: left;
-    width: 25%;
-    height: 150px;
-    padding: 10px;
+    height: 250px;
   }
 
   .box-content {
-    margin: 10px;
+
     padding: 5px;
     width: 100%;
     height: 100%;
-    background: #ddd8c1;
 
-    overflow: hidden;
+    background-color: rgba(237, 159, 69, 0.56);
+
+    display: flex;
+    flex-flow: column;
+
+    position: relative;
   }
 
   .publish {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
 
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
   }
 
   .publish .user-logo {
-    width: 100px;
-    height: 100px;
+    width: 60px;
+    height: 60px;
   }
 
   .publish .user-logo img {
     width: 100%;
     height: 100%;
+
+    border-radius: 50%;
+  }
+
+  .publish .publish-name {
+    font-size: 24px;
+    margin-top: 20px;
+    margin-left: 5px;
+
   }
 </style>
 

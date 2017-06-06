@@ -17,6 +17,15 @@
           <p>{{result.principal.nickName}}</p>
           <p>{{result.principal.userLogo}}</p>
           <p>{{new Date(result.createTime)}}</p>
+
+          <div class="join">
+            <label>
+              加入原因
+              <input type="text" v-model="reason">
+            </label>
+            <button @click="joinSociety(result.id,reason)"> 加入 {{result.name}}</button>
+          </div>
+
         </li>
       </ul>
     </div>
@@ -38,6 +47,14 @@
         this.$http.get('society/search?query=' + this.searchContent)
           .then(function (response) {
             self.searchResult = response.data
+          })
+      },
+      joinSociety: function (societyId, reason) {
+        this.$http.post('society/join', {
+          societyId, reason
+        })
+          .then(function (response) {
+            alert(response.data)
           })
       }
     }
