@@ -6,6 +6,7 @@ import Publish from '@/components/Publish'
 import CreateMeeting from '../components/meeting/Create'
 import Meeting from '../components/meeting/Meeting.vue'
 import Room from '../components/room/Room.vue'
+import Society from '../components/society/Society.vue'
 
 Vue.use(Router)
 
@@ -40,6 +41,11 @@ export default new Router({
       path: '/room',
       name: 'room',
       component: Room
+    },
+    {
+      path: '/society',
+      name: 'society',
+      component: Society
     }
   ]
 })

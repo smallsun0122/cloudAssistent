@@ -92,9 +92,9 @@
               </a>
             </li>
             <li class="">
-              <a href="#">
+              <a href="#/society">
                 <img src="./assets/images/book.png">
-                <span class="hidden-minibar">社团资料</span>
+                <span class="hidden-minibar">社团管理</span>
               </a>
             </li>
           </ul>
