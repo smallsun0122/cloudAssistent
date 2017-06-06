@@ -16,7 +16,6 @@ Vue.prototype.$http.defaults.headers = {
   'Content-Type': 'application/json'
 }
 
-
 /* eslint-disable no-new */
 new Vue({
   el: '#mainView',
