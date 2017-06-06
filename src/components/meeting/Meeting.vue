@@ -24,16 +24,15 @@
         </router-link>
       </div>
 
-      <div class="" v-on:click="createMeeting">
-        <router-link to="/meeting/create">
-          <img src="../../assets/add.png">
-          <span>创建新会议</span>
-        </router-link>
+      <div class="box" v-on:click="createMeeting">
+        <div class="box-content">
+          <router-link to="/meeting/create">
+            <img src="../../assets/add.png">
+            <span>创建新会议</span>
+          </router-link>
+        </div>
       </div>
     </div>
-
-    <router-link :to="{path:'/room', query:{roomId:1,roomTitle:'保健起来写代码啦'}}">跳转到房间</router-link>
-    <router-link :to="{path:'/room', query:{}}">跳转到房间，没有传 roomId</router-link>
 
   </div>
 
