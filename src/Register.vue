@@ -39,7 +39,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
   .box {
     width: 100%;
     height: 100%;
@@ -202,10 +202,10 @@
       register: function () {
         var userId = this.userId
         var password = this.password
-        var params = new URLSearchParams()
-
-        params.append('userId', userId)
-        params.append('password', password)
+//        var params = new URLSearchParams()
+//
+//        params.append('userId', userId)
+//        params.append('password', password)
 
         this.$http
           .post('/register', Qs.stringify({
