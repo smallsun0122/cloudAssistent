@@ -165,55 +165,58 @@
         <p class="room-number">房间号：{{roomId}}</p>
       </div>
 
-      <div class="room-content">
-        <!--文本内容-->
-        <div class="room-content">
-          <!--内容-->
-          <div class="room-message">
-            <ul>
-              <li v-for="item in messages">
-                {{item.roomId}}
+      <!--文本内容-->
+      <div class="col-md-8">
+        <!--内容-->
+        <div class="room-message">
+          <ul>
+            <li v-for="item in messages">
+              {{item.roomId}}
               </br>
-                {{item.publishId}}
+              {{item.publishId}}
               </br>
-                {{item.message}}
+              {{item.message}}
               </br>
-                {{item.date}}
+              {{item.date}}
               </br>
-                {{item.self}}
+              {{item.self}}
 
 
 
-              </li>
-            </ul>
-          </div>
 
-          <!--文本-->
-          <div class="room-entry"></div>
+            </li>
+          </ul>
         </div>
 
-        <!--房间人员-->
-        <div class="room-list">
-          房间成员:
-
-
-
-          <div v-for="member in members">
-            {{member.userId}}
-            </br>
-            {{member.logo}}
-            </br>
-            {{member.nickName}}
-
-
-
-          </div>
+        <!--文本-->
+        <div class="room-entry">
+          <input type="text" v-model="message"/>
+          <button v-on:click="sendMessage">发送消息</button>
         </div>
+      </div>
 
-        <input type="text" v-model="message"/>
-        <button v-on:click="sendMessage">发送消息</button>
+      <!--房间人员-->
+      <div class="room-list col-md-4">
+        房间成员:
 
 
+
+
+
+
+        <div v-for="member in members">
+          {{member.userId}}
+            </br>
+          {{member.logo}}
+            </br>
+          {{member.nickName}}
+
+
+
+
+
+
+        </div>
       </div>
 
 
@@ -225,17 +228,32 @@
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
 
+  ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+  }
+
   .room-head {
     background: #ed9f45;
     padding: 30px 15px;
   }
 
-  .room-content{
-    background: #f2dede;
+  .room-message {
+    background: #a6e1ec;
+
+    height: 500px;
+
+    overflow: auto;
+  }
+
+  .room-entry {
+    background: #f5e79e;
+    height: 100px;
   }
 
   .room-list {
-    float: right;
+    background: #f7ecb5;
   }
 
 </style>
