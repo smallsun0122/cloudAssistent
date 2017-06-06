@@ -1,9 +1,10 @@
 <script>
   import SearchSociety from './SearchSociety.vue'
+  import SocietyApply from './SocietyApply.vue'
   export default{
     name: 'society',
     components: {
-      SearchSociety
+      SearchSociety, SocietyApply
     },
     data () {
       return {
@@ -27,7 +28,7 @@
     <div style="float: left">
       <p>我的所有社团: </p>
       <ul>
-        <li v-for="item in mySociety">
+        <li style="margin:" v-for="item in mySociety">
           <p>{{item.id}}</p>
           <p>{{item.name}}</p>
           <p>{{item.summary}}</p>
@@ -36,12 +37,20 @@
           <p>{{item.principal.nickName}}</p>
           <p>{{item.principal.userLogo}}</p>
           <p>{{new Date(item.createTime)}}</p>
+
+          <h3 >社团申请:</h3 >
+          <!--传入社团Id-->
+          <society-apply :societyId="item.id"></society-apply>
         </li>
       </ul>
     </div>
 
     <div style="float: left;">
       <search-society></search-society>
+    </div>
+
+    <div style="float: left">
+
     </div>
 
   </div>
