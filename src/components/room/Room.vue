@@ -1,17 +1,18 @@
 <script>
+  import RoomMessage from './RoomMessage.vue'
   export default{
     name: 'room',
+    components: {
+      RoomMessage
+    },
     data () {
       return {
         ws: null,
         roomId: -1,
         roomTitle: '',
         message: '',
-        members: [{
-          userId: 'helloworld.wen@gmail.com',
-          logo: 'https://cn.vuejs.org/images/logo.png',
-          nickName: '赖远文'
-        }],
+        currentUser: this.getCurrentUser(),
+        members: [],
         messages: [{
           roomId: 1,
           publishId: 'helloworld.wen@gmail.com',
@@ -42,6 +43,19 @@
       this.ws.close(3007, '断开房间')
     },
     methods: {
+      getCurrentUser: function () {
+        const self = this
+        this.$http.get('user/info')
+          .then(function (responce) {
+            self.currentUser = responce.data
+            var m = {
+              'userId': self.currentUser.userId,
+              'logo': self.currentUser.logoUrl,
+              'nickName': self.currentUser.nickName
+            }
+            self.members.push(m)
+          })
+      },
       /**
        * 获取推送信息
        */
@@ -143,7 +157,7 @@
         var m = {
           roomId: this.roomId,
           publishId: 'helloworld.wen@gmail.com',
-          message: '123',
+          message: this.message,
           date: new Date(),
           self: true
         }
@@ -159,10 +173,20 @@
 
       <!--头部-->
       <div class="room-head">
-        <p class="room-title">
-          <i class="fa fa-users" aria-hidden="true"></i>
-          房间名：{{roomTitle}}</p>
-        <p class="room-number">房间号：{{roomId}}</p>
+        <div class="room-title-wrap">
+          <div>
+            <i class="fa fa-users head-icon"></i>
+          </div>
+          <div class="text-wrap ">
+            <p class="room-title"> 房间名：{{roomTitle}}</p>
+            <p class="room-number">房间号：{{roomId}}</p>
+          </div>
+        </div>
+        <div class=" col-md-4">
+          <div class="room-ad">
+            <p>广告</p>
+          </div>
+        </div>
       </div>
 
       <!--文本内容-->
@@ -171,19 +195,7 @@
         <div class="room-message">
           <ul>
             <li v-for="item in messages">
-              {{item.roomId}}
-              </br>
-              {{item.publishId}}
-              </br>
-              {{item.message}}
-              </br>
-              {{item.date}}
-              </br>
-              {{item.self}}
-
-
-
-
+              <room-message :message="item" :members="members"></room-message>
             </li>
           </ul>
         </div>
@@ -204,12 +216,30 @@
 
 
 
+
+
+
+
+
+
+
+
+
         <div v-for="member in members">
           {{member.userId}}
             </br>
           {{member.logo}}
             </br>
           {{member.nickName}}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -236,7 +266,42 @@
 
   .room-head {
     background: #ed9f45;
-    padding: 30px 15px;
+    padding: 30px 16px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    flex-flow: row;
+  }
+
+  .room-ad {
+    width: 100%;
+    height: 100%;
+    background: cadetblue;
+  }
+
+  .head-icon {
+    font-size: 50px;
+  }
+
+  .room-title-wrap {
+    display: flex;
+
+    flex-flow: row;
+    align-items: flex-start;
+  }
+
+  .room-title {
+    font-size: 18px;
+  }
+
+  .room-number {
+    font-size: 16px;
+  }
+
+  .text-wrap {
+    margin-left: 10px;
   }
 
   .room-message {
