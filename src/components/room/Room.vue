@@ -33,7 +33,7 @@
         return
       }
 
-      this.ws = new WebSocket('ws://127.0.0.1:8080/ws?roomId=' + this.roomId)
+      this.ws = new WebSocket('ws://112.74.214.252:8080/acloud/ws?roomId=' + this.roomId)
       this.initWebSocket()
     },
     mounted: function () {

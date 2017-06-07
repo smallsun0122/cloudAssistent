@@ -1,66 +1,13 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div id="mainView">
-    <nav class="navbar  navbar-default nav-delighted " role="navigation">
 
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <div class="navbar-brand header-flex">
-          <img src="./assets/images/Cloud_small.png" alt="">
-          <span>社团云助手</span>
-        </div>
-      </div>
+    <!--顶部-->
+    <toolbar></toolbar>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" aria-expanded="false">
-              <img src="./assets/images/remind.png">
-              <span class="badge bg-danger">5</span>
-            </a>
-          </li>
-          <li>
-            <form role="search" class="search-form">
-              <div class="form-group">
-                <input type="text" class="form-control  nav-input-search " placeholder="Search ">
-                <i class="glyphicon glyphicon-search"></i>
-              </div>
-            </form>
-          </li>
-          <li>
-            <a href="#" class="logout">
-              <i class="glyphicon glyphicon-off"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </nav>
-
+    <!--侧边栏-->
     <div class="box-holder">
       <div class="left-sidebar">
-        <div class="sidebar-holder">
-          <!--User-->
-          <div class="user-menu">
-            <img src="./assets/images/portrait.png" alt="" class="avatar">
-            <div class="user-info">
-              <div class="welcome">Welcome,</div>
-              <div class="username">小太阳</div>
-            </div>
-          </div>
-          <!--User-->
-          <!--Menu-->
-          <ul class="nav nav-list">
-            <li v-for="(item,index) in items" @click="selectStyle (item, index) " :class="{'active':item.active}" >
-              <router-link :to="items[index].path">
-                <img v-bind:src="items[index].imgPath">
-                <span>{{items[index].name}}</span>
-              </router-link>
-            </li>
-          </ul>
-          <!--Menu-->
-
-        </div>
+        <main-menu index="1"></main-menu>
       </div>
       <!--content-->
       <div class="content animated fadeInBig">
@@ -68,6 +15,7 @@
       </div>
       <!--content-->
     </div>
+
   </div>
 </template>
 
@@ -76,75 +24,11 @@
     width: 100%;
     height: 100%;
   }
-  .navbar {
-    width: 100%;
-    position: fixed;
-  }
-  .navbar.nav-delighted.navbar-default {
-    height: 60px;
-    border-width: 0px;
-    border-radius: 0px;
-    margin-bottom: 0px;
-  }
-  .navbar.nav-delighted.navbar-default .navbar-brand {
-    font-size: 18px;
-    font-family: 'Droid Sans', sans-serif;
-    padding: 0px;
-    line-height: 60px;
-    width: 220px;
-    text-align: center;
-  }
-  .header-flex {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    margin-left: 10px;
-  }
-  .header-flex img {
-    width: 42px;
-    height: 30px;
-    display: block;
-  }
-  .header-flex span {
-    margin-left: 10px;
-  }
-  .navbar.nav-delighted.navbar-default .search-form {
-    margin-top: 13px;
-    margin-right: 34px;
-  }
-  .navbar.nav-delighted.navbar-default .search-form input {
-    height: 32px;
-    width: 155px;
-    border-radius: 16px;
-    color: #23bab5;
-    padding-left: 30px;
-    background-color: white;
-    border: 1px solid white;
-    -webkit-box-shadow: none;
-    box-shadow: none;
-  }
-  .navbar.nav-delighted.navbar-default .search-form i.glyphicon-search {
-    color: #c2c7c1;
-    margin-top: 21px;
-    margin-left: 10px;
-    position: absolute;
-    font-size: 14px;
-  }
-  .navbar.nav-delighted.navbar-default a.logout {
-    font-size: 24px;
-    color: #23bab5;
-    height: 60px;
-    width: 60px;
-    text-align: center;
-    -webkit-transition: 300ms ease;
-    -moz-transition: 300ms ease;
-    -o-transition: 300ms ease;
-    transition: 300ms ease;
-  }
+
   .box-holder {
-    min-height: 1200px !important;
+    /*min-height: 1200px !important;*/
   }
+
   .left-sidebar {
     position: fixed;
     margin-top: 60px;
@@ -159,6 +43,7 @@
     -ms-transition: 500ms ease;
     transition: 500ms ease;
   }
+
   .left-sidebar .user-menu {
     width: 100%;
     height: 90px;
@@ -169,6 +54,7 @@
     -o-transition: 300ms ease;
     transition: 300ms ease;
   }
+
   .left-sidebar .user-menu img.avatar {
     border: 2px solid #23bab5;
     border-radius: 50%;
@@ -176,16 +62,19 @@
     width: 50px;
     height: 50px;
   }
+
   .left-sidebar .user-menu .user-info {
     padding-top: 8px;
     display: inline-block;
   }
+
   .left-sidebar .user-menu .user-info .welcome {
     font-style: italic;
     font-weight: 100;
     font-size: 12px;
     line-height: 12px;
   }
+
   .left-sidebar .user-menu .user-info .username {
     font-family: 'Droid Sans', sans-serif;
     font-size: 18px;
@@ -194,11 +83,13 @@
     height: 30px;
     color: #80969c;
   }
+
   .user-menu {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .left-sidebar .sidebar-holder .nav li.active > a {
     text-decoration: none;
     background-color: #1A2022;
@@ -209,6 +100,7 @@
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
   }
+
   .left-sidebar .sidebar-holder .nav li a {
     color: #80969c;
     font-size: 14px;
@@ -221,9 +113,11 @@
     transition: all 0.1s ease;
     padding-left: 50px;
   }
+
   .left-sidebar .sidebar-holder .nav li.active > a img {
     color: #ffffff;
   }
+
   .left-sidebar .sidebar-holder .nav li a img {
     display: inline-block;
     font-size: 14px;
@@ -231,6 +125,7 @@
     text-align: center;
     width: 20px;
   }
+
   .left-sidebar .sidebar-holder .nav li a i {
     display: inline-block;
     font-size: 14px;
@@ -238,6 +133,7 @@
     text-align: center;
     width: 20px;
   }
+
   .left-sidebar .sidebar-holder .nav > li ul > li > a {
     font-size: 14px;
     font-weight: 400;
@@ -245,6 +141,7 @@
     display: block;
     color: #80969c;
   }
+
   .content {
     padding: 80px 0 0 280px;
     -webkit-transition: 500ms ease;
@@ -252,21 +149,27 @@
     -o-transition: 500ms ease;
     transition: 500ms ease;
   }
+
   .glyphicon-time {
     font-size: 20px;
     font-weight: normal;
     color: #c2c7c1;
   }
+
   .bg-danger {
     background-color: #F9354C;
   }
+
   .badge {
     margin: -18px 0 0 -22px;
   }
 </style>
 
 <script>
-  import Vue from 'vue'
+
+  import Toolbar from './components/nav/Toolbar.vue'
+  import MainMenu from './components/nav/MainMenu.vue'
+//  import { initStore } from './vuex/action'
   export default {
     data () {
       return {
@@ -300,21 +203,15 @@
           },
           {
             path: '/society',
-            name: '社团资料',
+            name: '社团管理',
             imgPath: require('./assets/images/book.png')
           }
         ]
       }
     },
-    methods: {
-      selectStyle: function (item, index) {
-        this.$nextTick(function () {
-          this.items.forEach(function (item) {
-            Vue.set(item, 'active', false)
-          })
-          Vue.set(item, 'active', true)
-        })
-      }
-    }
+    components: {
+      Toolbar, MainMenu
+    },
+    methods: {}
   }
 </script>
