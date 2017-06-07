@@ -12,10 +12,13 @@
       <!--content-->
       <div class="content animated fadeInBig">
         <router-view></router-view>
+        <input v-model="show"/>
+
+        <!--{{getAPP()}}-->
+
       </div>
       <!--content-->
     </div>
-
   </div>
 </template>
 
@@ -166,10 +169,9 @@
 </style>
 
 <script>
-
   import Toolbar from './components/nav/Toolbar.vue'
   import MainMenu from './components/nav/MainMenu.vue'
-//  import { initStore } from './vuex/action'
+  import store from './vuex/store'
   export default {
     data () {
       return {
@@ -212,6 +214,10 @@
     components: {
       Toolbar, MainMenu
     },
-    methods: {}
+    store,
+    mounted () {
+      // 分发了一个Action，提交到mutations中
+      this.$store.dispatch('setAPP', 'android')
+    }
   }
 </script>

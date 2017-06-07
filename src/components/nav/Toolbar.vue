@@ -121,13 +121,24 @@
 </style>
 
 <script>
+  import { mapGetters, mapActions } from 'vuex'
   export default{
-    name: 'nav',
+    name: 'toolbar',
     props: [
       'index'
     ],
     data () {
       return {}
+    },
+//    获取getters的值
+    computed: mapGetters({
+      test: 'getAPP'
+    }),
+    methods: {
+//      映射
+      ...mapActions({
+        add: 'increment' // 映射 this.add() 为 this.$store.dispatch('increment')
+      })
     }
   }
 
