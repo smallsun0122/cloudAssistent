@@ -1,9 +1,10 @@
 <script>
   import RoomMessage from './RoomMessage.vue'
+  import RoomMemberList from './RoomMemberList.vue'
   export default{
     name: 'room',
     components: {
-      RoomMessage
+      RoomMessage, RoomMemberList
     },
     data () {
       return {
@@ -184,7 +185,7 @@
         </div>
         <div class=" col-md-4">
           <div class="room-ad">
-            <p>广告</p>
+            <p>这是一段广告</p>
           </div>
         </div>
       </div>
@@ -202,51 +203,19 @@
 
         <!--文本-->
         <div class="room-entry">
-          <input type="text" v-model="message"/>
-          <button v-on:click="sendMessage">发送消息</button>
+          <textarea class="col-md-9" type="text" placeholder="输入你需要的内容" v-model="message"/>
+          <div class="col-md-3 submit-btn" v-on:click="sendMessage">
+            <p><i class="fa fa-paper-plane" style="margin-right: 5px" aria-hidden="true"></i> 发送消息
+            </p>
+          </div>
         </div>
       </div>
 
       <!--房间人员-->
       <div class="room-list col-md-4">
-        房间成员:
 
+        <room-member-list :members="members"></room-member-list>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <div v-for="member in members">
-          {{member.userId}}
-            </br>
-          {{member.logo}}
-            </br>
-          {{member.nickName}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
       </div>
 
 
@@ -257,6 +226,38 @@
 <style>
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
+
+  .submit-btn:hover {
+    box-shadow: 2px 4px 6px #b3b3b3;;
+    font-size: 20px;
+  }
+
+  .submit-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 16px;
+
+    border-style: none;
+
+    margin: 10px;
+
+    background-color: #f2dede;
+    border-radius: 10px;
+
+    transition: all 0.5s;
+  }
+
+  .room-entry {
+    display: flex;
+  }
+
+  .room-entry textarea {
+    padding: 10px;
+    font-size: 18px;
+    resize: none;
+  }
 
   ul {
     padding: 0;
@@ -309,6 +310,8 @@
 
     height: 500px;
 
+    padding-bottom: 30px;
+
     overflow: auto;
   }
 
@@ -318,7 +321,7 @@
   }
 
   .room-list {
-    background: #f7ecb5;
+    /*background: #f7ecb5;*/
   }
 
 </style>
