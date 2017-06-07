@@ -273,7 +273,7 @@
         active: false,
         items: [
           {
-            path: '/Announcement',
+            path: '/meeting',
             name: '会议',
             imgPath: require('./assets/images/meet.png'),
             active: true
@@ -299,7 +299,7 @@
             imgPath: require('./assets/images/add1.png')
           },
           {
-            path: '/Announcement',
+            path: '/society',
             name: '社团资料',
             imgPath: require('./assets/images/book.png')
           }
