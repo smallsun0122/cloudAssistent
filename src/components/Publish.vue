@@ -138,17 +138,16 @@
             'society': societyId
           })
           .then(function (res) {
-            console.log('发表成功！')
-            this.$router.push('/Announcement')
+            alert('发表成功！')
           })
           .catch(function (res) {
             console.log(res)
           })
+        this.$router.push('Announcement')
       },
       cancel: function () {
         this.$router.push('Announcement')
       }
     }
-
   }
 </script>

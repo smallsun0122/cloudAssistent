@@ -14,6 +14,12 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
+            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/images/remind.png">
+              <span class="badge bg-danger">5</span>
+            </a>
+          </li>
+          <li>
             <form role="search" class="search-form">
               <div class="form-group">
                 <input type="text" class="form-control  nav-input-search " placeholder="Search ">
@@ -45,57 +51,11 @@
           <!--User-->
           <!--Menu-->
           <ul class="nav nav-list">
-            <li v-bind:class="active">
-              <a href="#/meeting">
-                <img src="./assets/images/meet.png">
-                <span class="hidden-minibar">会议</span>
-              </a>
-            </li>
-            <li class="">
-              <a href="#">
-                <img src="./assets/images/task1.png">
-                <span class="hidden-minibar">任务</span>
-              </a>
-            </li>
-            <!--<li class="">-->
-              <!--<router-link to="./Announcement">-->
-                <!--<img src="./assets/images/notice1.png">-->
-                <!--<span class="hidden-minibar">公告</span>-->
-              <!--</router-link>-->
-            <!--</li>-->
-            <li class="submenu current">
-              <router-link to="./Announcement" class="dropdown" onclick="return false;"  data-original-title="Delighted-Gold">
-                <img src="./assets/images/notice1.png">
-                <span class="hidden-minibar">
-                  公告
-                  <i class="glyphicon glyphicon-menu-right" @click="getSociety"></i>
-                </span>
+            <li v-for="(item,index) in items" @click="selectStyle (item, index) " :class="{'active':item.active}" >
+              <router-link :to="items[index].path">
+                <img v-bind:src="items[index].imgPath">
+                <span>{{items[index].name}}</span>
               </router-link>
-              <ul class="animated fadeInDown" >
-                <li v-for="(society,index) in societys" class="">
-                  <a href="#">
-                    <span class="hidden-minibar">{{society.name}}</span>
-                  </a>
-                </li>
-              </ul>
-            </li>
-            <li class="">
-              <a href="#">
-                <img src="./assets/images/set.png">
-                <span class="hidden-minibar">设置</span>
-              </a>
-            </li>
-            <li class="">
-              <a href="#">
-                <img src="./assets/images/add1.png">
-                <span class="hidden-minibar">邀请成员</span>
-              </a>
-            </li>
-            <li class="">
-              <a href="#/society">
-                <img src="./assets/images/book.png">
-                <span class="hidden-minibar">社团管理</span>
-              </a>
             </li>
           </ul>
           <!--Menu-->
@@ -111,7 +71,7 @@
   </div>
 </template>
 
-<style scoped>
+<style>
   #mainView {
     width: 100%;
     height: 100%;
@@ -271,13 +231,6 @@
     text-align: center;
     width: 20px;
   }
-  .left-sidebar .sidebar-holder .nav li a .glyphicon-menu-right {
-    color: #445458;
-    font-size: 10px;
-    float: right;
-    line-height: 20px;
-    padding: 0 5px;
-  }
   .left-sidebar .sidebar-holder .nav li a i {
     display: inline-block;
     font-size: 14px;
@@ -299,61 +252,69 @@
     -o-transition: 500ms ease;
     transition: 500ms ease;
   }
-  /*.left-sidebar .sidebar-holder .nav > li ul > li > a {*/
-    /*font-size: 14px;*/
-    /*font-weight: 400;*/
-    /*padding: 10px 5px;*/
-    /*display: block;*/
-    /*color: #80969c;*/
-  /*}*/
-  /*.left-sidebar .sidebar-holder .nav li a {*/
-    /*color: #80969c;*/
-    /*font-size: 14px;*/
-    /*font-weight: 400;*/
-    /*padding: 13px 10px;*/
-    /*font-family: 'Open Sans', sans-serif;*/
-    /*-webkit-transition: all 0.1s ease;*/
-    /*-moz-transition: all 0.1s ease;*/
-    /*-o-transition: all 0.1s ease;*/
-    /*transition: all 0.1s ease;*/
-  /*}*/
-  /*.left-sidebar .sidebar-holder .nav > li ul {*/
-    /*list-style: none;*/
-    /*padding-left: 0px;*/
-    /*display: none;*/
-    /*background-color: #2a3336;*/
-    /*margin-left: -1px;*/
-  /*}*/
-  ul li {
-    list-style-type: none;
+  .glyphicon-time {
+    font-size: 20px;
+    font-weight: normal;
+    color: #c2c7c1;
+  }
+  .bg-danger {
+    background-color: #F9354C;
+  }
+  .badge {
+    margin: -18px 0 0 -22px;
   }
 </style>
 
 <script>
-  //  import Qs from 'qs'
+  import Vue from 'vue'
   export default {
     data () {
       return {
-        societyId: '',
-        societys: [{
-          name: '',
-          id: 0
-        }]
+        active: false,
+        items: [
+          {
+            path: '/Announcement',
+            name: '会议',
+            imgPath: require('./assets/images/meet.png'),
+            active: true
+          },
+          {
+            path: '/Announcement',
+            name: '任务',
+            imgPath: require('./assets/images/task1.png')
+          },
+          {
+            path: '/Announcement',
+            name: '公告',
+            imgPath: require('./assets/images/notice1.png')
+          },
+          {
+            path: '/Announcement',
+            name: '设置',
+            imgPath: require('./assets/images/set.png')
+          },
+          {
+            path: '/Announcement',
+            name: '邀请成员',
+            imgPath: require('./assets/images/add1.png')
+          },
+          {
+            path: '/Announcement',
+            name: '社团资料',
+            imgPath: require('./assets/images/book.png')
+          }
+        ]
       }
     },
     methods: {
-      getSociety: function () {
-        let self = this
-        this.$http.get('society/user')
-          .then(function (res) {
-            console.log(res.data)
-            self.societys = res.data
+      selectStyle: function (item, index) {
+        this.$nextTick(function () {
+          this.items.forEach(function (item) {
+            Vue.set(item, 'active', false)
           })
-          .catch(function (error) {
-            console.log(error)
-          })
+          Vue.set(item, 'active', true)
+        })
       }
     }
   }
 </script>
-

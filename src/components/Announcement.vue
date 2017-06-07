@@ -3,7 +3,7 @@
     <div class="announcement-header">
       <h2>公告列表</h2>
       <div class="announcement-btn">
-        <button type="button" class="btn btn-primary" @click="release">
+        <button type="button" class="btn btn-primary">
           <router-link to="./Publish">发布新公告</router-link>
         </button>
         <router-view></router-view>
@@ -11,18 +11,25 @@
     </div>
     <div class="announcement-content">
       <ul class="announcement-list">
+        <!--将这里的当个Notice抽离-->
         <li v-for="(item,index) in items" class="list">
-          <div class="announcement-title">
-            <div class="announcement-user">
-              <img src="../assets/images/portrait.png">
-            </div>
-            <div class="announcement-text">
-              <span>小太阳</span>
-              <h3>{{item.title}}</h3>
-              <p>{{item.content}}</p>
-            </div>
-          </div>
-          <span>2017-5-11 15:29</span>
+          <notice-list-item :notice="item"></notice-list-item>
+          <!--<div class="announcement-title">-->
+            <!--<div class="announcement-user">-->
+              <!--<img src="../assets/images/portrait.png">-->
+            <!--</div>-->
+            <!--<div class="announcement-text">-->
+              <!--<span>小太阳</span>-->
+              <!--<h3>{{item.title}}</h3>-->
+              <!--<p>{{item.content}}</p>-->
+            <!--</div>-->
+          <!--</div>-->
+          <!--<div class="announcement-info">-->
+            <!--<span>{{item.time | time}}</span>-->
+
+            <!--<span class="info-society">来源:{{ getSociety(item.society)}}</span>-->
+
+          <!--</div>-->
         </li>
       </ul>
     </div>
@@ -35,66 +42,145 @@
     justify-content: space-between;
     align-items: center;
   }
+
   .announcement-btn {
     margin-right: 120px;
   }
+
   .announcement-btn a {
     text-decoration: none;
     color: #fff;
   }
+
   .announcement-header h2 {
     color: #00AAAA;
   }
+
   .btn-primary {
     background-color: #00AAAA;
     border: none;
   }
+
   .list {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-left: -45px;
+    margin: 20px 0 0 -45px;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.1);
   }
+
   .list span {
     font-size: 16px;
   }
+
   .announcement-content {
     margin-top: 20px;
   }
-  .announcement-list {
-    width: 90%;
-    box-shadow: 0 1px rgba(0,0,0,0.1);
-  }
-  .announcement-content ul li {
-    list-style-type: none;
-  }
-  .announcement-user img {
-    width: 50px;
-    height: 50px;
-    display: block;
-  }
-  .announcement-title {
-    display: flex;
-    flex-direction: row;
-  }
-  .announcement-text {
-    padding: 15px 0 20px 10px;
-  }
-  .announcement-text span {
-    font-size: 18px;
-  }
+
+  /*.announcement-list {*/
+    /*width: 90%;*/
+    /*!*box-shadow: 0 1px rgba(0,0,0,0.1);*!*/
+  /*}*/
+
+  /*.announcement-content ul li {*/
+    /*list-style-type: none;*/
+  /*}*/
+
+  /*.announcement-user img {*/
+    /*width: 50px;*/
+    /*height: 50px;*/
+    /*display: block;*/
+  /*}*/
+
+  /*.announcement-title {*/
+    /*display: flex;*/
+    /*flex-direction: row;*/
+  /*}*/
+
+  /*.announcement-text {*/
+    /*padding: 15px 0 10px 10px;*/
+  /*}*/
+
+  /*.announcement-text span {*/
+    /*font-size: 18px;*/
+  /*}*/
+
+  /*.announcement-info {*/
+    /*display: flex;*/
+    /*flex-direction: column;*/
+    /*justify-content: space-between;*/
+    /*margin-bottom: 10px;*/
+  /*}*/
+
+  /*.info-society {*/
+    /*font-size: 14px !important;*/
+  /*}*/
 </style>
 
 <script>
+  import Vue from 'vue'
+  import NoticeListItem from './NoticeListItem.vue'
   export default {
     data () {
       return {
         items: [{
           title: '',
-          content: ''
+          content: '',
+          time: '',
+          society: ''
         }]
       }
+    },
+    components: {
+      NoticeListItem
+    },
+    methods: {
+      getSociety: function (id, target) {
+        this.$http.get('/society/' + id)
+          .then(function (response) {
+            return response.data.name
+          })
+      }
+    },
+    mounted: function () {
+      var title = this.title
+      var content = this.content
+      var that = this
+      this.$http
+        .get('/notices/user/?page=1&pageSize=10', {
+          'title': title,
+          'content': content
+        })
+        .then(function (res) {
+          console.log(res.data)
+          that.items = res.data
+          Vue.filter('time',
+            function (value) {
+              var date = new Date(value)
+              var year = date.getFullYear()
+              var month = date.getMonth() + 1
+              var day = date.getDate()
+              var hours = date.getHours()
+              var minutes = date.getMinutes()
+              if (month < 10) {
+                month = '0' + month
+              }
+              if (day < 10) {
+                day = '0' + day
+              }
+              if (hours < 10) {
+                hours = '0' + hours
+              }
+              if (minutes < 10) {
+                minutes = '0' + minutes
+              }
+              var t = year + '-' + month + '-' + day + ' ' + hours + ':' + minutes
+              return t
+            })
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     }
-
   }
 </script>
