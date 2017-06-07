@@ -6,7 +6,7 @@
 import Vue from 'vue'
 import MainView from './MainView.vue'
 import router from './router'
-import store from './vuex/store'
+import store from './store/store'
 import axios from 'axios'
 
 Vue.config.productionTip = false

@@ -4,10 +4,10 @@
   <div class="sidebar-holder">
     <!--User-->
     <div class="user-menu">
-      <img src="../../assets/images/portrait.png" alt="" class="avatar">
+      <img :src="user.logoUrl" alt="" class="avatar">
       <div class="user-info">
         <div class="welcome">Welcome,</div>
-        <div class="username">小太阳</div>
+        <div class="username">{{user.nickName}}</div>
       </div>
     </div>
     <!--User-->
@@ -34,6 +34,7 @@
 </style>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default{
     name: '',
     props: [
@@ -75,6 +76,12 @@
           }
         ]
       }
+    },
+    computed: mapGetters({
+      user: 'getCurrentUser'
+    }),
+    mounted: function () {
+      this.$store.dispatch('initCurrentUser')
     },
     components: {},
     methods: {}
