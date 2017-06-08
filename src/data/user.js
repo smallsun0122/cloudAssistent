@@ -10,5 +10,14 @@ export default{
       .then(function (response) {
         callback(response.data)
       })
+  },
+  getMeeting: function (callback) {
+    axios.get('meeting')
+      .then(function (response) {
+        callback(response.data)
+      })
+      .catch(function (error) {
+        console.log(error)
+      })
   }
 }

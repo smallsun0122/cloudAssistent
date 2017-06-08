@@ -37,7 +37,7 @@
 </template>
 
 <style scoped>
-  .box {
+  .meeting-box {
     width: 100%;
     height: 100%;
   }

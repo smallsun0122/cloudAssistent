@@ -9,13 +9,13 @@
       <div class="left-sidebar">
         <main-menu index="1"></main-menu>
       </div>
+      <router-view style="margin-left: 220px ; padding-top: 60px"></router-view>
       <!--content-->
-      <div class="content animated fadeInBig">
-        <router-view></router-view>
+      <!--<div class="content animated fadeInBig">-->
 
-        <!--{{getAPP()}}-->
+      <!--{{getAPP()}}-->
 
-      </div>
+      <!--</div>-->
       <!--content-->
     </div>
   </div>
