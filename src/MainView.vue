@@ -14,18 +14,23 @@
       <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
           <li>
-            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" aria-expanded="false">
-              <img src="./assets/images/remind.png">
-              <span class="badge bg-danger">5</span>
-            </a>
-          </li>
-          <li>
             <form role="search" class="search-form">
               <div class="form-group">
                 <input type="text" class="form-control  nav-input-search " placeholder="Search ">
                 <i class="glyphicon glyphicon-search"></i>
               </div>
             </form>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/images/remind.png">
+              <span class="badge bg-danger">5</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+              <img src="./assets/images/user1.png"  style="display: block;width: 24px;height: 24px;margin-top: 3px;">
+            </a>
           </li>
           <li>
             <a href="#" class="logout">
@@ -59,7 +64,6 @@
             </li>
           </ul>
           <!--Menu-->
-
         </div>
       </div>
       <!--content-->
@@ -79,6 +83,7 @@
   .navbar {
     width: 100%;
     position: fixed;
+    z-index: 99;
   }
   .navbar.nav-delighted.navbar-default {
     height: 60px;
@@ -246,16 +251,12 @@
     color: #80969c;
   }
   .content {
+    z-index: 99;
     padding: 80px 0 0 280px;
     -webkit-transition: 500ms ease;
     -moz-transition: 500ms ease;
     -o-transition: 500ms ease;
     transition: 500ms ease;
-  }
-  .glyphicon-time {
-    font-size: 20px;
-    font-weight: normal;
-    color: #c2c7c1;
   }
   .bg-danger {
     background-color: #F9354C;
@@ -284,14 +285,9 @@
             imgPath: require('./assets/images/task1.png')
           },
           {
-            path: '/Announcement',
+            path: '/notices/Announcement',
             name: '公告',
             imgPath: require('./assets/images/notice1.png')
-          },
-          {
-            path: '/Announcement',
-            name: '设置',
-            imgPath: require('./assets/images/set.png')
           },
           {
             path: '/Announcement',
@@ -302,6 +298,16 @@
             path: '/Announcement',
             name: '社团资料',
             imgPath: require('./assets/images/book.png')
+          },
+          {
+            path: '/setinfo/MyInfo',
+            name: '个人设置',
+            imgPath: require('./assets/images/set.png')
+          },
+          {
+            path: '/setinfo/MyInfo',
+            name: '账号密码',
+            imgPath: require('./assets/images/psd.png')
           }
         ]
       }

@@ -1,8 +1,8 @@
 <template>
-  <div :onload="getSociety()">
+  <div :onload="getSociety()" class="list">
     <div class="announcement-title">
       <div class="announcement-user">
-        <img src="../assets/images/portrait.png">
+        <img src="../../assets/images/portrait.png">
       </div>
       <div class="announcement-text">
         <span>小太阳</span>
@@ -18,8 +18,12 @@
 </template>
 
 <style>
-  .announcement-content ul li {
-    list-style-type: none;
+  .list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px 0 0 -45px;
+    box-shadow: 0 1px rgba(0, 0, 0, 0.1);
   }
 
   .announcement-user img {

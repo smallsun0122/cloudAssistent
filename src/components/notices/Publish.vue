@@ -21,9 +21,9 @@
       </div>
       <div class="notice-footer">
         <div class="footer-add">
-          <img src="../assets/images/photo.png">
+          <img src="../../assets/images/photo.png">
           <span>图片</span>
-          <img src="../assets/images/biaoq.png">
+          <img src="../../assets/images/biaoq.png">
           <span>表情</span>
         </div>
         <div class="notice-button">

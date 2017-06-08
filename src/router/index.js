@@ -1,8 +1,9 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Navigation from '@/components/Navigation'
-import Announcement from '@/components/Announcement'
-import Publish from '@/components/Publish'
+import Announcement from '@/components/notices/Announcement'
+import Publish from '@/components/notices/Publish'
+import MyInfo from '@/components/setinfo/MyInfo'
 import CreateMeeting from '../components/meeting/Create'
 import Meeting from '../components/meeting/Meeting.vue'
 import Room from '../components/room/Room.vue'
@@ -18,12 +19,12 @@ export default new Router({
       component: Navigation
     },
     {
-      path: '/Announcement',
+      path: '/notices/Announcement',
       name: 'Announcement',
       component: Announcement
     },
     {
-      path: '/Publish',
+      path: '/notices/Publish',
       name: 'Publish',
       component: Publish
     },
@@ -46,6 +47,11 @@ export default new Router({
       path: '/society',
       name: 'society',
       component: Society
+    },
+    {
+      path: '/setinfo/MyInfo',
+      name: 'MyInfo',
+      component: MyInfo
     }
   ]
 })
