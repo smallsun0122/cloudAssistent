@@ -3,3 +3,5 @@
 export const getCurrentUser = state => state.currentUser
 
 export const getAllMeetings = state => state.meetings
+
+export const getMySociety = state => state.society

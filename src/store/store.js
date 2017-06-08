@@ -9,7 +9,8 @@ Vue.use(Vuex)
 // 数据
 const state = {
   currentUser: {},
-  meetings: []
+  meetings: [],
+  society: []
 }
 
 // 处理保存的动作
@@ -19,10 +20,12 @@ const mutations = {
   },
   INIT_MEETING (state, meeting) {
     state.meetings = meeting
+  },
+  INIT_SOCIETY (state, society) {
+    state.society = society
   }
 }
 
-// 建议使用四个单独的文件
 export default new Vuex.Store({
   state,
   mutations,

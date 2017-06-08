@@ -19,5 +19,11 @@ export default{
       .catch(function (error) {
         console.log(error)
       })
+  },
+  getSociety: function (callback) {
+    axios.get('society/user')
+      .then(function (response) {
+        callback(response.data)
+      })
   }
 }

@@ -15,3 +15,9 @@ export const initMeeting = ({commit}) => {
     commit('INIT_MEETING', meetings)
   })
 }
+
+export const initMySociety = ({commit}) => {
+  http.getSociety(society => {
+    commit('INIT_SOCIETY', society)
+  })
+}

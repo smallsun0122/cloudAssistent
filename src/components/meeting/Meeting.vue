@@ -92,10 +92,9 @@
   .meeting-box {
     min-height: 250px;
     border-radius: 10px;
+    margin-bottom: 40px;
 
     box-shadow: 0 2px 8px 4px #E9E9E9;
-
-    /*background-color: rgba(156, 151, 154, 0.56);*/
 
     top: 0;
     transition: all 0.3s;
