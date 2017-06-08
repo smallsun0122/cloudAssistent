@@ -45,7 +45,8 @@
   }
 
   .room-member-list {
-    min-height: 600px;
+    /*min-height: 600px;*/
+    /*height: 100%;*/
     background: #d8d8d8;
 
   }

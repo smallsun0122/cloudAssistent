@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="864f6f30-5d8a-4ebf-97df-3a86ed443e09" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/assets/images/room-icon.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/room/MessageItem.vue" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/components/room/RoomHead.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/MainView.vue" afterPath="$PROJECT_DIR$/src/MainView.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/room/Room.vue" afterPath="$PROJECT_DIR$/src/components/room/Room.vue" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/room/RoomMemberList.vue" afterPath="$PROJECT_DIR$/src/components/room/RoomMemberList.vue" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/components/room/RoomMessage.vue" afterPath="$PROJECT_DIR$/src/components/room/RoomMessages.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,39 +30,15 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainMenu.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/nav/MainMenu.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="576">
-              <caret line="42" column="18" lean-forward="false" selection-start-line="42" selection-start-column="18" selection-end-line="42" selection-end-column="18" />
-              <folding>
-                <element signature="n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
-                <element signature="n#style#0;n#i#0;n#router-link#0;n#li#0;n#ul#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#919#1687#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="RoomMessages.vue" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/components/room/RoomMessages.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="140" column="16" lean-forward="false" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="16" />
+            <state relative-caret-position="289">
+              <caret line="134" column="12" lean-forward="false" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
               <folding>
                 <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#i#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Society.vue" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/components/society/Society.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="336">
-              <caret line="83" column="23" lean-forward="false" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -151,11 +121,11 @@
         <option value="$PROJECT_DIR$/src/components/nav/MainMenu.vue" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/src/MainView.vue" />
-        <option value="$PROJECT_DIR$/src/components/room/RoomMemberList.vue" />
         <option value="$PROJECT_DIR$/src/components/room/Room.vue" />
         <option value="$PROJECT_DIR$/src/components/room/MessageItem.vue" />
         <option value="$PROJECT_DIR$/src/components/room/RoomHead.vue" />
         <option value="$PROJECT_DIR$/src/components/room/RoomMessages.vue" />
+        <option value="$PROJECT_DIR$/src/components/room/RoomMemberList.vue" />
       </list>
     </option>
   </component>
@@ -950,7 +920,7 @@
       <workItem from="1496814679604" duration="5176000" />
       <workItem from="1496828541155" duration="196000" />
       <workItem from="1496838523640" duration="32900000" />
-      <workItem from="1496921329300" duration="13075000" />
+      <workItem from="1496921329300" duration="13190000" />
     </task>
     <task id="LOCAL-00001" summary="会议内容的创建和获取，跳转到websocket">
       <created>1496685961023</created>
@@ -1064,11 +1034,18 @@
       <option name="project" value="LOCAL" />
       <updated>1496922304863</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="会议室样子写完啦">
+      <created>1496934655871</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1496934655871</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="181246000" />
+    <option name="totallyTimeSpent" value="181361000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
@@ -1175,7 +1152,8 @@
     <MESSAGE value="社团界面" />
     <MESSAGE value="修改侧边栏的样式" />
     <MESSAGE value="fix bug" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bug" />
+    <MESSAGE value="会议室样子写完啦" />
+    <option name="LAST_COMMIT_MESSAGE" value="会议室样子写完啦" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1533,14 +1511,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/room/RoomMemberList.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="11" column="16" lean-forward="false" selection-start-line="11" selection-start-column="16" selection-end-line="11" selection-end-column="16" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/nav/MainMenu.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="576">
@@ -1561,10 +1531,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/room/RoomMemberList.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="51" column="2" lean-forward="false" selection-start-line="51" selection-start-column="2" selection-end-line="51" selection-end-column="2" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/components/room/RoomMessages.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="140" column="16" lean-forward="false" selection-start-line="140" selection-start-column="16" selection-end-line="140" selection-end-column="16" />
+        <state relative-caret-position="289">
+          <caret line="134" column="12" lean-forward="false" selection-start-line="134" selection-start-column="12" selection-end-line="134" selection-end-column="12" />
           <folding>
             <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#i#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
