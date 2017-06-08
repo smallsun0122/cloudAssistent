@@ -1,12 +1,11 @@
 <template>
   <div class="room-member-list">
 
+    <p class="title">房间成员</p>
     <div v-for="member in members">
-
-      <div class="box">
-
+      <div class="member">
         <!--头像-->
-        <div class="list-head">
+        <div class="member-logo">
           <img :src="member.logo">
         </div>
 
@@ -39,10 +38,39 @@
     border-radius: 50%;
   }
 
+  .title {
+    padding-top: 20px;
+    font-size: 24px;
+    text-align: center;
+  }
+
   .room-member-list {
     min-height: 600px;
-    background: #dff0d8;
+    background: #d8d8d8;
 
+  }
+
+  .member {
+    margin: 0 30px;
+    padding: 20px 0;
+    display: flex;
+    align-items: center;
+
+    overflow: auto;
+  }
+
+  .member-name {
+
+  }
+
+  .member-name p {
+    font-size: 20px;
+    margin: 0;
+  }
+
+  .member-logo {
+    width: 54px;
+    height: 54px;
   }
 
   .meeting-box {
@@ -52,17 +80,9 @@
     align-items: center;
   }
 
-  .list-head {
-    width: 108px;
-    height: 108px;
-  }
-
   .member-name {
     margin-left: 10px;
   }
 
-  .member-name p {
-    font-size: 32px;
-  }
 
 </style>

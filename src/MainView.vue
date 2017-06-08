@@ -1,4 +1,4 @@
-<template xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<template>
   <div id="mainView">
 
     <!--顶部-->
@@ -7,20 +7,9 @@
     <!--侧边栏-->
     <div class="box-holder">
       <div class="left-sidebar">
-        <div class="sidebar-holder">
-          <!--User-->
-          <!--Menu-->
-        </div>
         <main-menu index="1"></main-menu>
       </div>
       <router-view style="margin-left: 220px ; padding-top: 60px"></router-view>
-      <!--content-->
-      <!--<div class="content animated fadeInBig">-->
-
-      <!--{{getAPP()}}-->
-
-      <!--</div>-->
-      <!--content-->
     </div>
   </div>
 </template>

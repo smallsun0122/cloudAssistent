@@ -5,7 +5,6 @@
 
 
 
-
     <div class="msg-time">
       <p>{{new Date(message.date)}}</p>
     </div>
@@ -72,7 +71,7 @@
     margin: 0;
     width: 100%;
 
-    min-height:35px;
+    min-height: 35px;
 
     border-radius: 5px;
 
@@ -93,9 +92,9 @@
     z-index: 1;
 
     border: solid 8px;
-    border-color: #a6e1ec peachpuff #a6e1ec #a6e1ec;
+    border-color: #ffffff peachpuff #ffffff #ffffff;
 
-    left: -16px;
+    left: -15px;
     top: 10px;
 
     background-color: #f7ecb5;
@@ -114,7 +113,7 @@
   .is-self-m-r {
     left: 100%;
     right: 16px;
-    border-color: #a6e1ec #a6e1ec #a6e1ec peachpuff;
+    border-color: #ffffff #ffffff #ffffff peachpuff;
   }
 
   .message .head {
@@ -144,10 +143,11 @@
       initUser: function () {
         const self = this
         for (var i = 0; i < this.members.length; i++) {
-          console.log(this.members[i].userId + '  ' + this.message.publishId)
-          if (this.members[i].userId === this.message.publishId) {
+//          console.log(this.members[i].userId + '  ' + this.message.publishId)
+          if (this.members[i].userId === this.$store.getters.getCurrentUser.userId) {
             self.logo = this.members[i].logo
             self.name = this.members[i].nickName
+            break
           }
         }
       }

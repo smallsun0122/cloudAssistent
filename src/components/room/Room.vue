@@ -1,10 +1,11 @@
 <script>
-  import RoomMessage from './RoomMessage.vue'
+  import RoomMessages from './RoomMessages.vue'
   import RoomMemberList from './RoomMemberList.vue'
+  import RoomHead from './RoomHead.vue'
   export default{
     name: 'room',
     components: {
-      RoomMessage, RoomMemberList
+      RoomMessages, RoomMemberList, RoomHead
     },
     data () {
       return {
@@ -23,7 +24,7 @@
         }]
       }
     },
-    created: function () {
+    mounted: function () {
       // 获取路由传过来的roomId
       this.roomId = this.$route.query.roomId
       this.roomTitle = this.$route.query.roomTitle
@@ -36,9 +37,9 @@
       this.ws = new WebSocket('ws://112.74.214.252:8080/acloud/ws?roomId=' + this.roomId)
       this.initWebSocket()
     },
-    mounted: function () {
-      // todo created 和 mounted的区别在哪里
-    },
+//    mounted: function () {
+//       todo created 和 mounted的区别在哪里
+//    },
     destroyed: function () {
       // todo websocket状态码
       this.ws.close(3007, '断开房间')
@@ -80,6 +81,7 @@
           logo: data.logo,
           nickName: data.nickName
         }
+
         self.members.push(m)
       },
       /**
@@ -149,16 +151,16 @@
       /**
        * 向服务器发送一条信息
        */
-      sendMessage: function () {
+      sendMessage: function (msg) {
         var message = {
-          message: this.message
+          message: msg
         }
         this.ws.send(JSON.stringify(message))
 
         var m = {
           roomId: this.roomId,
           publishId: 'helloworld.wen@gmail.com',
-          message: this.message,
+          message: msg,
           date: new Date(),
           self: true
         }
@@ -173,155 +175,28 @@
     <div class="room-wrap container">
 
       <!--头部-->
-      <div class="room-head">
-        <div class="room-title-wrap">
-          <div>
-            <i class="fa fa-users head-icon"></i>
-          </div>
-          <div class="text-wrap ">
-            <p class="room-title"> 房间名：{{roomTitle}}</p>
-            <p class="room-number">房间号：{{roomId}}</p>
-          </div>
-        </div>
-        <div class=" col-md-4">
-          <div class="room-ad">
-            <p>这是一段广告</p>
-          </div>
-        </div>
-      </div>
+      <room-head class="head"
+                 :roomId="roomId"
+                 :roomTitle="roomTitle"></room-head>
 
       <!--文本内容-->
-      <div class="col-md-8">
-        <!--内容-->
-        <div class="room-message">
-          <ul>
-            <li v-for="item in messages">
-              <room-message :message="item" :members="members"></room-message>
-            </li>
-          </ul>
-        </div>
-
-        <!--文本-->
-        <div class="room-entry">
-          <textarea class="col-md-9" type="text" placeholder="输入你需要的内容" v-model="message"/>
-          <div class="col-md-3 submit-btn" v-on:click="sendMessage">
-            <p><i class="fa fa-paper-plane" style="margin-right: 5px" aria-hidden="true"></i> 发送消息
-            </p>
-          </div>
-        </div>
-      </div>
+      <room-messages v-on:sendMessage="sendMessage" class="col-md-8" :messages="messages"
+                     :members="members"></room-messages>
 
       <!--房间人员-->
-      <div class="room-list col-md-4">
-
-        <room-member-list :members="members"></room-member-list>
-
-      </div>
-
+      <room-member-list class="col-md-4" :members="members"></room-member-list>
 
     </div>
   </div>
 </template>
 
-<style>
+<style scoped>
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
 
-  .submit-btn:hover {
-    box-shadow: 2px 4px 6px #b3b3b3;;
-    font-size: 20px;
-  }
-
-  .submit-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    font-size: 16px;
-
-    border-style: none;
-
-    margin: 10px;
-
-    background-color: #f2dede;
-    border-radius: 10px;
-
-    transition: all 0.5s;
-  }
-
-  .room-entry {
-    display: flex;
-  }
-
-  .room-entry textarea {
-    padding: 10px;
-    font-size: 18px;
-    resize: none;
-  }
-
-  ul {
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .room-head {
-    background: #ed9f45;
-    padding: 30px 16px;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    flex-flow: row;
-  }
-
-  .room-ad {
-    width: 100%;
-    height: 100%;
-    background: cadetblue;
-  }
-
-  .head-icon {
-    font-size: 50px;
-  }
-
-  .room-title-wrap {
-    display: flex;
-
-    flex-flow: row;
-    align-items: flex-start;
-  }
-
-  .room-title {
-    font-size: 18px;
-  }
-
-  .room-number {
-    font-size: 16px;
-  }
-
-  .text-wrap {
-    margin-left: 10px;
-  }
-
-  .room-message {
-    background: #a6e1ec;
-
-    height: 500px;
-
-    padding-bottom: 30px;
-
-    overflow: auto;
-  }
-
-  .room-entry {
-    background: #f5e79e;
-    height: 100px;
-  }
-
-  .room-list {
-    /*background: #f7ecb5;*/
+  .head {
+    border-radius: 10px 10px 0 0;
+    margin-top: 50px;
   }
 
 </style>
