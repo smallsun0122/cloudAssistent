@@ -1,44 +1,6 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div id="mainView">
-      <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <div class="navbar-brand header-flex">
-          <img src="./assets/images/Cloud_small.png" alt="">
-          <span>社团云助手</span>
-        </div>
-      </div>
 
-      <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
-          <li>
-            <form role="search" class="search-form">
-              <div class="form-group">
-                <input type="text" class="form-control  nav-input-search " placeholder="Search ">
-                <i class="glyphicon glyphicon-search"></i>
-              </div>
-            </form>
-          </li>
-          <li>
-            <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown" aria-expanded="false">
-              <img src="./assets/images/remind.png">
-              <span class="badge bg-danger">5</span>
-            </a>
-          </li>
-          <li>
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-              <img src="./assets/images/user1.png"  style="display: block;width: 24px;height: 24px;margin-top: 3px;">
-            </a>
-          </li>
-          <li>
-            <a href="#" class="logout">
-              <i class="glyphicon glyphicon-off"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
-      <!-- /.navbar-collapse -->
-    </nav>
     <!--顶部-->
     <toolbar></toolbar>
 
@@ -47,23 +9,6 @@
       <div class="left-sidebar">
         <div class="sidebar-holder">
           <!--User-->
-          <div class="user-menu">
-            <img src="./assets/images/portrait.png" alt="" class="avatar">
-            <div class="user-info">
-              <div class="welcome">Welcome,</div>
-              <div class="username">小太阳</div>
-            </div>
-          </div>
-          <!--User-->
-          <!--Menu-->
-          <ul class="nav nav-list">
-            <li v-for="(item,index) in items" @click="selectStyle (item, index) " :class="{'active':item.active}" >
-              <router-link :to="items[index].path">
-                <img v-bind:src="items[index].imgPath">
-                <span>{{items[index].name}}</span>
-              </router-link>
-            </li>
-          </ul>
           <!--Menu-->
         </div>
         <main-menu index="1"></main-menu>
@@ -85,17 +30,20 @@
     width: 100%;
     height: 100%;
   }
+
   .navbar {
     width: 100%;
     position: fixed;
     z-index: 99;
   }
+
   .navbar.nav-delighted.navbar-default {
     height: 60px;
     border-width: 0px;
     border-radius: 0px;
     margin-bottom: 0px;
   }
+
   .navbar.nav-delighted.navbar-default .navbar-brand {
     font-size: 18px;
     font-family: 'Droid Sans', sans-serif;
@@ -104,6 +52,7 @@
     width: 220px;
     text-align: center;
   }
+
   .header-flex {
     display: flex;
     flex-direction: row;
@@ -111,18 +60,22 @@
     align-items: center;
     margin-left: 10px;
   }
+
   .header-flex img {
     width: 42px;
     height: 30px;
     display: block;
   }
+
   .header-flex span {
     margin-left: 10px;
   }
+
   .navbar.nav-delighted.navbar-default .search-form {
     margin-top: 13px;
     margin-right: 34px;
   }
+
   .navbar.nav-delighted.navbar-default .search-form input {
     height: 32px;
     width: 155px;
@@ -134,6 +87,7 @@
     -webkit-box-shadow: none;
     box-shadow: none;
   }
+
   .navbar.nav-delighted.navbar-default .search-form i.glyphicon-search {
     color: #c2c7c1;
     margin-top: 21px;
@@ -141,6 +95,7 @@
     position: absolute;
     font-size: 14px;
   }
+
   .navbar.nav-delighted.navbar-default a.logout {
     font-size: 24px;
     color: #23bab5;
@@ -152,6 +107,7 @@
     -o-transition: 300ms ease;
     transition: 300ms ease;
   }
+
   .box-holder {
     /*min-height: 1200px !important;*/
   }
@@ -277,11 +233,13 @@
     -o-transition: 500ms ease;
     transition: 500ms ease;
   }
+
   .glyphicon-time {
     font-size: 20px;
     font-weight: normal;
     color: #c2c7c1;
   }
+
   .bg-danger {
     background-color: #F9354C;
   }
