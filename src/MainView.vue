@@ -230,15 +230,15 @@
 
   .left-sidebar .sidebar-holder .nav li a {
     color: #80969c;
-    font-size: 14px;
+    font-size: 16px;
     font-weight: 400;
-    padding: 13px 10px;
+    padding: 18px 10px;
     font-family: 'Open Sans', sans-serif;
     -webkit-transition: all 0.1s ease;
     -moz-transition: all 0.1s ease;
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
-    padding-left: 50px;
+    padding-left: 40px;
   }
 
   .left-sidebar .sidebar-holder .nav li.active > a img {
@@ -256,7 +256,7 @@
   .left-sidebar .sidebar-holder .nav li a i {
     display: inline-block;
     font-size: 14px;
-    margin: 0 10px;
+    margin: 0 15px 0 10px;
     text-align: center;
     width: 20px;
   }

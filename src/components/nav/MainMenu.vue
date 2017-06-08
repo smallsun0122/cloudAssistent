@@ -15,9 +15,9 @@
     <!--Menu-->
     <div id="menu">
       <ul class="nav nav-list">
-        <li v-for="(item,index) in menuItem" :class="{'active':item.active}">
+        <li v-for="(item,i) in menuItem" @click="changeMenu(i)" :class="{'active':i === index}">
           <router-link :to="item.path">
-            <img v-bind:src="item.imgPath">
+            <i style="font-size: 20px" class="fa" :class="item.icon"></i>
             <span>{{item.name}}</span>
           </router-link>
         </li>
@@ -37,42 +37,44 @@
   import { mapGetters } from 'vuex'
   export default{
     name: '',
-    props: [
-      'index'
-    ],
     data () {
       return {
+        index: 0,
         menuItem: [
+          {
+            path: '/',
+            name: '我的动态',
+            icon: 'fa-user'
+          },
           {
             path: '/meeting',
             name: '会议',
-            imgPath: require('../../assets/images/meet.png'),
-            active: true
+            icon: 'fa-microphone'
           },
           {
-            path: '/Announcement',
-            name: '任务',
-            imgPath: require('../../assets/images/task1.png')
+            path: '/',
+            icon: 'fa-calendar',
+            name: '任务(没写'
           },
           {
             path: '/Announcement',
             name: '公告',
-            imgPath: require('../../assets/images/notice1.png')
-          },
-          {
-            path: '/Announcement',
-            name: '设置',
-            imgPath: require('../../assets/images/set.png')
-          },
-          {
-            path: '/Announcement',
-            name: '邀请成员',
-            imgPath: require('../../assets/images/add1.png')
+            icon: 'fa-volume-up'
           },
           {
             path: '/society',
             name: '社团管理',
-            imgPath: require('../../assets/images/book.png')
+            icon: 'fa-plug'
+          },
+          {
+            path: '/',
+            name: '邀请成员(没写',
+            icon: 'fa-users'
+          },
+          {
+            path: '/',
+            name: '设置(没写',
+            icon: 'fa-users'
           }
         ]
       }
@@ -84,6 +86,10 @@
       this.$store.dispatch('initCurrentUser')
     },
     components: {},
-    methods: {}
+    methods: {
+      changeMenu: function (i) {
+        this.index = i
+      }
+    }
   }
 </script>
