@@ -1,7 +1,5 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div id="mainView">
-    <nav class="navbar  navbar-default nav-delighted " role="navigation">
-
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
         <div class="navbar-brand header-flex">
@@ -41,7 +39,10 @@
       </div>
       <!-- /.navbar-collapse -->
     </nav>
+    <!--顶部-->
+    <toolbar></toolbar>
 
+    <!--侧边栏-->
     <div class="box-holder">
       <div class="left-sidebar">
         <div class="sidebar-holder">
@@ -65,11 +66,15 @@
           </ul>
           <!--Menu-->
         </div>
+        <main-menu index="1"></main-menu>
       </div>
+      <router-view style="margin-left: 220px ; padding-top: 60px"></router-view>
       <!--content-->
-      <div class="content animated fadeInBig">
-        <router-view></router-view>
-      </div>
+      <!--<div class="content animated fadeInBig">-->
+
+      <!--{{getAPP()}}-->
+
+      <!--</div>-->
       <!--content-->
     </div>
   </div>
@@ -148,8 +153,9 @@
     transition: 300ms ease;
   }
   .box-holder {
-    min-height: 1200px !important;
+    /*min-height: 1200px !important;*/
   }
+
   .left-sidebar {
     position: fixed;
     margin-top: 60px;
@@ -164,6 +170,7 @@
     -ms-transition: 500ms ease;
     transition: 500ms ease;
   }
+
   .left-sidebar .user-menu {
     width: 100%;
     height: 90px;
@@ -174,6 +181,7 @@
     -o-transition: 300ms ease;
     transition: 300ms ease;
   }
+
   .left-sidebar .user-menu img.avatar {
     border: 2px solid #23bab5;
     border-radius: 50%;
@@ -181,16 +189,19 @@
     width: 50px;
     height: 50px;
   }
+
   .left-sidebar .user-menu .user-info {
     padding-top: 8px;
     display: inline-block;
   }
+
   .left-sidebar .user-menu .user-info .welcome {
     font-style: italic;
     font-weight: 100;
     font-size: 12px;
     line-height: 12px;
   }
+
   .left-sidebar .user-menu .user-info .username {
     font-family: 'Droid Sans', sans-serif;
     font-size: 18px;
@@ -199,11 +210,13 @@
     height: 30px;
     color: #80969c;
   }
+
   .user-menu {
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .left-sidebar .sidebar-holder .nav li.active > a {
     text-decoration: none;
     background-color: #1A2022;
@@ -214,6 +227,7 @@
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
   }
+
   .left-sidebar .sidebar-holder .nav li a {
     color: #80969c;
     font-size: 14px;
@@ -226,9 +240,11 @@
     transition: all 0.1s ease;
     padding-left: 50px;
   }
+
   .left-sidebar .sidebar-holder .nav li.active > a img {
     color: #ffffff;
   }
+
   .left-sidebar .sidebar-holder .nav li a img {
     display: inline-block;
     font-size: 14px;
@@ -236,6 +252,7 @@
     text-align: center;
     width: 20px;
   }
+
   .left-sidebar .sidebar-holder .nav li a i {
     display: inline-block;
     font-size: 14px;
@@ -243,6 +260,7 @@
     text-align: center;
     width: 20px;
   }
+
   .left-sidebar .sidebar-holder .nav > li ul > li > a {
     font-size: 14px;
     font-weight: 400;
@@ -250,6 +268,7 @@
     display: block;
     color: #80969c;
   }
+
   .content {
     z-index: 99;
     padding: 80px 0 0 280px;
@@ -258,23 +277,31 @@
     -o-transition: 500ms ease;
     transition: 500ms ease;
   }
+  .glyphicon-time {
+    font-size: 20px;
+    font-weight: normal;
+    color: #c2c7c1;
+  }
   .bg-danger {
     background-color: #F9354C;
   }
+
   .badge {
     margin: -18px 0 0 -22px;
   }
 </style>
 
 <script>
-  import Vue from 'vue'
+  import Toolbar from './components/nav/Toolbar.vue'
+  import MainMenu from './components/nav/MainMenu.vue'
+  import store from './store/store'
   export default {
     data () {
       return {
         active: false,
         items: [
           {
-            path: '/Announcement',
+            path: '/meeting',
             name: '会议',
             imgPath: require('./assets/images/meet.png'),
             active: true
@@ -295,8 +322,8 @@
             imgPath: require('./assets/images/add1.png')
           },
           {
-            path: '/Announcement',
-            name: '社团资料',
+            path: '/society',
+            name: '社团管理',
             imgPath: require('./assets/images/book.png')
           },
           {
@@ -312,15 +339,11 @@
         ]
       }
     },
-    methods: {
-      selectStyle: function (item, index) {
-        this.$nextTick(function () {
-          this.items.forEach(function (item) {
-            Vue.set(item, 'active', false)
-          })
-          Vue.set(item, 'active', true)
-        })
-      }
+    components: {
+      Toolbar, MainMenu
+    },
+    store,
+    mounted () {
     }
   }
 </script>

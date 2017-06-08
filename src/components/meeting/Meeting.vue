@@ -1,38 +1,42 @@
-<template xmlns:>
+<template xmlns: xmlns:v-on="http://www.w3.org/1999/xhtml">
 
   <div id="meeting">
-    <div class="container-fluid">
+    <div class="container-fluid meeting-wrap">
 
-
-
-      <!--每个会议-->
-      <div class="col-md-3 box" v-for="meeting in allMeeting">
-        <router-link
-          :to="{path:'/room',query:{roomId:meeting.room.roomId,roomTitle:meeting.room.name}}">
-
-          <div class="box-content">
-            <h2> 会议名字： {{meeting.name}} </h2>
-            <h4>会议主题 {{meeting.theme}} </h4>
-
-            <div class="publish">
-              <div class="user-logo">
-                <img :src="meeting.publisher.userLogo"/>
-              </div>
-              <p class="publish-name">{{meeting.publisher.nickName}}</p>
-            </div>
-
-          </div>
-        </router-link>
-      </div>
-
-      <div style="margin-top: 300px" v-on:click="createMeeting">
-        <div class="box-content">
+      <div class="add-wrap" v-on:click="createMeeting">
+        <div class="add-btn">
           <router-link to="/meeting/create">
-            <img src="../../assets/add.png">
-            <span>创建新会议</span>
+            <span><i class="fa fa-plus" aria-hidden="true"></i> 创建新会议</span>
           </router-link>
         </div>
       </div>
+
+      <!--每个会议-->
+      <div class="col-md-3 " v-for="(meeting,index) in meetings">
+        <div class="meeting-box">
+          <router-link
+            :to="{path:'/room',query:{roomId:meeting.room.roomId,roomTitle:meeting.room.name}}">
+
+            <div class="box-content">
+              <div class="content-head">
+                <img src="../../assets/images/meeting-2.png">
+              </div>
+              <h2> 会议：{{meeting.name}} </h2>
+              <p>会议主题 {{meeting.theme}} </p>
+
+              <div class="publish">
+                <div class="user-logo">
+                  <img :src="meeting.publisher.userLogo"/>
+                </div>
+                <p class="publish-name">{{meeting.publisher.nickName}}</p>
+              </div>
+
+            </div>
+          </router-link>
+        </div>
+      </div>
+
+
     </div>
 
   </div>
@@ -47,8 +51,58 @@
     text-decoration: none;
   }
 
-  .box {
-    height: 250px;
+  .add-btn {
+    font-size: 25px;
+    padding: 10px;
+    background: #27beff;
+
+    border-radius: 10px;
+
+    transition: all 0.5s;
+  }
+
+  .add-btn span {
+    color: #ffffff;
+  }
+
+  .add-btn:hover {
+    box-shadow: 0 2px 8px 4px #c0c3ce;
+  }
+
+  .add-wrap {
+    display: flex;
+    flex-flow: row-reverse;
+    padding-bottom: 30px;
+    padding-right: 30px;
+  }
+
+  .meeting-wrap {
+    padding: 3rem;
+  }
+
+  .content-head {
+
+  }
+
+  .content-head img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .meeting-box {
+    min-height: 250px;
+    border-radius: 10px;
+    margin-bottom: 40px;
+
+    box-shadow: 0 2px 8px 4px #E9E9E9;
+
+    top: 0;
+    transition: all 0.3s;
+  }
+
+  .meeting-box:hover {
+    transform: translate(0, -6px);
+    box-shadow: 0 2px 8px 4px #E9E9E9;
   }
 
   .box-content {
@@ -57,22 +111,28 @@
     width: 100%;
     height: 100%;
 
-    background-color: rgba(237, 159, 69, 0.56);
-
     display: flex;
     flex-flow: column;
 
     position: relative;
   }
 
+  .box-content h2 {
+    padding-left: 20px;
+    margin: 30px 0 30px 0;
+  }
+
+  .box-content p {
+    padding-left: 20px;
+    font-size: 20px;
+  }
+
   .publish {
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
 
-    position: absolute;
-    right: 0;
-    bottom: 0;
     margin: 10px;
   }
 
@@ -92,12 +152,14 @@
     font-size: 24px;
     margin-top: 20px;
     margin-left: 5px;
+    padding: 0;
 
   }
 </style>
 
 <script>
   import ModelDialog from '../ModelDialog.vue'
+  import { mapGetters } from 'vuex'
   export default{
     name: 'meeting',
     data () {
@@ -127,18 +189,14 @@
         }
       }
     },
+    computed: mapGetters({
+      meetings: 'getAllMeetings'
+    }),
     components: {
       ModelDialog
     },
-    created: function () {
-      let self = this
-      this.$http.get('meeting')
-        .then(function (response) {
-          self.allMeeting = response.data
-        })
-        .catch(function (error) {
-          console.log(error)
-        })
+    mounted: function () {
+      this.$store.dispatch('initMeeting')
     },
     methods: {
       createMeeting: function () {
