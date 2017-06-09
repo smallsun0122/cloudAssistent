@@ -9,7 +9,7 @@ import Meeting from '../components/meeting/Meeting.vue'
 import Room from '../components/room/Room.vue'
 import Society from '../components/society/Society.vue'
 import Main from '../components/main/Main.vue'
-
+import Quest from '../components/quest/Quest.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -53,6 +53,11 @@ export default new Router({
       path: '/setinfo/MyInfo',
       name: 'MyInfo',
       component: MyInfo
+    },
+    {
+      path: '/quest',
+      name: 'Quest',
+      component: Quest
     }
   ]
 })
