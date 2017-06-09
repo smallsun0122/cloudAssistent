@@ -23,7 +23,7 @@
                 </div>
                 <div class="key">
                   <input type="password" autocomplete="off" value="password" placeholder="Password"
-                         v-model="password">
+                         v-model="password" @keyup.enter="login">
                 </div>
               </form>
               <div class="signin">

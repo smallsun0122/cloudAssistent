@@ -80,7 +80,7 @@ export default new Router({
     },
     {
       path: '/society/create',
-      name: 'create',
+      name: 'CreateSociety',
       component: CreateSociety
     }
   ]

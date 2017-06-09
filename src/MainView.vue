@@ -6,7 +6,7 @@
 
     <!--侧边栏-->
     <div class="box-holder">
-      <div class="left-sidebar" @click="kk">
+      <div class="left-sidebar">
         <main-menu index="1"></main-menu>
       </div>
       <router-view style="margin-left: 230px ; padding-top: 60px"></router-view>

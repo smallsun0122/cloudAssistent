@@ -3,7 +3,7 @@
 
   <div class="sidebar-holder">
     <!--User-->
-    <div class="user-menu">
+    <div class="user-menu" @click="userDetail">
       <img :src="user.logoUrl" alt="" class="avatar">
       <div class="user-info">
         <div class="welcome">Welcome,</div>
@@ -31,6 +31,12 @@
 
 <style scoped>
 
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/font-awesome.css";
+
+  .user-menu{
+    cursor: pointer;
+  }
 </style>
 
 <script>
@@ -89,6 +95,9 @@
     methods: {
       changeMenu: function (i) {
         this.index = i
+      },
+      userDetail: function () {
+        this.$router.push({path: '/setinfo/MyInfo'})
       }
     }
   }
