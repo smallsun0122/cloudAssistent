@@ -1,6 +1,6 @@
 <template>
     <div id="">
-      
+
     </div>
 </template>
 
@@ -11,15 +11,15 @@
 <script type="text/javascript">
     import notie from '@/tips'
     export default {
-      data(){
-        return{
-
+      data () {
+        return {
         }
       },
+      notie,
       method: {
-        finsh: function () {
-          notie.alert(1,123,2)
-        }
+        // finsh: function () {
+        //   notie.alert(1 , 123 , 2 )
+        // }
       }
     }
 </script>
