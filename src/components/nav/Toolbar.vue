@@ -20,6 +20,12 @@
             <span class="badge bg-danger">5</span>
           </a>
         </li>
+
+        <li>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <img src="../../assets/images/user1.png"  style="display: block;width: 24px;height: 24px;margin-top: 3px;">
+          </a>
+        </li>
         <li>
           <form role="search" class="search-form">
             <div class="form-group">
@@ -31,12 +37,14 @@
             </div>
           </form>
         </li>
+
         <li>
           <a href="#" class="logout">
             <i class="glyphicon glyphicon-off"></i>
           </a>
         </li>
       </ul>
+
     </div>
     <!-- /.navbar-collapse -->
   </nav>
@@ -120,6 +128,9 @@
     -moz-transition: 300ms ease;
     -o-transition: 300ms ease;
     transition: 300ms ease;
+  }
+  .bg-danger {
+    background-color: #F9354C;
   }
 </style>
 

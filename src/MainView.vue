@@ -229,9 +229,7 @@
     color: #c2c7c1;
   }
 
-  .bg-danger {
-    background-color: #F9354C;
-  }
+
 
   .badge {
     margin: -18px 0 0 -22px;
