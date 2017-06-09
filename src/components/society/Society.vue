@@ -1,11 +1,11 @@
 <script>
-  import SearchSociety from './SearchSociety.vue'
+  //  import SearchSociety from './SearchSociety.vue'
   import SocietyApply from './SocietyApply.vue'
   import { mapGetters } from 'vuex'
   export default{
     name: 'society',
     components: {
-      SearchSociety, SocietyApply
+      SocietyApply
     },
     data () {
       return {}
@@ -16,7 +16,14 @@
     mounted: function () {
       this.$store.dispatch('initMySociety')
     },
-    methods: {}
+    methods: {
+      toDetail: function (id) {
+        this.$router.push({path: '/society/detail', query: {'societyId': id}})
+      },
+      createSociety: function () {
+        this.$router.push({path: '/society/create'})
+      }
+    }
   }
 </script>
 
@@ -24,13 +31,16 @@
   <div id="society">
     <div class="container-fluid">
 
-      <div class="title">
-        <p>我的所有社团: </p>
+      <div class="title-wrap">
+        <p class="title">我的所有社团: </p>
+
+        <p class="create" @click="createSociety"><i class="fa fa-plus"
+                                                    style="padding-right: 5px"></i>创建社团</p>
       </div>
 
       <div class="box-wrap">
         <div class="col-md-3" v-for="item in mySociety">
-          <div class="box">
+          <div @click="toDetail(item.id)" class="box">
             <!--社团logo 居中-->
             <div class="society-logo">
               <img :src="item.societyLogo">
@@ -48,18 +58,12 @@
               </div>
             </div>
 
-            <!--<h3>社团申请:</h3>-->
-            <!--&lt;!&ndash;传入社团Id&ndash;&gt;-->
-            <!--<society-apply :societyId="item.id"></society-apply>-->
+
           </div>
         </div>
       </div>
 
 
-    </div>
-
-    <div style="float: left;">
-      <search-society></search-society>
     </div>
 
   </div>
@@ -80,7 +84,7 @@
   }
 
   .box:hover {
-    box-shadow: 0 3px 10px 5px #ccc395;
+    box-shadow: 0 3px 10px 5px #d8dcda;
     transform: translate(0, -10px);
   }
 
@@ -153,8 +157,34 @@
   }
 
   .box {
-    box-shadow: 0 3px 10px 5px #f7ecb5;
+    box-shadow: 0 3px 10px 5px #d8dcda;
     border-radius: 10px;
+  }
+
+  .title-wrap {
+    padding: 20px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .title-wrap .create {
+    background: #14c021;
+    padding: 10px 20px;
+    font-size: 20px;
+    border-radius: 5px;
+
+    transition: all 0.5s;
+    cursor: pointer;
+  }
+
+  .title-wrap .create:hover {
+    transform: translate(0, -10px);
+  }
+
+  .title-wrap .title {
+    font-size: 20px;
   }
 
 </style>

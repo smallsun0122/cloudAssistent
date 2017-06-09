@@ -8,12 +8,18 @@
         societyApply: []
       }
     },
-    created: function () {
-      const self = this
-      this.$http.get('society/join?societyId=' + this.societyId)
-        .then(function (response) {
-          self.societyApply = response.data
-        })
+    mounted: function () {
+
+    },
+    watch: {
+      societyId: function () {
+        if (this.societyId === undefined) return
+        const self = this
+        this.$http.get('society/join?societyId=' + this.societyId)
+          .then(function (response) {
+            self.societyApply = response.data
+          })
+      }
     },
     methods: {
       handlerApply: function (id, isAllow) {
