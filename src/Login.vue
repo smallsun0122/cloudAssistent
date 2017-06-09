@@ -8,9 +8,9 @@
             <div class="login-form">
               <div class="close"> </div>
               <div class="head-info">
-                <label class="lbl-1"> </label>
-                <label class="lbl-2"> </label>
-                <label class="lbl-3"> </label>
+                <label class="lbl-1"></label>
+                <label class="lbl-2"></label>
+                <label class="lbl-3"></label>
               </div>
               <div class="clear"> </div>
               <div class="portrait">
@@ -37,7 +37,7 @@
 </template>
 
 <style scoped>
-  .meeting-box {
+  .box {
     width: 100%;
     height: 100%;
   }
@@ -50,7 +50,7 @@
     position: fixed;
   }
   input:-webkit-autofill {
-     -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    -webkit-box-shadow: 0 0 0 1000px white inset !important;
     border:none !important;
   }
   .login {
@@ -180,35 +180,6 @@
     margin: 16px 10px 0px 0px;
   }
 </style>
-
-<!--<template>-->
-  <!--<div id="login">-->
-    <!--<div class="bg"></div>-->
-    <!--<div class="login-view">-->
-      <!--<div class="container">-->
-        <!--<div class="row">-->
-          <!--<div class="col-md-12">-->
-            <!--<div class="form-group pull-left input-username">-->
-              <!--<div class="input-group">-->
-                <!--<input type="text" class="form-control " readonly="readonly" value="Email">-->
-                <!--<span class="input-group-addon"></span>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="form-group pull-right input-password">-->
-              <!--<div class="input-group">-->
-                <!--<input type="password" class="form-control " placeholder="************">-->
-                <!--<span class="input-group-addon"><i class="fa fa-key"></i></span>-->
-              <!--</div>-->
-            <!--</div>-->
-            <!--<div class="avatar">-->
-              <!--<img src="./assets/images/portrait.png">-->
-            <!--</div>-->
-          <!--</div>-->
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-  <!--</div>-->
-<!--</template>-->
 
 <script>
   import Qs from 'qs'

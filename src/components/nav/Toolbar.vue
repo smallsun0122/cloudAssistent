@@ -14,19 +14,24 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
-          <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
-             aria-expanded="false">
-            <img src="../../assets/images/remind.png">
-            <span class="badge bg-danger">5</span>
-          </a>
-        </li>
-        <li>
           <form role="search" class="search-form">
             <div class="form-group">
               <input type="text" class="form-control  nav-input-search " placeholder="Search ">
               <i class="glyphicon glyphicon-search"></i>
             </div>
           </form>
+        </li>
+        <li>
+          <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
+                 aria-expanded="false">
+          <img src="../../assets/images/remind.png">
+          <span class="badge bg-danger">5</span>
+        </a>
+        </li>
+        <li>
+          <router-link to="./setinfo/MyInfo" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="../../assets/images/user1.png" style="display: block;width: 20px;height: 20px;margin-top: 4px;">
+          </router-link>
         </li>
         <li>
           <a href="#" class="logout">
@@ -44,7 +49,6 @@
   .navbar {
     width: 100%;
     position: fixed;
-
     z-index: 100;
   }
 
@@ -117,6 +121,12 @@
     -moz-transition: 300ms ease;
     -o-transition: 300ms ease;
     transition: 300ms ease;
+  }
+  .bg-danger {
+    background-color: #F9354C;
+  }
+  .badge {
+    margin: -18px 0 0 -22px;
   }
 </style>
 

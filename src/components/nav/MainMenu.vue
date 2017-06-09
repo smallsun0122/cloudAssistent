@@ -57,7 +57,7 @@
             name: '任务(没写'
           },
           {
-            path: '/Announcement',
+            path: '/notices/Announcement',
             name: '公告',
             icon: 'fa-volume-up'
           },
@@ -72,8 +72,8 @@
             icon: 'fa-users'
           },
           {
-            path: '/',
-            name: '设置(没写',
+            path: '/setinfo/ChangeInfo',
+            name: '个人设置',
             icon: 'fa-users'
           }
         ]
