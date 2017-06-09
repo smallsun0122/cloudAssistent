@@ -14,7 +14,6 @@
         <input type="text" placeholder="邀请理由" v-model="inviteMsg">
         <button @click="inviteJoin(item.userId,inviteMsg)">邀请加入</button>
       </div>
-
     </div>
   </div>
 </template>
