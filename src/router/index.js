@@ -9,6 +9,7 @@ import Meeting from '../components/meeting/Meeting.vue'
 import Room from '../components/room/Room.vue'
 import Society from '../components/society/Society.vue'
 import SocietyDetail from '../components/society/SocietyDetail.vue'
+import CreateSociety from '../components/society/CreateSociety.vue'
 import SearchSociety from '../components/society/SearchSociety.vue'
 import Main from '../components/main/Main.vue'
 
@@ -65,6 +66,11 @@ export default new Router({
       path: '/searchSociety',
       name: 'search',
       component: SearchSociety
+    },
+    {
+      path: '/society/create',
+      name: 'create',
+      component: CreateSociety
     }
   ]
 })
