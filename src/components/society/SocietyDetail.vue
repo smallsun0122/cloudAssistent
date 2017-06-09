@@ -11,12 +11,12 @@
         <p class="name">{{society.name}}</p>
         <p class="text summary">{{society.summary}}</p>
 
-        <p class="text position">我的职位:{{position.nickName}}</p>
+        <p class="text position">我的职位:{{myPosition.nickName}}</p>
         <!--<p class="text">邀请成员：{{society.summary}}</p>-->
 
         <div class="members-wrap">
           <p style="font-size: 18px;text-align: center;padding-bottom: 10px">社团成员:</p>
-          <div class="col-md-2" v-for="member in members">
+          <div class="col-md-2" v-for="member in society.members">
 
             <div class="member-logo">
               <img :src="member.logoUrl">
@@ -31,10 +31,16 @@
           <society-apply :societyId="society.id"></society-apply>
         </div>
 
+        <!--todo 社团的职位-->
         <div>
-          <!--todo 社团邀请-->
-          <p>社团邀请</p>
+          <div style="float: left; width: 100px;" v-for="position in society.positions">
+            <p>等级：{{position.grade}}</p>
+            <p>名字{{position.name}}</p>
+          </div>
+
         </div>
+
+        <invitation></invitation>
       </div>
     </div>
   </div>
@@ -119,26 +125,33 @@
 
 <script>
   import SocietyApply from './SocietyApply.vue'
+  import Invitation from './Invitation.vue'
   export default{
     name: 'societyDetail',
     props: [],
     data () {
       return {
         society: {},
-        position: {
+        // todo 获取我在社团的职位
+        myPosition: {
           nickName: ''
-        },
-        members: []
+        }
       }
     },
     mounted: function () {
-      var societyId = this.$route.query.societyId
-      this.society = this.$store.getters.getDetailSociety(societyId)
+      const societyId = this.$route.query.societyId
+      const self = this
+      this.$http.get('society/' + societyId)
+        .then(function (response) {
+          self.society = response.data.society
+          self.society.positions = response.data.positions
+          self.society.members = response.data.members
+        })
+
       this.initMembers(societyId)
-      // todo 获取社团的职位
     },
     components: {
-      SocietyApply
+      SocietyApply, Invitation
     },
     methods: {
       initMembers: function (id) {

@@ -16,6 +16,27 @@
         <label>
           学院（现在为1）<input v-model="society.college"/>
         </label>
+
+        <p>需要添加的职位</p>
+        <div v-for="position in society.positions">
+          <p>等级：{{position.grade}}</p>
+          <p>名称：{{position.name}}</p>
+        </div>
+
+        <br>
+
+        <label>
+          等级:<input type="number" v-model="newPosition.grade">
+          名称:<input type="text" v-model="newPosition.name">
+        </label>
+
+        <button @click="addPosition()">
+          添加职位
+
+
+
+        </button>
+
         </br>
         <input type="button" @click="createSociety"/>
 
@@ -32,7 +53,6 @@
 </style>
 
 <script>
-  import { mapGetters } from 'vuex'
   export default{
     name: 'createSociety',
     props: [],
@@ -41,23 +61,31 @@
         society: {
           name: '',
           summary: '这个社团很懒，什么都没有说',
-          createTime: new Date(),
-          college: 1,
-          principal: ''
+          collegeId: 1,
+          positions: []
+        },
+        newPosition: {
+          grade: -1,
+          name: ''
         }
       }
     },
-    computed: mapGetters({
-      user: 'getCurrentUser'
-    }),
     components: {},
     methods: {
       createSociety: function () {
-        this.society.principal = this.user.userId
         this.$http.post('/society', this.society)
           .then(function (response) {
             alert('创建成功')
           })
+      },
+      addPosition: function () {
+        const position = {
+          grade: this.newPosition.grade,
+          name: this.newPosition.name
+        }
+        this.society.positions.push(position)
+        this.newPosition.name = ''
+        this.newPosition.grade = -1
       }
     }
   }
