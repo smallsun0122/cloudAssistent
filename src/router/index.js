@@ -8,6 +8,8 @@ import CreateMeeting from '../components/meeting/Create'
 import Meeting from '../components/meeting/Meeting.vue'
 import Room from '../components/room/Room.vue'
 import Society from '../components/society/Society.vue'
+import SocietyDetail from '../components/society/SocietyDetail.vue'
+import SearchSociety from '../components/society/SearchSociety.vue'
 import Main from '../components/main/Main.vue'
 
 Vue.use(Router)
@@ -50,9 +52,19 @@ export default new Router({
       component: Society
     },
     {
+      path: '/society/detail',
+      name: 'detail',
+      component: SocietyDetail
+    },
+    {
       path: '/setinfo/MyInfo',
       name: 'MyInfo',
       component: MyInfo
+    },
+    {
+      path: '/searchSociety',
+      name: 'search',
+      component: SearchSociety
     }
   ]
 })

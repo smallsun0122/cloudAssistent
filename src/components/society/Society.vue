@@ -1,11 +1,11 @@
 <script>
-  import SearchSociety from './SearchSociety.vue'
+  //  import SearchSociety from './SearchSociety.vue'
   import SocietyApply from './SocietyApply.vue'
   import { mapGetters } from 'vuex'
   export default{
     name: 'society',
     components: {
-      SearchSociety, SocietyApply
+      SocietyApply
     },
     data () {
       return {}
@@ -16,7 +16,11 @@
     mounted: function () {
       this.$store.dispatch('initMySociety')
     },
-    methods: {}
+    methods: {
+      toDetail: function (id) {
+        this.$router.push({path: '/society/detail', query: {'societyId': id}})
+      }
+    }
   }
 </script>
 
@@ -30,7 +34,7 @@
 
       <div class="box-wrap">
         <div class="col-md-3" v-for="item in mySociety">
-          <div class="box">
+          <div @click="toDetail(item.id)" class="box">
             <!--社团logo 居中-->
             <div class="society-logo">
               <img :src="item.societyLogo">
@@ -48,18 +52,12 @@
               </div>
             </div>
 
-            <!--<h3>社团申请:</h3>-->
-            <!--&lt;!&ndash;传入社团Id&ndash;&gt;-->
-            <!--<society-apply :societyId="item.id"></society-apply>-->
+
           </div>
         </div>
       </div>
 
 
-    </div>
-
-    <div style="float: left;">
-      <search-society></search-society>
     </div>
 
   </div>
