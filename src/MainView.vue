@@ -6,7 +6,7 @@
 
     <!--侧边栏-->
     <div class="box-holder">
-      <div class="left-sidebar">
+      <div class="left-sidebar" @click="kk">
         <main-menu index="1"></main-menu>
       </div>
       <router-view style="margin-left: 230px ; padding-top: 60px"></router-view>
@@ -229,9 +229,7 @@
     color: #c2c7c1;
   }
 
-  .bg-danger {
-    background-color: #F9354C;
-  }
+
 
   .badge {
     margin: -18px 0 0 -22px;

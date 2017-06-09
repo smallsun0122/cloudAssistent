@@ -14,13 +14,30 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
         <li>
+          <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
+             aria-expanded="false">
+            <img src="../../assets/images/remind.png">
+            <span class="badge bg-danger">5</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+            <img src="../../assets/images/user1.png"  style="display: block;width: 24px;height: 24px;margin-top: 3px;">
+          </a>
+        </li>
+        <li>
           <form role="search" class="search-form">
             <div class="form-group">
-              <input type="text" class="form-control  nav-input-search " placeholder="Search ">
+              <input type="text" v-model="editMsg"
+                     @keyup.enter="seachSociety"
+                     class="form-control nav-input-search "
+                     placeholder="搜索社团....">
               <i class="glyphicon glyphicon-search"></i>
             </div>
           </form>
         </li>
+
         <li>
           <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
                  aria-expanded="false">
@@ -39,6 +56,7 @@
           </a>
         </li>
       </ul>
+
     </div>
     <!-- /.navbar-collapse -->
   </nav>
@@ -131,24 +149,26 @@
 </style>
 
 <script>
-  import { mapGetters, mapActions } from 'vuex'
   export default{
     name: 'toolbar',
     props: [
       'index'
     ],
     data () {
-      return {}
+      return {
+        editMsg: ''
+      }
     },
-//    获取getters的值
-    computed: mapGetters({
-      test: 'getAPP'
-    }),
     methods: {
-//      映射
-      ...mapActions({
-        add: 'increment' // 映射 this.add() 为 this.$store.dispatch('increment')
-      })
+      seachSociety: function () {
+        this.$router.push({
+          path: 'searchSociety',
+          query: {
+            msg: this.editMsg
+          }
+        })
+        this.editMsg = ''
+      }
     }
   }
 

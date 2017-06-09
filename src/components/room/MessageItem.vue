@@ -3,10 +3,8 @@
 
     {{initUser()}}
 
-
-
     <div class="msg-time">
-      <p>{{new Date(message.date)}}</p>
+      <p>{{new Date(message.date).getHours()}}:{{new Date(message.date).getMinutes()}}</p>
     </div>
 
     <div class="message col-md-8" :class="{'is-self-message':message.self}">
@@ -22,7 +20,6 @@
           <p>{{message.message}}</p>
           <div class="m-r" :class="{'is-self-m-r':message.self}"></div>
         </div>
-        <!--<p>{{message.message}}</p>-->
       </div>
 
     </div>
