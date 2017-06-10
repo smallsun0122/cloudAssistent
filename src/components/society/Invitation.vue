@@ -12,7 +12,9 @@
         <p>{{item.userId}}</p>
 
         <input type="text" placeholder="邀请理由" v-model="inviteMsg">
-        <button @click="inviteJoin(item.userId,inviteMsg)">邀请加入</button>
+        <input type="number" placeholder="社团id" v-model="societyId"/>
+        <input type="number" placeholder="职位id" v-model="positionId"/>
+        <button @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">邀请加入</button>
       </div>
     </div>
   </div>
@@ -21,6 +23,7 @@
 <style scoped></style>
 
 <script>
+  import Qs from 'qs'
   export default{
     name: 'invitation',
     props: [],
@@ -39,8 +42,16 @@
             self.result = response.data
           })
       },
-      inviteJoin: function (userId, msg) {
-        alert(userId + '  ' + msg)
+      inviteJoin: function (inviteUserId, societyId, positionId, inviteMsg) {
+        this.$http.post('society/invite', Qs.stringify({
+          'societyId': societyId,
+          'inviteUserId': inviteUserId,
+          'positionId': positionId,
+          'inviteMsg': inviteMsg
+        }), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
+          .then(function (response) {
+            alert('邀请成功')
+          })
       }
     }
   }

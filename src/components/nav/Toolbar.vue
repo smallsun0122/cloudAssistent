@@ -18,19 +18,8 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
-        <li>
-          <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
-             aria-expanded="false">
-            <img src="../../assets/images/remind.png">
-            <span class="badge bg-danger">5</span>
-          </a>
-        </li>
 
-        <li>
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-            <img src="../../assets/images/user1.png"  style="display: block;width: 24px;height: 24px;margin-top: 3px;">
-          </a>
-        </li>
+        <!--搜索社团-->
         <li>
           <form role="search" class="search-form">
             <div class="form-group">
@@ -43,6 +32,7 @@
           </form>
         </li>
 
+        <!--通知按钮-->
         <li>
           <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
                  aria-expanded="false">
@@ -50,11 +40,15 @@
           <span class="badge bg-danger">5</span>
         </a>
         </li>
+
+        <!--用户按钮-->
         <li>
           <router-link to="./setinfo/MyInfo" class="dropdown-toggle" data-toggle="dropdown">
             <img src="../../assets/images/user1.png" style="display: block;width: 20px;height: 20px;margin-top: 4px;">
           </router-link>
         </li>
+
+        <!--关闭按钮-->
         <li>
           <a href="#" class="logout">
             <i class="glyphicon glyphicon-off"></i>

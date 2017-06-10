@@ -21,3 +21,9 @@ export const initMySociety = ({commit}) => {
     commit('INIT_SOCIETY', society)
   })
 }
+
+// export const initNotice = ({commit}) => {
+//   http.getNotice(society => {
+//     commit('INIT_SOCIETY', society)
+//   })
+// }

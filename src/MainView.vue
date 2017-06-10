@@ -12,7 +12,7 @@
 
       <router-view class="main-content" style="margin-left: 220px ; padding-top: 60px"></router-view>
 
-      
+
     </div>
   </div>
 </template>
@@ -256,51 +256,15 @@
 <script>
   import Toolbar from './components/nav/Toolbar.vue'
   import MainMenu from './components/nav/MainMenu.vue'
-  import store from './store/store'
   export default {
     data () {
       return {
         sidebarStatus: true,
-        active: false,
-        items: [
-          {
-            path: '/meeting',
-            name: '会议',
-            imgPath: require('./assets/images/meet.png'),
-            active: true
-          },
-          {
-            path: '/Announcement',
-            name: '任务',
-            imgPath: require('./assets/images/task1.png')
-          },
-          {
-            path: '/notices/Announcement',
-            name: '公告',
-            imgPath: require('./assets/images/notice1.png')
-          },
-          {
-            path: '/Announcement',
-            name: '邀请成员',
-            imgPath: require('./assets/images/add1.png')
-          },
-          {
-            path: '/society',
-            name: '社团管理',
-            imgPath: require('./assets/images/book.png')
-          },
-          {
-            path: '/setinfo/MyInfo',
-            name: '个人设置',
-            imgPath: require('./assets/images/set.png')
-          },
-          {
-            path: '/setinfo/MyInfo',
-            name: '账号密码',
-            imgPath: require('./assets/images/psd.png')
-          }
-        ]
+        active: false
       }
+    },
+    mounted: function () {
+      this.$store.dispatch('initNotice')
     },
     methods: {
       sidebarChange: function () {
@@ -318,7 +282,6 @@
     },
     components: {
       Toolbar, MainMenu
-    },
-    store
+    }
   }
 </script>
