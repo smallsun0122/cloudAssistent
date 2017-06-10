@@ -96,7 +96,6 @@
           <input type="checkbox" id="jack" v-bind:value="member.userId" v-model="submitMember">
           <label for="jack">{{member.nickName}}</label>
         </div>
-
         {{submitMember}}
 
 

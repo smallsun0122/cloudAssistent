@@ -6,14 +6,19 @@
     <button @click="searchUser()">搜索用户</button>
 
     <div>
+      <!--{{societyId}}-->
+      <!--{{members}}-->
+
       <div v-for="item in result">
         <p>{{item.nickName}}</p>
         <p>{{item.logo}}</p>
         <p>{{item.userId}}</p>
 
         <input type="text" placeholder="邀请理由" v-model="inviteMsg">
-        <input type="number" placeholder="社团id" v-model="societyId"/>
-        <input type="number" placeholder="职位id" v-model="positionId"/>
+        <select>
+          <option value="-1">选择职位</option>
+          <option v-for="item in positions" :value="item.id">{{item.name}}</option>
+        </select>
         <button @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">邀请加入</button>
       </div>
     </div>
@@ -26,7 +31,7 @@
   import Qs from 'qs'
   export default{
     name: 'invitation',
-    props: [],
+    props: ['societyId', 'positions'],
     data () {
       return {
         searchMsg: '',

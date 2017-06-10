@@ -40,7 +40,7 @@
 
         </div>
 
-        <invitation></invitation>
+        <invitation :societyId="society.id" :positions="society.positions"></invitation>
       </div>
     </div>
   </div>

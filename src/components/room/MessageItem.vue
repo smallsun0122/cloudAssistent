@@ -1,8 +1,6 @@
 <template>
   <div class="message-wrap">
 
-    {{initUser()}}
-
     <div class="msg-time">
       <p>{{new Date(message.date).getHours()}}:{{new Date(message.date).getMinutes()}}</p>
     </div>
@@ -10,12 +8,14 @@
     <div class="message col-md-8" :class="{'is-self-message':message.self}">
       <!--头像-->
       <div class="head col-md-2">
-        <img :src="logo"/>
+        <img :src="user.logo"/>
       </div>
 
       <!--消息内容-->
       <div class="m-wrap col-md-10" :class="{'is-self-text':message.self}">
-        <p>{{name}}</p>
+        <!--用户名字-->
+        <p>{{user.nickName}}</p>
+        <!--消息-->
         <div class="message-content">
           <p>{{message.message}}</p>
           <div class="m-r" :class="{'is-self-m-r':message.self}"></div>
@@ -129,25 +129,17 @@
 <script>
   export default{
     name: 'message',
-    props: ['message', 'members'],
+    props: ['message'],
     data () {
       return {
-        logo: '',
-        name: ''
-      }
-    },
-    methods: {
-      initUser: function () {
-        const self = this
-        for (var i = 0; i < this.members.length; i++) {
-//          console.log(this.members[i].userId + '  ' + this.message.publishId)
-          if (this.members[i].userId === this.$store.getters.getCurrentUser.userId) {
-            self.logo = this.members[i].logo
-            self.name = this.members[i].nickName
-            break
-          }
+        user: {
+          name: '',
+          logo: ''
         }
       }
+    },
+    mounted: function () {
+      this.user = this.$store.getters.getUser(this.message.publishId)
     }
   }
 </script>

@@ -6,7 +6,7 @@
     <div class="room-message">
       <ul>
         <li v-for="item in messages">
-          <message-item :message="item" :members="members"></message-item>
+          <message-item :message="item"></message-item>
         </li>
       </ul>
     </div>
@@ -129,22 +129,26 @@
 
 <script>
   import MessageItem from './MessageItem.vue'
+  import { mapGetters } from 'vuex'
   export default{
     name: 'message',
-    props: ['messages', 'members'],
     data () {
       return {
         editMsg: ''
       }
     },
+    computed: mapGetters({
+      messages: 'getRoomMessages',
+      members: 'getRoomMembers'
+    }),
     components: {
       MessageItem
     },
     methods: {
       send: function () {
-        const self = this
-        this.$emit('sendMessage', this.editMsg)
-        self.editMsg = ''
+        const message = {message: this.editMsg}
+        this.$store.dispatch('sendMessage', message)
+        this.editMsg = ''
       },
       closeRoom: function () {
         this.$router.push({name: 'meeting'})

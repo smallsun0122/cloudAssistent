@@ -18,6 +18,10 @@
 </template>
 
 <style>
+  body{
+      font: 14px/1.5 'Cuprum',sans-serif,Tahoma,Verdana,Helvetica;
+  }
+
   #mainView {
     width: 100%;
     height: 100%;
@@ -40,7 +44,7 @@
 
   .navbar.nav-delighted.navbar-default .navbar-brand {
     font-size: 18px;
-    font-family: 'Droid Sans', sans-serif;
+    font-family: 'Cuprum', sans-serif;
     padding: 0px;
     line-height: 60px;
     width: 220px;

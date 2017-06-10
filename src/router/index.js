@@ -14,6 +14,7 @@ import CreateSociety from '../components/society/CreateSociety.vue'
 import SearchSociety from '../components/society/SearchSociety.vue'
 import Main from '../components/main/Main.vue'
 import Quest from '../components/quest/Quest.vue'
+import QuestCreate from '../components/quest/QuestCreate.vue'
 Vue.use(Router)
 
 export default new Router({
@@ -69,9 +70,14 @@ export default new Router({
       component: MyInfo
     },
     {
-      path: '/quest',
+      path: '/quest/Quest',
       name: 'Quest',
       component: Quest
+    },
+    {
+      path: '/quest/QuestCreate',
+      name: 'QuestCreate',
+      component: QuestCreate
     },
     {
       path: '/searchSociety',

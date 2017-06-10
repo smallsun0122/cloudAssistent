@@ -58,9 +58,9 @@
             icon: 'fa-microphone'
           },
           {
-            path: '/',
+            path: '/quest/Quest',
             icon: 'fa-calendar',
-            name: '任务(没写'
+            name: '任务(未完成)'
           },
           {
             path: '/notices/Announcement',
