@@ -40,17 +40,20 @@ const mutations = {
     state.roomMessages.push(message)
   },
   ADD_MEMBER (state, member) {
-    state.roomMember.push(member)
+    var a = state.roomMember.find(item => item.userId === member.userId)
+    if (a === undefined) {
+      state.roomMember.push(member)
+    }
   },
   REMOVE_MEMBER (state, id) {
     var index = -1
-    state.members.forEach((member, i) => {
+    state.roomMember.forEach((member, i) => {
       if (member.userId === id) {
         index = i
       }
     })
     if (index !== -1) {
-      state.members.splice(index, 1)
+      state.roomMember.splice(index, 1)
     }
   },
   SEND_MESSAGE (state, message) {

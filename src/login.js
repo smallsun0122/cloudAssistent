@@ -13,7 +13,6 @@ Vue.prototype.$http.defaults.headers = {
   'Content-Type': 'application/x-www-form-urlencoded'
 }
 
-
 Vue.config.productionTip = false
 
 /* eslint-disable no-new */

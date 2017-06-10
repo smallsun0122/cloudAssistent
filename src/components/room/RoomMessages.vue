@@ -3,7 +3,7 @@
   <div class="message-list-wrap">
 
     <!--内容-->
-    <div class="room-message">
+    <div ref="msgList" class="room-message">
       <ul>
         <li v-for="item in messages">
           <message-item :message="item"></message-item>
@@ -149,6 +149,12 @@
         const message = {message: this.editMsg}
         this.$store.dispatch('sendMessage', message)
         this.editMsg = ''
+
+//        console.log(this.$refs.msgList.scrollTop)
+//        console.log(this.$refs.msgList)
+//
+//        this.$refs.msgList.scrollTop = 9999
+//        console.log(this.$refs.msgList.scrollTop)
       },
       closeRoom: function () {
         this.$router.push({name: 'meeting'})
