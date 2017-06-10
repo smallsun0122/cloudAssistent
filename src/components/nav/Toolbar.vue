@@ -19,6 +19,39 @@
     <div class="collapse navbar-collapse">
       <ul class="nav navbar-nav navbar-right">
 
+        <!--通知按钮-->
+        <li>
+          <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
+             aria-expanded="false">
+            <img src="../../assets/images/remind.png">
+            <span class="badge bg-danger">5</span>
+          </a>
+          <ul class="am-dropdown-content tpl-dropdown-content">
+            <li class="tpl-dropdown-content-external">
+              <h3>你有 <span class="tpl-color-success">5</span> 条提醒</h3>
+            </li>
+            <li class="tpl-dropdown-list-bdbc">
+              <a href="#" class="tpl-dropdown-content-message">
+                <span class="tpl-dropdown-content-photo">
+                  <img src="../../assets/images/portrait.png" alt="">
+                </span>
+                <span class="tpl-dropdown-content-subject">
+                  <span class="tpl-dropdown-content-from"> 禁言小张 </span>
+                  <span class="tpl-dropdown-content-time">10分钟前 </span>
+                </span>
+                <span class="tpl-dropdown-content-font"> Amaze UI 的诞生，依托于 GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </span>
+              </a>
+            </li>
+          </ul>
+        </li>
+
+        <!--用户按钮-->
+        <li>
+          <router-link to="./setinfo/MyInfo" class="dropdown-toggle" data-toggle="dropdown">
+            <img src="../../assets/images/user1.png" style="display: block;width: 20px;height: 20px;margin-top: 4px;">
+          </router-link>
+        </li>
+
         <!--搜索社团-->
         <li>
           <form role="search" class="search-form">
@@ -30,22 +63,6 @@
               <i class="glyphicon glyphicon-search"></i>
             </div>
           </form>
-        </li>
-
-        <!--通知按钮-->
-        <li>
-          <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
-                 aria-expanded="false">
-          <img src="../../assets/images/remind.png">
-          <span class="badge bg-danger">5</span>
-        </a>
-        </li>
-
-        <!--用户按钮-->
-        <li>
-          <router-link to="./setinfo/MyInfo" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="../../assets/images/user1.png" style="display: block;width: 20px;height: 20px;margin-top: 4px;">
-          </router-link>
         </li>
 
         <!--关闭按钮-->
@@ -155,6 +172,108 @@
   }
   .badge {
     margin: -18px 0 0 -22px;
+  }
+  .am-dropdown-content {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1020;
+    /*display: none;*/
+    min-width: 160px;
+    padding: 15px;
+    margin: 9px 0 0 10px;
+    text-align: left;
+    line-height: 1.6;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 0;
+    -webkit-background-clip: padding-box;
+    background-clip: padding-box;
+    -webkit-animation-duration: .15s;
+    animation-duration: .15s;
+  }
+  ul.tpl-dropdown-content {
+    width: 260px;
+    padding: 8px;
+  }
+  /*.am-dropdown-content:after,.am-dropdown-content:before {*/
+    /*position: absolute;*/
+    /*display: block;*/
+    /*content: "";*/
+    /*width: 0;*/
+    /*height: 0;*/
+    /*border: 8px dashed transparent;*/
+    /*z-index: 1;*/
+  /*}*/
+  .am-dropdown-content :first-child {
+    margin-top: 0;
+  }
+
+  .tpl-header-list li {
+    color: #999;
+    border-bottom: 1px solid #F1F4F7;
+  }
+
+  .tpl-dropdown-content-external {
+    display: block;
+    overflow: hidden;
+    padding: 10px;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #F1F4F7;
+  }
+  .tpl-dropdown-content-external h3 {
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+    color: #96a5aa;
+    font-weight: normal;
+  }
+  .tpl-header-list li {
+    color: #999;
+    border-bottom: 1px solid #F1F4F7;
+  }
+
+  .tpl-dropdown-list-bdbc {
+    border-bottom: 1px solid #F1F4F7;
+  }
+  .tpl-dropdown-content-photo img {
+    height: 40px;
+    width: 40px;
+    -webkit-border-radius: 50%!important;
+    -moz-border-radius: 50%!important;
+    -ms-border-radius: 50%!important;
+    -o-border-radius: 50%!important;
+    border-radius: 50%!important;
+  }
+  .tpl-dropdown-content-subject {
+    margin-left: 46px;
+    margin-top: -30px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .tpl-dropdown-content-time {
+     font-size: 12px;
+     font-weight: 400;
+     opacity: 0.5;
+     filter: alpha(opacity=50);
+   }
+  .am-dropdown-content :first-child {
+    margin-top: 0;
+  }
+  .tpl-dropdown-content-font {
+    display: block!important;
+    font-size: 12px;
+    line-height: 22px;
+    margin-left: 46px;
+  }
+  .tpl-dropdown-content-from {
+    font-size: 13px;
+    font-weight: 600;
+  }
+  ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 </style>
 
