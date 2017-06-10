@@ -6,12 +6,13 @@ import Login from './Login.vue'
 import router from './router'
 
 Vue.prototype.$http = axios
-// Vue.prototype.$http.defaults.baseURL = 'http://112.74.214.252:8080/acloud/'
-Vue.prototype.$http.defaults.baseURL = 'http://127.0.0.1:8080'
+Vue.prototype.$http.defaults.baseURL = 'http://112.74.214.252:8080/acloud/'
+// Vue.prototype.$http.defaults.baseURL = 'http://127.0.0.1:8080'
 Vue.prototype.$http.defaults.withCredentials = true
 Vue.prototype.$http.defaults.headers = {
   'Content-Type': 'application/x-www-form-urlencoded'
 }
+
 
 Vue.config.productionTip = false
 

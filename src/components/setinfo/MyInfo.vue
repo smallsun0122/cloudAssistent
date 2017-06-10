@@ -10,7 +10,7 @@
             <h4 class="card-title">个人信息</h4>
           </div>
           <div class="card-content">
-            <form class="form-horizontal info-group">
+            <div class="form-horizontal info-group">
               <div class="form-group">
                 <div class="col-sm-10">
                   <div class="avatar-wrap">
@@ -20,48 +20,43 @@
                   </div>
                 </div>
               </div>
-              <!--<div class="form-group"><label class="col-sm-2 control-label">姓名</label>-->
-                <!--<div class="col-sm-10">-->
-                  <!--<span v-model="name">{{name}}</span>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group"><label class="col-sm-2 control-label">学校</label>-->
-                <!--<div class="col-sm-10">-->
-                  <!--<span></span>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group"><label class="col-sm-2 control-label">专业</label>-->
-                <!--<div class="col-sm-10">-->
-                  <!--<span></span>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group"><label class="col-sm-2 control-label">学号</label>-->
-                <!--<div class="col-sm-10">-->
-                  <!--<span></span>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group"><label class="col-sm-2 control-label">所在社团</label>-->
-                <!--<div class="col-sm-10">-->
-                  <!--<span></span>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group"><label class="col-sm-2 control-label">职位</label>-->
-                <!--<div class="col-sm-10">-->
-                  <!--<span></span>-->
-                <!--</div>-->
-              <!--</div>-->
-              <!--<div class="form-group"><label class="col-sm-2 control-label">联系电话</label>-->
-                <!--<div class="col-sm-10">-->
-                  <!--<span></span>-->
-                <!--</div>-->
-              <!--</div>-->
-              <div v-for="item in infoItem" class="form-group">
-                <label class="col-sm-2 control-label">{{item.label}}</label>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">姓名</label>
                 <div class="col-sm-10">
-                  <span>{{item.name}}</span>
+                  <span class="center">{{user.nickName}}</span>
                 </div>
               </div>
-            </form>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">学校</label>
+                <div class="col-sm-10">
+                  <span class="center">{{user.school}}</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">学院</label>
+                <div class="col-sm-10">
+                  <span class="center">{{user.college}}</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">专业</label>
+                <div class="col-sm-10">
+                  <span class="center">{{user.major}}</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">学号</label>
+                <div class="col-sm-10">
+                  <span class="center">{{user.stuId}}</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">联系电话</label>
+                <div class="col-sm-10">
+                  <span class="center">{{user.phone}}</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -104,12 +99,22 @@
   }
 
   .form-group {
-    margin-top: 10px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .center {
+    width: 300px;
+    display: block;
+    margin-left: 50px;
   }
 
   .form-group label {
+    display: block;
+    width: 300px;
     color: grey;
-    text-align: left !important;
+    text-align: right !important;
   }
 
   .avatar {
@@ -160,68 +165,16 @@
   export default {
     data () {
       return {
-        name: '',
-        school: '',
-        major: '',
-        stuId: '',
-        associations: '',
-        position: '',
-        phone: '',
-        infoItem: [
-          {
-            label: '姓名',
-            name: ''
-          },
-          {
-            label: '学校',
-            name: ''
-          },
-          {
-            label: '专业',
-            name: ''
-          },
-          {
-            label: '学号',
-            name: ''
-          },
-          {
-            label: '所在社团',
-            name: ''
-          },
-          {
-            label: '职位',
-            name: ''
-          },
-          {
-            label: '联系电话',
-            name: ''
-          }
-        ]
+        user: {}
       }
     },
     created: function () {
-      var name = this.name
-      var school = this.school
-      var major = this.major
-      var stuId = this.stuId
-      var associations = this.associations
-      var position = this.position
-      var phone = this.phone
-      var that = this
+      const self = this
 
       this.$http
-        .get('/user/info', {
-          'name': name,
-          'school': school,
-          'major': major,
-          'stuId': stuId,
-          'associations': associations,
-          'position': position,
-          'phone': phone
-        })
+        .get('/user/info')
         .then(function (res) {
-          that.infoItem = res.data
-          console.log(res)
+          self.user = res.data
         })
         .catch(function (error) {
           console.log(error)
