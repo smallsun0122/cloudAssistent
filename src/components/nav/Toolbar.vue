@@ -4,6 +4,11 @@
 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
+      <div class="navbar-brand header-flex option" style="width:60px;"  @click="sidebarChange" >
+						<svg style="width:24px;height:24px" viewBox="0 0 24 24"onclick="leftnavshow()">
+	    <path fill="rgba(0,0,0,0.3)" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
+						</svg>
+				</div>
       <div class="navbar-brand header-flex">
         <img src="../../assets/images/Cloud_small.png" alt="">
         <span>社团云助手</span>
@@ -55,12 +60,12 @@
   .navbar {
     width: 100%;
     position: fixed;
-
+    background-color: #ffffff;
     z-index: 100;
   }
 
   .navbar.nav-delighted.navbar-default {
-    height: 60px;
+    height: 62px;
     border-width: 0px;
     border-radius: 0px;
     margin-bottom: 0px;
@@ -73,6 +78,11 @@
     line-height: 60px;
     width: 220px;
     text-align: center;
+  }
+
+  .option {
+    cursor: pointer;
+    width: 60px;
   }
 
   .header-flex {
@@ -104,7 +114,7 @@
     border-radius: 16px;
     color: #23bab5;
     padding-left: 30px;
-    background-color: white;
+    background-color: rgba(0, 0, 0, 0.05);
     border: 1px solid white;
     -webkit-box-shadow: none;
     box-shadow: none;
@@ -118,6 +128,11 @@
     font-size: 14px;
   }
 
+  .navbar-nav>li>.dropdown-toggle{
+    padding-bottom: 0px;
+    padding-top:15px;
+    height: 62px;
+  }
   .navbar.nav-delighted.navbar-default a.logout {
     font-size: 24px;
     color: #23bab5;
@@ -154,6 +169,18 @@
           }
         })
         this.editMsg = ''
+      },
+      sidebarChange: function () {
+        var l = document.getElementsByClassName('main-content')
+        if (this.sidebarStatus) {
+          document.getElementsByClassName('left-sidebar')[0].setAttribute('class', 'left-sidebar left-sidebar-hidden')
+          l[0].style.marginLeft = '0px'
+          this.sidebarStatus = false
+        } else {
+          document.getElementsByClassName('left-sidebar')[0].setAttribute('class', 'left-sidebar')
+          l[0].style.marginLeft = '220px'
+          this.sidebarStatus = true
+        }
       }
     }
   }

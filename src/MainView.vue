@@ -2,14 +2,14 @@
   <div id="mainView">
 
     <!--顶部-->
-    <toolbar></toolbar>
+    <toolbar ></toolbar>
 
     <!--侧边栏-->
     <div class="box-holder">
-      <div class="left-sidebar" @click="kk">
+      <div class="left-sidebar">
         <main-menu index="1"></main-menu>
       </div>
-      <router-view style="margin-left: 220px ; padding-top: 60px"></router-view>
+      <router-view class="main-content" style="margin-left: 220px ; padding-top: 60px"></router-view>
     </div>
   </div>
 </template>
@@ -18,12 +18,14 @@
   #mainView {
     width: 100%;
     height: 100%;
+    background-color: rgba(0, 0, 0, 0.05);
   }
 
   .navbar {
     width: 100%;
     position: fixed;
     z-index: 99;
+    box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.5);
   }
 
   .navbar.nav-delighted.navbar-default {
@@ -101,9 +103,17 @@
     /*min-height: 1200px !important;*/
   }
 
+  .main-content {
+    -webkit-transition: 500ms ease;
+    -moz-transition: 500ms ease;
+    -o-transition: 500ms ease;
+    -ms-transition: 500ms ease;
+    transition: 500ms ease;
+  }
+
   .left-sidebar {
     position: fixed;
-    margin-top: 60px;
+    margin-top: 62px;
     background-color: #232b2d;
     width: 220px;
     z-index: 1001;
@@ -114,6 +124,10 @@
     -o-transition: 500ms ease;
     -ms-transition: 500ms ease;
     transition: 500ms ease;
+  }
+
+  .left-sidebar-hidden {
+      transform: translate(-220px,0px);
   }
 
   .left-sidebar .user-menu {
@@ -243,6 +257,7 @@
   export default {
     data () {
       return {
+        sidebarStatus: true,
         active: false,
         items: [
           {
@@ -284,11 +299,23 @@
         ]
       }
     },
+    methods: {
+      sidebarChange: function () {
+        var l = document.getElementsByClassName('main-content')
+        if (this.sidebarStatus) {
+          document.getElementsByClassName('left-sidebar')[0].setAttribute('class', 'left-sidebar left-sidebar-hidden')
+          l[0].style.marginLeft = 0
+          this.sidebarStatus = false
+        } else {
+          document.getElementsByClassName('left-sidebar')[0].setAttribute('class', 'left-sidebar')
+          l[0].style.marginLeft = 220
+          this.sidebarStatus = true
+        }
+      }
+    },
     components: {
       Toolbar, MainMenu
     },
-    store,
-    mounted () {
-    }
+    store
   }
 </script>
