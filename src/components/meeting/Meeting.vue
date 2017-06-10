@@ -15,7 +15,7 @@
       <div class="col-md-3 " v-for="(meeting,index) in meetings">
         <div class="meeting-box">
           <router-link
-            :to="{'/room', query:{meeting.room.roomId,roomTitle:meeting.room.name}}">
+            :to="{path:'/room', query:{roomId:meeting.room.roomId,roomTitle:meeting.room.name}}">
 
             <div class="box-content">
               <div class="content-head">
