@@ -1,76 +1,78 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
   <div class="site-main">
     <!--<div class="container">-->
-      <!--<div class="row">-->
-        <!--<div class="col-sm-10 col-md-8 main-content">-->
-          <div class="layer">
-            <div class="view24 is-loaded">
-              <div class="card profile-manager">
-                <div class="card-header">
-                  <h4 class="card-title">修改个人信息</h4>
-                </div>
-                <div class="card-content">
-                  <form class="form-horizontal info-group">
-                    <div class="form-group"><label
-                      class="col-sm-2 control-label avatar-label">头像</label>
-                      <div class="col-sm-10">
-                        <div class="avatar-wrap">
-                          <div class="avatar img-100">
-                            <div class="progress-mask"></div>
-                          </div>
-                          <div class="avatar-set">
-                            <a class="btn btn-ghost btn-primary btn-border update-avatar">更换头像</a>
-                          </div>
-                        </div>
-                      </div>
+    <!--<div class="row">-->
+    <!--<div class="col-sm-10 col-md-8 main-content">-->
+    <div class="layer">
+      <div class="view24 is-loaded">
+        <div class="card profile-manager">
+          <div class="card-header">
+            <h4 class="card-title">修改个人信息</h4>
+          </div>
+          <div class="card-content">
+            <form class="form-horizontal info-group">
+              <div class="form-group"><label
+                class="col-sm-2 control-label avatar-label">头像</label>
+                <div class="col-sm-10">
+                  <div class="avatar-wrap">
+                    <div class="avatar img-100">
+                      <div class="progress-mask"></div>
                     </div>
-                    <div class="form-group"><label class="col-sm-2 control-label">姓名</label>
-                      <div class="col-sm-10"><input class="name-input form-control" type="text"
-                                                    name="name" value="小太阳" v-model="name"></div>
+                    <div class="avatar-set">
+                      <a class="btn btn-ghost btn-primary btn-border update-avatar">更换头像</a>
                     </div>
-                    <div class="form-group">
-                      <label class="col-sm-2 control-label">学校</label>
-                      <div class="col-sm-10">
-                        <select @click="getUserSchool" v-model="schoolId">
-                          <option value="-1">--选择学校--</option>
-                          <option v-for="(school,index) in schools" v-bind:value="school.id">
-                            {{school.name}}
-                          </option>
-                        </select>
-                      </div>
-                    </div>
-                    <div class="form-group"><label class="col-sm-2 control-label">专业</label>
-                      <div class="col-sm-10"><input class="major-input form-control" type="text"
-                                                    name="major" value="" v-model="major"></div>
-                    </div>
-                    <div class="form-group"><label class="col-sm-2 control-label">学号</label>
-                      <div class="col-sm-10"><input class="stuId-input form-control" type="text"
-                                                    name="stuId" value="" v-model="stuId"></div>
-                    </div>
-                    <div class="form-group"><label class="col-sm-2 control-label">所在社团</label>
-                      <div class="col-sm-10"><input class="location-input form-control" type="text"
-                                                    name="location" value="" v-model="associations"></div>
-                    </div>
-                    <div class="form-group"><label class="col-sm-2 control-label">职位</label>
-                      <div class="col-sm-10"><input class="position-input form-control" type="text"
-                                                    name="position" value="" v-model="position"></div>
-                    </div>
-                    <div class="form-group"><label class="col-sm-2 control-label">联系电话</label>
-                      <div class="col-sm-10"><input class="phone-input form-control" type="text"
-                                                    name="phone" value="" v-model="phone"></div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-10 col-sm-offset-2"><a
-                        class="btn btn-lg btn-primary btn-block save-handler" @click="saveInfo">保存</a></div>
-                    </div>
-                  </form>
+                  </div>
                 </div>
               </div>
-            </div>
+              <div class="form-group"><label class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-10"><input class="name-input form-control" type="text"
+                                              name="name" value="小太阳" v-model="name"></div>
+              </div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">学校</label>
+                <div class="col-sm-10">
+                  <select @click="getUserSchool" v-model="schoolId">
+                    <option value="-1">--选择学校--</option>
+                    <option v-for="(school,index) in schools" v-bind:value="school.id">
+                      {{school.name}}
+
+                    </option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group"><label class="col-sm-2 control-label">专业</label>
+                <div class="col-sm-10"><input class="major-input form-control" type="text"
+                                              name="major" value="" v-model="major"></div>
+              </div>
+              <div class="form-group"><label class="col-sm-2 control-label">学号</label>
+                <div class="col-sm-10"><input class="stuId-input form-control" type="text"
+                                              name="stuId" value="" v-model="stuId"></div>
+              </div>
+              <div class="form-group"><label class="col-sm-2 control-label">所在社团</label>
+                <div class="col-sm-10"><input class="location-input form-control" type="text"
+                                              name="location" value="" v-model="associations"></div>
+              </div>
+              <div class="form-group"><label class="col-sm-2 control-label">职位</label>
+                <div class="col-sm-10"><input class="position-input form-control" type="text"
+                                              name="position" value="" v-model="position"></div>
+              </div>
+              <div class="form-group"><label class="col-sm-2 control-label">联系电话</label>
+                <div class="col-sm-10"><input class="phone-input form-control" type="text"
+                                              name="phone" value="" v-model="phone"></div>
+              </div>
+              <div class="form-group">
+                <div class="col-sm-10 col-sm-offset-2"><a
+                  class="btn btn-lg btn-primary btn-block save-handler" @click="saveInfo">保存</a>
+                </div>
+              </div>
+            </form>
           </div>
         </div>
-      <!--</div>-->
-    <!--</div>-->
+      </div>
+    </div>
+  </div>
+  <!--</div>-->
+  <!--</div>-->
   <!--</div>-->
 </template>
 
@@ -213,14 +215,14 @@
 
         this.$http
           .post('/user/update', Qs.stringify({
-            'name': name,
+            'nickName': name,
             'school': school,
             'major': major,
             'stuId': stuId,
             'associations': associations,
             'position': position,
             'phone': phone
-          }))
+          }), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
           .then(function (res) {
             alert('保存成功!')
             console.log(res)
