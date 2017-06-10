@@ -8,3 +8,10 @@ test/unit/coverage
 test/e2e/reports
 selenium-debug.log
 /.idea/
+/.idea/my-project.iml
+/.idea/watcherTasks.xml
+/.idea/misc.xml
+/.idea/codeStyleSettings.xml
+/.idea/modules.xml
+/.idea/vcs.xml
+/.idea/workspace.xml

@@ -35,16 +35,6 @@
       }
       // 初始化房间的信息
       this.$store.dispatch('initRoom', {id: roomId, title: title})
-
-
-      this.ws = new WebSocket('ws://112.74.214.252:8080/acloud/ws?roomId=' + this.roomId)
-//      this.ws = new WebSocket('ws://127.0.0.1:8080/ws?roomId=' + this.roomId)
-      this.initWebSocket()
-
-//      this.ws = new WebSocket('ws://112.74.214.252:8080/acloud/ws?roomId=' + this.roomId)
-//      this.ws = new WebSocket('ws://127.0.0.1:8080/ws?roomId=' + this.roomId)
-//      this.initWebSocket()
-
     },
 //    mounted: function () {
 //       todo created 和 mounted的区别在哪里
