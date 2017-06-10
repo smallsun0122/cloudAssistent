@@ -6,7 +6,7 @@
         <button type="button" class="btn btn-primary">
           <router-link to="./Publish">发布新公告</router-link>
         </button>
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
       </div>
     </div>
     <div class="announcement-content">
@@ -37,7 +37,6 @@
 </template>
 <style>
   .announcement-header {
-    margin-top: 20px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
