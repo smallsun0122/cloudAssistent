@@ -1,6 +1,6 @@
 <template>
-    <div id="">
-
+    <div id="" @click="finsh">
+      <p>123</p>
     </div>
 </template>
 
@@ -17,9 +17,10 @@
       },
       notie,
       method: {
-        // finsh: function () {
-        //   notie.alert(1 , 123 , 2 )
-        // }
+        finsh: function () {
+          // notie.alert(1 , 123 , 2 )
+          alert(1)
+        }
       }
     }
 </script>
