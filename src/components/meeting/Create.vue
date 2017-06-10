@@ -81,8 +81,6 @@
           <option value="-1">选择社团</option>
           <option v-for="(society,i) in userSociety" v-bind:value="society.id"> {{society.name}}
 
-
-
           </option>
         </select>
           社团id： {{societyId}}

@@ -41,7 +41,7 @@
 <template>
   <div id="society">
     <div style="">
-      <p> 社团申请 </p>
+      <p style="text-align: center;font-size: 18px"> 社团申请 </p>
       <ul>
         <li style="background: #fff000" v-for="item in societyApply">
           <p>{{item.applierId}}</p>

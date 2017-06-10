@@ -9,7 +9,10 @@
       <div class="left-sidebar">
         <main-menu index="1"></main-menu>
       </div>
+
       <router-view class="main-content" style="margin-left: 220px ; padding-top: 60px"></router-view>
+
+      
     </div>
   </div>
 </template>
@@ -115,7 +118,7 @@
     position: fixed;
     margin-top: 62px;
     background-color: #232b2d;
-    width: 220px;
+    /*width: 220px;*/
     z-index: 1001;
     height: 100%;
     color: #80969c;

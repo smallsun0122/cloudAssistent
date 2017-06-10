@@ -8,9 +8,9 @@
             <div class="login-form">
               <div class="close"></div>
               <div class="head-info">
-                <label class="lbl-1"> </label>
-                <label class="lbl-2"> </label>
-                <label class="lbl-3"> </label>
+                <label class="lbl-1"></label>
+                <label class="lbl-2"></label>
+                <label class="lbl-3"></label>
               </div>
               <div class="clear"></div>
               <div class="portrait">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="key">
                   <input type="password" autocomplete="off" value="password" placeholder="Password"
-                         v-model="password">
+                         v-model="password" @keyup.enter="login">
                 </div>
               </form>
               <div class="signin">
@@ -39,7 +39,7 @@
 </template>
 
 <style scoped>
-  .meeting-box {
+  .box {
     width: 100%;
     height: 100%;
   }
@@ -55,6 +55,7 @@
 
   input:-webkit-autofill {
     -webkit-box-shadow: 0 0 0 1000px white inset !important;
+    border:none !important;
     border: none !important;
   }
 

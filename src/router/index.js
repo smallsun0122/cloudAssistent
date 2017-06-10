@@ -3,6 +3,7 @@ import Router from 'vue-router'
 // import Navigation from '@/components/Navigation'
 import Announcement from '@/components/notices/Announcement'
 import Publish from '@/components/notices/Publish'
+import ChangeInfo from '@/components/setinfo/ChangeInfo'
 import MyInfo from '@/components/setinfo/MyInfo'
 import CreateMeeting from '../components/meeting/Create'
 import Meeting from '../components/meeting/Meeting.vue'
@@ -53,6 +54,11 @@ export default new Router({
       component: Society
     },
     {
+      path: '/setinfo/ChangeInfo',
+      name: 'ChangeInfo',
+      component: ChangeInfo
+    },
+    {
       path: '/society/detail',
       name: 'detail',
       component: SocietyDetail
@@ -74,7 +80,7 @@ export default new Router({
     },
     {
       path: '/society/create',
-      name: 'create',
+      name: 'CreateSociety',
       component: CreateSociety
     }
   ]

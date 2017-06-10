@@ -24,7 +24,8 @@
                   <input type="password" value="password" placeholder="Password" v-model="password">
                 </div>
                 <div class="psd-again">
-                  <input type="password" value="password" placeholder="Password-again" v-model="conform">
+                  <!--<input type="password" value="password" placeholder="Password-again" v-model="conform">-->
+                  <input type="password" value="password" placeholder="Password-again">
                 </div>
               </form>
               <div class="signin">
