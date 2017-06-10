@@ -10,7 +10,7 @@
         <main-menu index="1"></main-menu>
       </div>
 
-      <router-view class="main-content" style="margin-left: 220px ; padding-top: 60px"></router-view>
+      <router-view class="main-content" style="margin-left: 220px ; padding-top: 80px"></router-view>
 
 
     </div>

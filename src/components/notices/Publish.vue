@@ -143,7 +143,7 @@
           .catch(function (res) {
             console.log(res)
           })
-        this.$router.push('Announcement')
+//        this.$router.push('Announcement')
       },
       cancel: function () {
         this.$router.push('Announcement')

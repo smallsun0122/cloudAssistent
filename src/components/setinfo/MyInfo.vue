@@ -29,19 +29,19 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">学校</label>
                 <div class="col-sm-10">
-                  <span class="center">{{user.school}}</span>
+                  <span class="center">{{user.major.college.school.name}}</span>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">学院</label>
                 <div class="col-sm-10">
-                  <span class="center">{{user.college}}</span>
+                  <span class="center">{{user.major.college.name}}</span>
                 </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">专业</label>
                 <div class="col-sm-10">
-                  <span class="center">{{user.major}}</span>
+                  <span class="center">{{user.major.name}}</span>
                 </div>
               </div>
               <div class="form-group">

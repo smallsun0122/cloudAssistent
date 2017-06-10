@@ -122,7 +122,7 @@
   }
 
   .form-group select {
-    width: 620px;
+    width: 100%;
     height: 40px;
     border-radius: 4px;
   }
@@ -170,7 +170,7 @@
   .btn-border {
     color: #3DA8F5;
     border-color: #3DA8F5;
-    background: #fff;
+    background: transparent;
   }
 
   .form-control {
@@ -209,7 +209,7 @@
         phone: '',
         schoolId: '',
         collegeId: '',
-//        majorId: '',
+        majorId: '',
         schools: [
           {
             name: '',
@@ -235,14 +235,14 @@
         var name = this.name
         var school = this.school
         var stuId = this.stuId
-//        var majorId = this.majorId
+        var majorId = this.majorId
         var phone = this.phone
 
         this.$http
           .post('/user/update', Qs.stringify({
             'nickName': name,
             'school': school,
-//            'major': majorId,
+            'major': majorId,
             'stuId': stuId,
             'phone': phone
           }), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})

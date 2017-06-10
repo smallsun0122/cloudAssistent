@@ -41,9 +41,12 @@
 </template>
 
 <style scoped>
-  .meeting-box {
+  .box {
     width: 100%;
     height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .bg {
     width: 100%;

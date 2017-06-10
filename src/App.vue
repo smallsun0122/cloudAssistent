@@ -2,7 +2,7 @@
   <div id="app">
     <navigation></navigation>
     <!--头部-->
-    <header>
+    <header class="header-wrap">
       <div class="container">
         <div class="row">
           <div class="title-text">
@@ -119,7 +119,7 @@ h1 {
   width: 100%;
   height: 100%;
 }
-header {
+.header-wrap {
   width: 100%;
   height: 650px;
   display: flex;
