@@ -19,11 +19,12 @@
   </div>
 </template>
 <script>
+  import { mapGetters } from 'vuex'
   export default {
     name: 'member-list',
-    props: [
-      'members'
-    ]
+    computed: mapGetters({
+      members: 'getRoomMembers'
+    })
   }
 </script>
 

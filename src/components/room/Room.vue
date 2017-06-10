@@ -26,24 +26,25 @@
     },
     mounted: function () {
       // 获取路由传过来的roomId
-      this.roomId = this.$route.query.roomId
-      this.roomTitle = this.$route.query.roomTitle
+      const roomId = this.$route.query.roomId
+      const title = this.$route.query.roomTitle
 
       if (this.roomId === undefined) {
         alert('没有传roomId')
         return
       }
+      // 初始化房间的信息
+      this.$store.dispatch('initRoom', {id: roomId, title: title})
 
 //      this.ws = new WebSocket('ws://112.74.214.252:8080/acloud/ws?roomId=' + this.roomId)
-      this.ws = new WebSocket('ws://127.0.0.1:8080/ws?roomId=' + this.roomId)
-      this.initWebSocket()
+//      this.ws = new WebSocket('ws://127.0.0.1:8080/ws?roomId=' + this.roomId)
+//      this.initWebSocket()
     },
 //    mounted: function () {
 //       todo created 和 mounted的区别在哪里
 //    },
     destroyed: function () {
-      // todo websocket状态码
-      this.ws.close(3007, '断开房间')
+      this.$store.dispatch('clearRoom')
     },
     methods: {
       getCurrentUser: function () {
@@ -148,25 +149,25 @@
             }
           }
         }
-      },
+      }
       /**
        * 向服务器发送一条信息
        */
-      sendMessage: function (msg) {
-        var message = {
-          message: msg
-        }
-        this.ws.send(JSON.stringify(message))
-
-        var m = {
-          roomId: this.roomId,
-          publishId: 'helloworld.wen@gmail.com',
-          message: msg,
-          date: new Date(),
-          self: true
-        }
-        this.messages.push(m)
-      }
+//      sendMessage: function (msg) {
+//        var message = {
+//          message: msg
+//        }
+//        this.ws.send(JSON.stringify(message))
+//
+//        var m = {
+//          roomId: this.roomId,
+//          publishId: 'helloworld.wen@gmail.com',
+//          message: msg,
+//          date: new Date(),
+//          self: true
+//        }
+//        this.messages.push(m)
+//      }
     }
   }
 </script>
