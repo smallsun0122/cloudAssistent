@@ -36,9 +36,6 @@
       // 初始化房间的信息
       this.$store.dispatch('initRoom', {id: roomId, title: title})
     },
-//    mounted: function () {
-//       todo created 和 mounted的区别在哪里
-//    },
     destroyed: function () {
       this.$store.dispatch('clearRoom')
     },
@@ -146,24 +143,6 @@
           }
         }
       }
-      /**
-       * 向服务器发送一条信息
-       */
-//      sendMessage: function (msg) {
-//        var message = {
-//          message: msg
-//        }
-//        this.ws.send(JSON.stringify(message))
-//
-//        var m = {
-//          roomId: this.roomId,
-//          publishId: 'helloworld.wen@gmail.com',
-//          message: msg,
-//          date: new Date(),
-//          self: true
-//        }
-//        this.messages.push(m)
-//      }
     }
   }
 </script>
@@ -177,12 +156,14 @@
                  :roomId="roomId"
                  :roomTitle="roomTitle"></room-head>
 
-      <!--文本内容-->
-      <room-messages v-on:sendMessage="sendMessage" class="col-md-8" :messages="messages"
-                     :members="members"></room-messages>
+      <div class="content-wrap">
+        <!--文本内容-->
+        <room-messages v-on:sendMessage="sendMessage" class="col-md-8" :messages="messages"
+                       :members="members"></room-messages>
 
-      <!--房间人员-->
-      <room-member-list class="col-md-4" :members="members"></room-member-list>
+        <!--房间人员-->
+        <room-member-list class="col-md-4" :members="members"></room-member-list>
+      </div>
 
     </div>
   </div>
@@ -195,6 +176,10 @@
   .head {
     border-radius: 10px 10px 0 0;
     margin-top: 50px;
+  }
+
+  .content-wrap {
+    display: flex;
   }
 
 </style>

@@ -15,14 +15,14 @@
       <div class="col-md-3 " v-for="(meeting,index) in meetings">
         <div class="meeting-box">
           <router-link
-            :to="{path:'/room',query:{roomId:meeting.room.roomId,roomTitle:meeting.room.name}}">
+            :to="{'/room', query:{meeting.room.roomId,roomTitle:meeting.room.name}}">
 
             <div class="box-content">
               <div class="content-head">
                 <img src="../../assets/images/meeting-2.png">
               </div>
               <h2> 会议：{{meeting.name}} </h2>
-              <p>会议主题 {{meeting.theme}} </p>
+              <p>会议主题：{{meeting.theme}} </p>
 
               <div class="publish">
                 <div class="user-logo">

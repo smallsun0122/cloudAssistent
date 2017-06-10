@@ -67,6 +67,7 @@ const mutations = {
     state.roomMessages.push(selfMsg)
   },
   CLEAR_ROOM (state) {
+    state.room.ws.close()
     state.room = null
     state.roomMember.splice(0, state.roomMember.length)
     state.roomMessages.splice(0, state.roomMessages.length)
