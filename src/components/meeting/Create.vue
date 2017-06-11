@@ -76,142 +76,47 @@
 </script>
 <template>
 
-  <div class="create-meeting">
+  <div class="model-wrap">
 
-    <div class="content-wrap" v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
-      <h1 slot="head">创建会议</h1>
+    <div class="content-wrap modal-content container"
+         v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
 
-      <div slot="body">
-        <form>
-          会议名字<input type="text" name="name" v-model="meeting.name"/>
-          <br>
-          主题<input type="text" name="theme" v-model="meeting.theme"/>
-          <br>
-          <label>
-            所属社团：
-            <select name="society" v-model="societyId" v-on:click="getUserSociety">
-            <option value="-1">选择社团</option>
-            <option v-for="(society,i) in userSociety" v-bind:value="society.id"> {{society.name}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-            </option>
-          </select>
-            社团id： {{societyId}}
-          </label>
-          <br>
-          会议时间 <input type="text" name="meetingTime"/>
-          <br>
-          开会成员{{societyMember}}
-          <br>
-
-          <div v-for="member in societyMember">
-
-            <input type="checkbox" id="jack" v-bind:value="member.userId" v-model="submitMember">
-            <label for="jack">{{member.nickName}}</label>
-          </div>
-          {{submitMember}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </form>
+      <div class="modal-header">
+        <h1>创建会议</h1>
       </div>
 
-      <div slot="foot">
-        <button v-on:click="submitMeeting">提交</button>
+      <div class="modal-body">
+        会议名字<input type="text" name="name" v-model="meeting.name"/>
+        <br>
+        主题<input type="text" name="theme" v-model="meeting.theme"/>
+        <br>
+        <label>
+          所属社团：
+          <select name="society" v-model="societyId" v-on:click="getUserSociety">
+          <option value="-1">选择社团</option>
+          <option v-for="(society,i) in userSociety" v-bind:value="society.id"> {{society.name}}
+
+          </option>
+        </select>
+          社团id： {{societyId}}
+          </label>
+        <br>
+        会议时间 <input type="text" name="meetingTime"/>
+        <br>
+        开会成员{{societyMember}}
+          <br>
+
+        <div v-for="member in societyMember">
+
+          <input type="checkbox" id="jack" v-bind:value="member.userId" v-model="submitMember">
+          <label for="jack">{{member.nickName}}</label>
+        </div>
+        {{submitMember}}
+
+      </div>
+
+      <div class="modal-footer">
+        <button v-on:click="submitMeeting" class="btn btn-primary">提交</button>
         <button @click="closeModel">关闭</button>
       </div>
     </div>
@@ -223,7 +128,10 @@
 
 <style scoped>
 
-  .create-meeting {
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/font-awesome.css";
+
+  .model-wrap {
     position: fixed;
     left: 0;
     top: 0;

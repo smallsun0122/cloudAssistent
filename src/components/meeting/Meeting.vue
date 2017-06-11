@@ -163,7 +163,7 @@
     name: 'meeting',
     data () {
       return {
-        isShowCreate: true,
+        isShowCreate: false,
         societyId: null,
         societys: [{
           college: 0,
