@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="864f6f30-5d8a-4ebf-97df-3a86ed443e09" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/nav/Toolbar.vue" afterPath="$PROJECT_DIR$/src/components/nav/Toolbar.vue" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/society/Invitation.vue" afterPath="$PROJECT_DIR$/src/components/society/Invitation.vue" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/components/notices/Publish.vue" afterPath="$PROJECT_DIR$/src/components/notices/Publish.vue" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -30,7 +29,49 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="Publish.vue" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/components/notices/Publish.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="385">
+              <caret line="161" column="29" lean-forward="false" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
+              <folding>
+                <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+                <element signature="n#style#0;n#!!top" expanded="false" />
+                <element signature="e#2094#2164#0" expanded="false" />
+                <element signature="e#2188#2249#0" expanded="false" />
+                <element signature="e#2280#2375#0" expanded="false" />
+                <element signature="e#2401#2436#0" expanded="false" />
+                <element signature="e#2455#2540#0" expanded="false" />
+                <element signature="e#2556#2584#0" expanded="false" />
+                <element signature="e#2603#2632#0" expanded="false" />
+                <element signature="e#2658#2817#0" expanded="false" />
+                <element signature="e#3045#3094#0" expanded="false" />
+                <element signature="e#3046#3093#0" expanded="false" />
+                <element signature="e#3159#3428#0" expanded="false" />
+                <element signature="e#3823#3863#0" expanded="false" />
+                <element signature="e#3897#3939#0" expanded="false" />
+                <element signature="e#4090#4403#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Create.vue" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/components/meeting/Create.vue">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="625">
+              <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -87,7 +128,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/build/webpack.base.conf.js" />
         <option value="$PROJECT_DIR$/src/components/Announcement.vue" />
         <option value="$PROJECT_DIR$/mainView.html" />
         <option value="$PROJECT_DIR$/src/components/Navigation.vue" />
@@ -138,6 +178,7 @@
         <option value="$PROJECT_DIR$/src/login.js" />
         <option value="$PROJECT_DIR$/src/components/society/Invitation.vue" />
         <option value="$PROJECT_DIR$/src/components/nav/Toolbar.vue" />
+        <option value="$PROJECT_DIR$/src/components/notices/Publish.vue" />
       </list>
     </option>
   </component>
@@ -159,9 +200,10 @@
     <handled-path value="$PROJECT_DIR$/node_modules" />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="680" />
-    <option name="width" value="1247" />
-    <option name="height" value="1057" />
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1066" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -221,6 +263,50 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloudAssistent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloudAssistent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="notices" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloudAssistent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="cloudAssistent" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="components" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="meeting" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -778,7 +864,7 @@
       <workItem from="1497001633523" duration="7911000" />
       <workItem from="1497031264844" duration="7922000" />
       <workItem from="1497069179299" duration="33338000" />
-      <workItem from="1497150266728" duration="1118000" />
+      <workItem from="1497150266728" duration="1906000" />
     </task>
     <task id="LOCAL-00001" summary="会议内容的创建和获取，跳转到websocket">
       <created>1496685961023</created>
@@ -1032,11 +1118,18 @@
       <option name="project" value="LOCAL" />
       <updated>1497118918652</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="通知开关右上角的通知界面">
+      <created>1497151455273</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1497151455273</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="241552000" />
+    <option name="totallyTimeSpent" value="242340000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1048,7 +1141,8 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="680" y="0" width="1247" height="1057" extended-state="0" />
+    <frame x="-8" y="-8" width="1936" height="1066" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32937366" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1065,7 +1159,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31533477" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.45054945" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18376069" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.2248394" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1141,7 +1235,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="搜索社团和我的社团" />
     <MESSAGE value="处理社团申请" />
     <MESSAGE value="样式" />
     <MESSAGE value="聊天室" />
@@ -1166,7 +1259,8 @@
     <MESSAGE value="更新gitignore，处理冲突" />
     <MESSAGE value="修复退出房间没有断开Socket" />
     <MESSAGE value="fix 大量小问题" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix 大量小问题" />
+    <MESSAGE value="通知开关右上角的通知界面" />
+    <option name="LAST_COMMIT_MESSAGE" value="通知开关右上角的通知界面" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1179,7 +1273,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/store/actions.js" />
     <entry file="file://$PROJECT_DIR$/src/store/modules/user.js" />
     <entry file="file://$PROJECT_DIR$/src/store/state.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/vuex/src/index.esm.js">
@@ -1227,14 +1320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="173">
           <caret line="1574" column="7" lean-forward="false" selection-start-line="1574" selection-start-column="7" selection-end-line="1574" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/components/meeting/Create.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="733">
-          <caret line="70" column="0" lean-forward="true" selection-start-line="70" selection-start-column="0" selection-end-line="70" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1413,6 +1498,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
           <caret line="44" column="34" lean-forward="false" selection-start-line="44" selection-start-column="34" selection-end-line="44" selection-end-column="34" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1480,9 +1566,9 @@
         <state relative-caret-position="409">
           <caret line="116" column="0" lean-forward="true" selection-start-line="116" selection-start-column="0" selection-end-line="116" selection-end-column="0" />
           <folding>
-            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#i#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#2360#2403#0" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#div#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#i#0;n#p#0;n#div#0;n#div#1;n#div#1;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="e#2360#2403#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1559,6 +1645,43 @@
             <element signature="n#li#2;n#ul#0;n#div#1;n#nav#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#li#3;n#ul#0;n#div#1;n#nav#0;n#template#0;n#!!top" expanded="false" />
             <element signature="n#style#0;n#!!top" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/meeting/Create.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="60" column="12" lean-forward="false" selection-start-line="60" selection-start-column="12" selection-end-line="60" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/components/notices/Publish.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="385">
+          <caret line="161" column="29" lean-forward="false" selection-start-line="161" selection-start-column="29" selection-end-line="161" selection-end-column="29" />
+          <folding>
+            <element signature="n#div#0;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#0;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#div#1;n#div#4;n#div#0;n#div#0;n#template#0;n#!!top" expanded="false" />
+            <element signature="n#style#0;n#!!top" expanded="false" />
+            <element signature="e#2094#2164#0" expanded="false" />
+            <element signature="e#2188#2249#0" expanded="false" />
+            <element signature="e#2280#2375#0" expanded="false" />
+            <element signature="e#2401#2436#0" expanded="false" />
+            <element signature="e#2455#2540#0" expanded="false" />
+            <element signature="e#2556#2584#0" expanded="false" />
+            <element signature="e#2603#2632#0" expanded="false" />
+            <element signature="e#2658#2817#0" expanded="false" />
+            <element signature="e#3045#3094#0" expanded="false" />
+            <element signature="e#3046#3093#0" expanded="false" />
+            <element signature="e#3159#3428#0" expanded="false" />
+            <element signature="e#3823#3863#0" expanded="false" />
+            <element signature="e#3897#3939#0" expanded="false" />
+            <element signature="e#4090#4403#0" expanded="false" />
           </folding>
         </state>
       </provider>

@@ -1,24 +1,51 @@
 <template xmlns:v-bind="http://www.w3.org/1999/xhtml">
-  <div class="#publish">
+  <div class="publish">
     <div class="notice-publish" id="notice_publish">
+      <!--标题-->
       <div class="notice-title">
         <span>标题:</span>
         <input type="text" placeholder="标题(必填)" v-model="title"/>
       </div>
+      <!--内容-->
       <div class="notice-container">
         <span>正文:</span>
         <textarea placeholder="正文(必填，15-500字)" v-model="content"></textarea>
       </div>
+
+      <!--社团-->
       <div class="select-organizations">
         <label>
           <select @click="getUserSociety" v-model="societyId">
             <option value="-1">--选择社团--</option>
             <option v-for="(society,index) in societys" v-bind:value="society.id">
               {{society.name}}
+
+
+
+
             </option>
           </select>
         </label>
       </div>
+
+      <!--社团成员-->
+      <div class="society-member">
+        <ul>
+          <li v-for="member in societyMember">
+            <input type="checkbox" id="memberName"
+                   v-bind:value="member.userId"
+                   v-model="submitMember">
+            <label for="memberName">{{member.nickName}}</label>
+          </li>
+        </ul>
+        {{submitMember}}
+
+
+
+
+      </div>
+
+      <!--提交-->
       <div class="notice-footer">
         <div class="footer-add">
           <img src="../../assets/images/photo.png">
@@ -101,13 +128,15 @@
 </style>
 
 <script>
-//  import Qs from 'qs'
+  //  import Qs from 'qs'
   export default {
     data () {
       return {
         title: '',
         content: '',
         societyId: '',
+        societyMember: [],
+        submitMember: [],
         societys: [{
           name: '',
           id: 0
@@ -130,12 +159,14 @@
         var title = this.title
         var content = this.content
         var societyId = this.societyId
+        var member = this.submitMember
 
         this.$http
           .post('/notices', {
             'title': title,
             'content': content,
-            'society': societyId
+            'society': societyId,
+            'executors': member
           })
           .then(function (res) {
             alert('发表成功！')
@@ -147,6 +178,18 @@
       },
       cancel: function () {
         this.$router.push('Announcement')
+      }
+    },
+    watch: {
+      societyId: function () {
+        const self = this
+        this.$http.get('society/' + this.societyId + '/users')
+          .then(function (response) {
+            self.societyMember = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
       }
     }
   }
