@@ -1,5 +1,5 @@
 <template>
-  <nav class="navbar navbar-default">
+  <nav class="navbar navbar-landing" v-bind:class="{ navbarDefault: scrolled }">
     <div class="container-fluid">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class="navbar-header">
@@ -27,10 +27,23 @@
 
 <script>
   export default {
+    data () {
+      return {
+        scrolled: false
+      }
+    },
     methods: {
       loginView: function () {
         window.location.href = '../../login.html'
+      },
+      handlesScroll: function () {
+        this.scrolled = document.body.scrollTop > 0
+        // alert(this.scrolled)
+        // this.scrolled = window.scrollY > 0
       }
+    },
+    mounted () {
+      window.addEventListener('scroll', this.handlesScroll)
     }
   }
 </script>
@@ -41,10 +54,29 @@
     background-color: transparent;
     border: none;
     position: fixed;
+    border-radius: 0px;
   }
-  .navbar-default .navbar-nav>li>a {
+
+  .navbar-landing .navbar-nav>li>a {
     font-size: 16px;
     color: #fff;
+    border-radius: 5px;
+  }
+
+  .navbarDefault{
+    background-color:#ffffff;
+  }
+  .navbarDefault .navbar-nav>li>a {
+    font-size: 16px;
+    background-color: #ffffff;
+    color: #333333;
+    border-radius: 5px;
+  }
+  .navbarDefault .navbar-nav>li>a:hover{
+    font-size: 16px;
+    background-color: #d1d4d7;
+    color: #ffffff;
+    border-radius: 5px;
   }
   .navbar-nav {
     margin-top: 10px;
@@ -55,8 +87,17 @@
   .btn {
     margin: 15px 0 0 -5px;
   }
-  .btn-default {
+  .btn-landing {
     background-color: transparent;
     color: #fff;
+  }
+  .btn-default {
+    background-color: transparent;
+    color: #333333;
+  }
+  .btn-default:hover {
+    background-color: transparent;
+    background-color: #d1d4d7;
+    color: #ffffff;
   }
 </style>

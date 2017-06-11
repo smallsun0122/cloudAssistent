@@ -32,7 +32,10 @@
     width: 100%;
     position: fixed;
     z-index: 99;
-    box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.5);
+  }
+  
+  .navbar-default{
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
   }
 
   .navbar.nav-delighted.navbar-default {
