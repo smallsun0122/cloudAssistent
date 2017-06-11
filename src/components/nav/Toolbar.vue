@@ -20,35 +20,31 @@
       <ul class="nav navbar-nav navbar-right">
 
         <!--通知按钮-->
-        <li @mouseenter="isShowNotice=true" @mouseleave="isShowNotice=false">
+        <!-- <li @mouseenter="isShowNotice=true" @mouseleave="isShowNotice=false"> -->
+        <li @click="isShowNotice=!isShowNotice">
           <a  class="dropdown-toggle icon-menu" data-toggle="dropdon"
              aria-expanded="false">
             <img src="../../assets/images/remind.png">
             <span class="badge bg-danger">5</span>
           </a>
-
-          <transition name="noticeFade">
-            <ul v-if="isShowNotice"
-                class="am-dropdown-content tpl-dropdown-content">
-              <li class="tpl-dropdown-content-external">
-                <h3>你有 <span class="tpl-color-success">5</span> 条提醒</h3>
-              </li>
-              <li class="tpl-dropdown-list-bdbc">
-                <div class="triangle">
-                </div>
-                <a href="#" class="tpl-dropdown-content-message">
-                  <span class="tpl-dropdown-content-photo">
-                    <img src="../../assets/images/portrait.png" alt="">
-                  </span>
-                  <span class="tpl-dropdown-content-subject">
-                    <span class="tpl-dropdown-content-from"> 禁言小张 </span>
-                    <span class="tpl-dropdown-content-time">10分钟前 </span>
-                  </span>
-                  <span class="tpl-dropdown-content-font"> Amaze UI 的诞生，依托于 GitHub 及其他技术社区上一些优秀的资源；Amaze UI 的成长，则离不开用户的支持。 </span>
-                </a>
-              </li>
-            </ul>
-          </transition>
+          <ul :class="{'show-notice':isShowNotice}"
+              class="am-dropdown-content tpl-dropdown-content">
+            <li class="tpl-dropdown-content-external">
+              <h3>你有{{notice.length}}条未读信息</h3>
+            </li>
+            <li v-for="item in notice" class="tpl-dropdown-list-bdbc">
+              <a href="#" class="tpl-dropdown-content-message">
+                <span class="tpl-dropdown-content-photo">
+                  <img :src="item.logo" alt="">
+                </span>
+                <span class="tpl-dropdown-content-subject">
+                  <span class="tpl-dropdown-content-from"> {{item.publisher}} </span>
+                  <span class="tpl-dropdown-content-time"> {{new Date(item.time).getFullYear()}}-{{new Date(item.time).getMonth()+1}}-{{new Date(item.time).getDate()}} {{new Date(item.time).getHours()}}:{{new Date(item.time).getMinutes()}}</span>
+                </span>
+                <span class="tpl-dropdown-content-font"> {{item.info}} </span>
+              </a>
+            </li>
+          </ul>
         </li>
 
         <!--用户按钮-->
@@ -197,7 +193,7 @@
     /*display: none;*/
     min-width: 160px;
     padding: 15px;
-    margin: 0px 0 0 10px;
+    margin: 9px 0 0 10px;
     text-align: left;
     line-height: 1.6;
     background-color: #fff;
@@ -271,6 +267,7 @@
   }
 
   .tpl-dropdown-list-bdbc {
+    margin-top: 5px;
     border-bottom: 1px solid #F1F4F7;
   }
 
@@ -289,6 +286,7 @@
     margin-top: -30px;
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
   }
 
   .tpl-dropdown-content-time {
@@ -327,6 +325,7 @@
 </style>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default{
     name: 'toolbar',
     props: [
@@ -338,6 +337,9 @@
         isShowNotice: false
       }
     },
+    computed: mapGetters({
+      notice: 'getNoticeMessages'
+    }),
     methods: {
       seachSociety: function () {
         this.$router.push({

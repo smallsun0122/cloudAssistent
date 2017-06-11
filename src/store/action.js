@@ -40,3 +40,9 @@ export const sendMessage = ({commit}, message) => {
 export const clearRoom = ({commit}) => {
   commit('CLEAR_ROOM')
 }
+
+export const addNotice = ({commit}, message) => {
+  commit('ADD_NOTICE', message)
+}
+
+
