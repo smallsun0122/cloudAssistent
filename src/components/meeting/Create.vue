@@ -36,19 +36,13 @@
     },
     methods: {
       chooseMeetingMember: function (memberId) {
-        alert(memberId)
         let result = this.submitMember.find(id => id === memberId)
         if (result === undefined) {
-//          添加
+          // 添加
           this.submitMember.push(memberId)
         } else {
-//          删除
-          var index = -1
-          this.submitMember.forEach((member, i) => {
-            if (member.userId === memberId) {
-              index = i
-            }
-          })
+          // 删除
+          const index = this.submitMember.indexOf(memberId)
           if (index !== -1) {
             this.submitMember.splice(index, 1)
           }
@@ -95,6 +89,9 @@
       societyId: function () {
         // 获取社团的所有成员
         let self = this
+        // 更新社团之前，需要先清空成员
+        this.submitMember.splice(0, this.submitMember.length)
+        this.societyMember.splice(0, this.societyMember.length)
         this.$http.get('society/' + this.societyId + '/users')
           .then(function (response) {
             self.societyMember = response.data
@@ -179,7 +176,7 @@
 
                   <div style="position: relative; width: 80px;height: 80px">
                     <div v-if="isInMember(member.userId)" class="choose-box">
-                      <i style="font-size: 12rem" class="fa fa-check"></i>
+                      <i style="font-size: 8rem" class="fa fa-check"></i>
                     </div>
                     <img :src="member.logoUrl">
                   </div>
@@ -195,41 +192,7 @@
 
         </div>
 
-        <div class="form-item">
 
-          <div v-for="member in societyMember">
-
-            <input type="checkbox" id="jack" v-bind:value="member.userId" v-model="submitMember">
-            <label for="jack">{{member.nickName}}</label>
-          </div>
-          {{submitMember}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        </div>
 
       </div>
 

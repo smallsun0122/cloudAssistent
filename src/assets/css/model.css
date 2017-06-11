@@ -13,7 +13,7 @@
 }
 
 .content-wrap {
-  overflow: scroll;
+  overflow-y: auto;
 
   max-height: 90vh;
 }
