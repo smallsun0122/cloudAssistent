@@ -1,14 +1,17 @@
 <script>
   //  import SearchSociety from './SearchSociety.vue'
   import SocietyApply from './SocietyApply.vue'
+  import CreateSociety from './CreateSociety.vue'
   import { mapGetters } from 'vuex'
   export default{
     name: 'society',
     components: {
-      SocietyApply
+      SocietyApply, CreateSociety
     },
     data () {
-      return {}
+      return {
+        isShow: false
+      }
     },
     computed: mapGetters({
       mySociety: 'getMySociety'
@@ -21,7 +24,7 @@
         this.$router.push({path: '/society/detail', query: {'societyId': id}})
       },
       createSociety: function () {
-        this.$router.push({path: '/society/create'})
+        this.isShow = !this.isShow
       }
     }
   }
@@ -57,14 +60,12 @@
                 <img class="member-item" :src="item.societyLogo">
               </div>
             </div>
-
-
           </div>
         </div>
       </div>
-
-
     </div>
+
+    <create-society v-if="isShow" :isShow.sync="isShow"></create-society>
 
   </div>
 </template>

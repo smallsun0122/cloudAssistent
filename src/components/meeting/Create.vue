@@ -1,6 +1,8 @@
 <script>
+  import ModelDialog from '../ModelDialog.vue'
   export default {
     name: 'create',
+    props: ['isShow'],
     data () {
       return {
         userSociety: [{
@@ -24,6 +26,11 @@
         }
       }
     },
+    components: {
+      ModelDialog
+    },
+    mounted: function () {
+    },
     methods: {
       getUserSociety: function () {
         let self = this
@@ -45,6 +52,9 @@
           .catch(function (error) {
             console.log(error.data)
           })
+      },
+      closeModel: function () {
+        this.$emit('update:isShow', false)
       }
     },
     watch: {
@@ -66,11 +76,16 @@
 </script>
 <template>
 
-  <div id="create-meeting">
-    <h1>创建会议</h1>
+  <div class="model-wrap">
 
-    <div>
-      <form>
+    <div class="content-wrap modal-content container"
+         v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
+
+      <div class="modal-header">
+        <h1>创建会议</h1>
+      </div>
+
+      <div class="modal-body">
         会议名字<input type="text" name="name" v-model="meeting.name"/>
         <br>
         主题<input type="text" name="theme" v-model="meeting.theme"/>
@@ -80,6 +95,7 @@
           <select name="society" v-model="societyId" v-on:click="getUserSociety">
           <option value="-1">选择社团</option>
           <option v-for="(society,i) in userSociety" v-bind:value="society.id"> {{society.name}}
+
 
           </option>
         </select>
@@ -99,29 +115,52 @@
         {{submitMember}}
 
 
+      </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      </form>
+      <div class="modal-footer">
+        <button v-on:click="submitMeeting" class="btn btn-primary">提交</button>
+        <button  class="btn btn-default" @click="closeModel">关闭</button>
+      </div>
     </div>
 
-    <div slot="foot">
-      <button v-on:click="submitMeeting">提交</button>
-    </div>
+    <div @click="closeModel()" class="dialog-overlay"></div>
   </div>
+
 </template>
+
+<style scoped>
+
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/font-awesome.css";
+  @import "../../assets/css/model.css";
+
+  .content-wrap {
+    display: flex;
+    flex-flow: column;
+
+    background: #f8f8f8;
+    z-index: 100;
+  }
+
+  .dialog-active {
+    display: flex;
+  }
+
+  .dialog-hidden {
+    display: none;
+  }
+
+  .dialog-overlay {
+
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background: #0f0f0f;
+    opacity: 0.7;
+
+    z-index: 99;
+  }
+</style>

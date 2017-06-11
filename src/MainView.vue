@@ -30,8 +30,11 @@
   .navbar {
     width: 100%;
     position: fixed;
-    z-index: 99;
-    box-shadow: 0px 0px 5px 7px rgba(0, 0, 0, 0.5);
+    z-index: 98;
+  }
+
+  .navbar-default{
+    box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
   }
 
   .navbar.nav-delighted.navbar-default {
@@ -122,7 +125,7 @@
     margin-top: 62px;
     background-color: #232b2d;
     /*width: 220px;*/
-    z-index: 1001;
+    z-index: 98;
     height: 100%;
     color: #80969c;
     -webkit-transition: 500ms ease;

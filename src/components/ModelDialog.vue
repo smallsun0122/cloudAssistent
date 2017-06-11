@@ -1,44 +1,82 @@
 <template>
   <div>
-    <div v-bind:class="[show ? 'dialog-active':'dialog-hidden']">
 
-      <slot name="head">头部</slot>
+    <div class="model-wrap" v-bind:class="[isShow ? 'dialog-active':'dialog-hidden']">
 
+      <div class="content-wrap">
 
-      <slot name="body">body内容</slot>
+        <slot name="head">头部</slot>
 
+        <slot class="content" name="body">body内容</slot>
 
-      <slot name="foot">尾部</slot>
+        <slot name="foot">尾部</slot>
 
-    </div>
+      </div>
 
-    <div class="dialog-overlay">
+      <div @click="close()" class="dialog-overlay">
+
+      </div>
     </div>
 
   </div>
 </template>
 
-<style>
+<style scoped>
+
+  .model-wrap {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .content-wrap {
+    z-index: 100;
+  }
+
+  .content {
+    transition: all 0.5s;
+  }
+
   .dialog-active {
-    visibility: visible;
+    display: flex;
   }
 
   .dialog-hidden {
-    visibility: hidden;
+    display: none;
   }
 
   .dialog-overlay {
 
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background: #0f0f0f;
+    opacity: 0.7;
+
+    z-index: 99;
   }
 </style>
 
 <script>
   export default{
     name: 'model-dialog',
-    props: ['show'],
+    props: ['isShow'],
     data () {
       return {
-        show: true
+      }
+    },
+    methods: {
+      close () {
+        this.$emit('update:isShow', false)
       }
     }
   }

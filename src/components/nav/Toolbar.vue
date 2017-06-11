@@ -20,8 +20,8 @@
       <ul class="nav navbar-nav navbar-right">
 
         <!--通知按钮-->
-        <li>
-          <a @click="showNotice()" class="dropdown-toggle icon-menu" data-toggle="dropdown"
+        <li @mouseenter="isShowNotice=true" @mouseleave="isShowNotice=false">
+          <a  class="dropdown-toggle icon-menu" data-toggle="dropdon"
              aria-expanded="false">
             <img src="../../assets/images/remind.png">
             <span class="badge bg-danger">5</span>
@@ -86,7 +86,7 @@
     width: 100%;
     position: fixed;
     background-color: #ffffff;
-    z-index: 100;
+    z-index: 98;
   }
 
   .navbar.nav-delighted.navbar-default {
@@ -157,6 +157,11 @@
     padding-bottom: 0px;
     padding-top: 15px;
     height: 62px;
+    cursor: pointer;
+  }
+
+  .navbar-right>li:hover{
+    background-color: #e7e7e7;
   }
 
   .navbar.nav-delighted.navbar-default a.logout {
@@ -183,11 +188,11 @@
     position: absolute;
     top: 100%;
     left: 0;
-    z-index: 1020;
+    z-index: 100;
     /*display: none;*/
     min-width: 160px;
     padding: 15px;
-    margin: 9px 0 0 10px;
+    margin: 0px 0 0 10px;
     text-align: left;
     line-height: 1.6;
     background-color: #fff;
@@ -197,6 +202,23 @@
     background-clip: padding-box;
     -webkit-animation-duration: .15s;
     animation-duration: .15s;
+  }
+
+  .triangle{
+    position: absolute;
+    top:-10px;
+    width: 10px;
+    height: 10px;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid #ffffff;
+  }
+
+  .noticeFade-enter-active, .noticeFade-leave-active{
+    transition: all 0.3s;
+  }
+  .noticeFade-enter, .noticeFade-leave-active{
+    opacity: 0;
   }
 
   ul.tpl-dropdown-content {
@@ -296,7 +318,8 @@
   }
 
   .show-notice {
-    display: none;
+    opacity: 0;
+    -webkit-transition: all 0.5s;
   }
 </style>
 

@@ -1,9 +1,12 @@
 <template>
-  <div>
-    <div class="container">
+  <div class="society-model">
+    <div class="content-wrap modal-content container"
+         v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
+      <div class="modal-header">
+        <h1> 创建社团 </h1>
+      </div>
 
-      <div>
-        <p> 创建社团 </p>
+      <div class="modal-body">
 
         <label>
           社团名字<input v-model="society.name"/>
@@ -32,16 +35,15 @@
 
         <button @click="addPosition()">
           添加职位
-
-
-
         </button>
-
-        </br>
-        <input type="button" @click="createSociety"/>
-
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" @click="createSociety">创建社团</button>
+        <button class="btn btn-default" @click="closeModel">关闭</button>
       </div>
     </div>
+
+    <div @click="closeModel()" class="dialog-overlay"></div>
   </div>
 </template>
 
@@ -49,13 +51,58 @@
 
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
+  @import "../../assets/css/model.css";
+
+  .society-model {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 100;
+  }
+
+  .dialog-active {
+    display: flex;
+  }
+
+  .dialog-hidden {
+    display: none;
+  }
+
+  .dialog-overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+
+    background: #0f0f0f;
+    opacity: 0.7;
+
+    z-index: 99;
+  }
+
+  .content-wrap {
+    display: flex;
+    flex-flow: column;
+
+    background: #f8f8f8;
+    z-index: 100;
+  }
+
 
 </style>
 
 <script>
   export default{
     name: 'createSociety',
-    props: [],
+    props: ['isShow'],
     data () {
       return {
         society: {
@@ -86,6 +133,9 @@
         this.society.positions.push(position)
         this.newPosition.name = ''
         this.newPosition.grade = -1
+      },
+      closeModel: function () {
+        this.$emit('update:isShow', false)
       }
     }
   }
