@@ -84,7 +84,7 @@
 
   .head {
     border-radius: 10px 10px 0 0;
-    margin-top: 50px;
+    margin-top: 10px;
   }
 
   .content-wrap {
