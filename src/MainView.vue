@@ -1,6 +1,6 @@
 <template>
   <div id="mainView">
-
+    <div class="background"></div>
     <!--顶部-->
     <toolbar ></toolbar>
 
@@ -22,10 +22,17 @@
       font: 14px/1.5 'Cuprum',sans-serif,Tahoma,Verdana,Helvetica;
   }
 
-  #mainView {
+  .background{
+    position: fixed;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.05);
+    z-index: -1
+  }
+
+  #mainView {
+    width: 100%;
+    height: 100%;
   }
 
   .navbar {
@@ -208,6 +215,10 @@
     -o-transition: all 0.1s ease;
     transition: all 0.1s ease;
     padding-left: 40px;
+  }
+
+  .active>a{
+    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.7) inset;
   }
 
   .left-sidebar .sidebar-holder .nav li.active > a img {

@@ -20,7 +20,8 @@
       <ul class="nav navbar-nav navbar-right">
 
         <!--通知按钮-->
-        <li @mouseenter="isShowNotice=true" @mouseleave="isShowNotice=false">
+        <!-- <li @mouseenter="isShowNotice=true" @mouseleave="isShowNotice=false"> -->
+        <li @click="isShowNotice=!isShowNotice">
           <a  class="dropdown-toggle icon-menu" data-toggle="dropdon"
              aria-expanded="false">
             <img src="../../assets/images/remind.png">
@@ -197,7 +198,7 @@
     /*display: none;*/
     min-width: 160px;
     padding: 15px;
-    margin: 0px 0 0 10px;
+    margin: 9px 0 0 10px;
     text-align: left;
     line-height: 1.6;
     background-color: #fff;

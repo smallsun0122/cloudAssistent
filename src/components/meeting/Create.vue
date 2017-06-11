@@ -1,8 +1,6 @@
 <script>
-  import ModelDialog from '../ModelDialog.vue'
   export default {
     name: 'create',
-    props: ['isShow'],
     data () {
       return {
         userSociety: [{
@@ -26,11 +24,6 @@
         }
       }
     },
-    components: {
-      ModelDialog
-    },
-    mounted: function () {
-    },
     methods: {
       getUserSociety: function () {
         let self = this
@@ -52,9 +45,6 @@
           .catch(function (error) {
             console.log(error.data)
           })
-      },
-      closeModel: function () {
-        this.$emit('update:isShow', false)
       }
     },
     watch: {
@@ -76,16 +66,11 @@
 </script>
 <template>
 
-  <div class="model-wrap">
+  <div id="create-meeting">
+    <h1>创建会议</h1>
 
-    <div class="content-wrap modal-content container"
-         v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
-
-      <div class="modal-header">
-        <h1>创建会议</h1>
-      </div>
-
-      <div class="modal-body">
+    <div>
+      <form>
         会议名字<input type="text" name="name" v-model="meeting.name"/>
         <br>
         主题<input type="text" name="theme" v-model="meeting.theme"/>
@@ -112,66 +97,11 @@
           <label for="jack">{{member.nickName}}</label>
         </div>
         {{submitMember}}
-
-      </div>
-
-      <div class="modal-footer">
-        <button v-on:click="submitMeeting" class="btn btn-primary">提交</button>
-        <button @click="closeModel">关闭</button>
-      </div>
+      </form>
     </div>
 
-    <div @click="closeModel()" class="dialog-overlay"></div>
+    <div slot="foot">
+      <button v-on:click="submitMeeting">提交</button>
+    </div>
   </div>
-
 </template>
-
-<style scoped>
-
-  @import "../../assets/css/bootstrap.css";
-  @import "../../assets/css/font-awesome.css";
-
-  .model-wrap {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 100;
-  }
-
-  .content-wrap {
-    display: flex;
-    flex-flow: column;
-
-    background: #f8f8f8;
-    z-index: 100;
-  }
-
-  .dialog-active {
-    display: flex;
-  }
-
-  .dialog-hidden {
-    display: none;
-  }
-
-  .dialog-overlay {
-
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    background: #0f0f0f;
-    opacity: 0.7;
-
-    z-index: 99;
-  }
-</style>
