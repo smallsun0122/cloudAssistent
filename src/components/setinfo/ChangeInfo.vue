@@ -15,18 +15,29 @@
                 <label class="col-sm-2 control-label avatar-label">头像</label>
                 <div class="col-sm-10">
                   <div class="avatar-wrap">
-                    <div class="avatar img-100">
-                      <div class="progress-mask"></div>
+                    <div class="img-100">
+                      <img :src="user.logoUrl">
                     </div>
                     <div class="avatar-set">
-                      <a class="btn btn-ghost btn-primary btn-border update-avatar">更换头像</a>
+                      <img id="preview" :src="file && URL.createObjectURL(file)">
+                      <!--<form enctype="multipart/form-data" method="post" action="http://112.74.214.252:8080/acloud/user/logo">-->
+                      <input type="file" name="photo" v-on:change="previewFile">
+                      <!--<input  value="提交" v-on:click="submitFile">-->
+                      <!--</form>-->
+
+                      <a @click="submitFile"
+                         class="btn btn-ghost btn-primary btn-border update-avatar">更换头像</a>
+
                     </div>
                   </div>
                 </div>
               </div>
-              <div class="form-group"><label class="col-sm-2 control-label">姓名</label>
-                <div class="col-sm-10"><input class="name-input form-control" type="text"
-                                              name="name" value="小太阳" v-model="name"></div>
+              <div class="form-group">
+                <label class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-10">
+                  <input class="name-input form-control" type="text"
+                         name="name" value="小太阳" v-model="name">
+                </div>
               </div>
               <div class="form-group">
                 <label class="col-sm-2 control-label">学校</label>
@@ -35,6 +46,38 @@
                     <option value="-1">--选择学校--</option>
                     <option v-for="(school,index) in schools" v-bind:value="school.id">
                       {{school.name}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </option>
                   </select>
                 </div>
@@ -46,6 +89,47 @@
                     <option value="-1">--选择学院--</option>
                     <option v-for="(college,index) in colleges" v-bind:value="college.id">
                       {{college.name}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </option>
                   </select>
                 </div>
@@ -57,6 +141,47 @@
                     <option value="-1">--选择专业--</option>
                     <option v-for="(major,index) in majors" v-bind:value="major.id">
                       {{major.name}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                     </option>
                   </select>
                 </div>
@@ -126,13 +251,20 @@
     height: 40px;
     border-radius: 4px;
   }
+
   .avatar {
     background: url("../../assets/images/portrait.png") no-repeat;
   }
 
-  .avatar.img-100 {
+  .img-100 {
     width: 100px;
     height: 100px;
+  }
+
+  .img-100 img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
   }
 
   .avatar {
@@ -200,9 +332,12 @@
 
 <script>
   import Qs from 'qs'
+  import { mapGetters } from 'vuex'
   export default {
     data () {
       return {
+        $file: null,
+        file: null,
         name: '',
         major: '',
         stuId: '',
@@ -230,7 +365,40 @@
         ]
       }
     },
+    mounted: function () {
+      this.$file = this.$el.querySelector('input[type="file"]')
+    },
+    computed: mapGetters({
+      user: 'getCurrentUser'
+    }),
     methods: {
+      previewFile (e) {
+        let file = e.target.files[0]
+        let supportedTypes = ['image/jpg', 'image/jpeg', 'image/png']
+        if (file && supportedTypes.indexOf(file.type) >= 0) {
+          this.file = file
+        } else {
+          alert('文件格式只支持：jpg、jpeg 和 png')
+          this.clearFile()
+        }
+      },
+      clearFile () {
+        this.$file.value = ''
+        this.file = null
+      },
+      submitFile () {
+        console.log(this.file)
+        var form = new FormData()
+        if (this.file) {
+          form.append('logo', this.file)
+        }
+        this.$http.post('user/logo', form, {headers: {'Content-Type': 'multipart/form-data'}})
+          .then(function () {
+            alert('上传成功')
+          })
+      },
+      chooseImage: function () {
+      },
       saveInfo: function () {
         var name = this.name
         var school = this.school

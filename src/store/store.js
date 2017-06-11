@@ -13,7 +13,8 @@ const state = {
   society: [],
   room: {}, // 保存用户进入的房间信息
   roomMessages: [],
-  roomMember: []
+  roomMember: [],
+  notice: []
 }
 
 // 处理保存的动作
@@ -74,6 +75,9 @@ const mutations = {
     state.room = null
     state.roomMember.splice(0, state.roomMember.length)
     state.roomMessages.splice(0, state.roomMessages.length)
+  },
+  ADD_NOTICE (state,message) {
+    state.notice.push(message)
   }
 }
 

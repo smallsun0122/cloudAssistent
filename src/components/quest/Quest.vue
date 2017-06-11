@@ -5,7 +5,7 @@
       <router-link to="./QuestCreate">123</router-link>
       {{this.allQuest}}
       <div>
-        <p>发布者： </p>
+        <p>发布者：{{}} </p>
         <img :src="this.allQuest.userlogo" alt="">
         <p>来自 {{this.allQuest.society_name}}</p>
         <div v-for="(subTaskItem,i) in subTask">

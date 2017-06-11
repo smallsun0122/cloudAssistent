@@ -1,9 +1,12 @@
 <template>
   <div class="society-model">
-    <div class="container model-wrap" v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
+    <div class="content-wrap modal-content container"
+         v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
+      <div class="modal-header">
+        <h1> 创建社团 </h1>
+      </div>
 
-      <div>
-        <p> 创建社团 </p>
+      <div class="modal-body">
 
         <label>
           社团名字<input v-model="society.name"/>
@@ -32,13 +35,11 @@
 
         <button @click="addPosition()">
           添加职位
-
         </button>
-
-        </br>
-        <button @click="createSociety">创建社团</button>
-        <button @click="closeModel">关闭</button>
-
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary" @click="createSociety">创建社团</button>
+        <button class="btn btn-default" @click="closeModel">关闭</button>
       </div>
     </div>
 
@@ -50,6 +51,7 @@
 
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
+  @import "../../assets/css/model.css";
 
   .society-model {
     position: fixed;
@@ -86,8 +88,11 @@
     z-index: 99;
   }
 
-  .model-wrap {
-    background: #ffffff;
+  .content-wrap {
+    display: flex;
+    flex-flow: column;
+
+    background: #f8f8f8;
     z-index: 100;
   }
 

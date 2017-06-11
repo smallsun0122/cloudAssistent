@@ -2,8 +2,8 @@
   <div style="clear: both;margin-top: 100px">
     <!--todo 社团邀请-->
     <p>社团邀请</p>
-    <input style="width: 50%;" placeholder="搜索需要邀请的人(用过userId 和 昵称 搜索" v-model="searchMsg"/>
-    <button @click="searchUser()">搜索用户</button>
+    <input style="width: 50%;" @keyup.enter="searchUser" placeholder="搜索需要邀请的人(用过userId 和 昵称 搜索" v-model="searchMsg"/>
+    <button class="btn btn-default" @click="searchUser()">搜索用户</button>
 
     <div>
       <!--{{societyId}}-->
@@ -19,13 +19,16 @@
           <option value="-1">选择职位</option>
           <option v-for="item in positions" :value="item.id">{{item.name}}</option>
         </select>
-        <button @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">邀请加入</button>
+        <button class="btn btn-default" @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">邀请加入</button>
       </div>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+  @import "../../assets/css/bootstrap.css";
+  @import "../../assets/css/font-awesome.css";
+</style>
 
 <script>
   import Qs from 'qs'
