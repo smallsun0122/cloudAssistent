@@ -2,12 +2,11 @@
 
   <div id="meeting">
     <div class="container-fluid meeting-wrap">
-
       <div class="add-wrap" v-on:click="createMeeting">
         <div class="add-btn">
-          <router-link to="/meeting/create">
-            <span><i class="fa fa-plus" aria-hidden="true"></i> 创建新会议</span>
-          </router-link>
+          <!--<router-link to="/meeting/create">-->
+          <span><i class="fa fa-plus" aria-hidden="true"></i> 创建新会议</span>
+          <!--</router-link>-->
         </div>
       </div>
 
@@ -35,9 +34,9 @@
           </router-link>
         </div>
       </div>
-
-
     </div>
+
+    <create v-if="isShowCreate" :isShow.sync="isShowCreate"></create>
 
   </div>
 
@@ -158,13 +157,13 @@
 </style>
 
 <script>
-  import ModelDialog from '../ModelDialog.vue'
+  import Create from './Create.vue'
   import { mapGetters } from 'vuex'
   export default{
     name: 'meeting',
     data () {
       return {
-        show: true,
+        isShowCreate: true,
         societyId: null,
         societys: [{
           college: 0,
@@ -193,14 +192,14 @@
       meetings: 'getAllMeetings'
     }),
     components: {
-      ModelDialog
+      Create
     },
     mounted: function () {
       this.$store.dispatch('initMeeting')
     },
     methods: {
       createMeeting: function () {
-        this.show = !this.show
+        this.isShowCreate = !this.isShowCreate
       },
       getUserSociety: function () {
         let self = this
@@ -226,7 +225,6 @@
     watch: {
       societyId: function () {
         // 获取社团的所有成员
-//        /society/{societyId}/users.
         let self = this
         this.$http.get('society/' + this.societyId + '/users')
           .then(function (response) {

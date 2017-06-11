@@ -86,7 +86,7 @@
     width: 100%;
     position: fixed;
     background-color: #ffffff;
-    z-index: 100;
+    z-index: 98;
   }
 
   .navbar.nav-delighted.navbar-default {
