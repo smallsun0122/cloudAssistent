@@ -22,8 +22,8 @@ export const initMySociety = ({commit}) => {
 }
 
 export const initRoom = ({commit}, room) => {
-  // const ws = new WebSocket('ws://112.74.214.252:8080/acloud/ws?roomId=' + room.id)
-  const ws = new WebSocket('ws://127.00.1:8080/ws?roomId=' + room.id)
+  const ws = new WebSocket('ws://112.74.214.252:8080/acloud/ws?roomId=' + room.id)
+  // const ws = new WebSocket('ws://127.00.1:8080/ws?roomId=' + room.id)
   socket.initRoomSocket(ws, commit)
   room.ws = ws
   commit('INIT_ROOM', room)
@@ -40,3 +40,9 @@ export const sendMessage = ({commit}, message) => {
 export const clearRoom = ({commit}) => {
   commit('CLEAR_ROOM')
 }
+
+export const addNotice = ({commit}, message) => {
+  commit('ADD_NOTICE', message)
+}
+
+

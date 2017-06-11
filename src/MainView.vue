@@ -12,7 +12,6 @@
 
       <router-view class="main-content" style="margin-left: 220px ; padding-top: 80px"></router-view>
 
-
     </div>
   </div>
 </template>
@@ -268,7 +267,22 @@
       }
     },
     mounted: function () {
-      this.$store.dispatch('initNotice')
+      let that = this
+      const ws = new WebSocket('ws://112.74.214.252:8080/acloud/push')
+      // const ws = new WebSocket('ws://127.00.1:8080/ws?roomId=' + room.id)
+      ws.onmessage = function (message) {
+        console.log('接收到的信息' + message.data)
+        that.$store.dispatch('addNotice', JSON.parse(message.data))
+      }
+      ws.onopen = function () {
+        console.log('连接成功!')
+      }
+      ws.close = function () {
+        console.log('连接关闭!')
+      }
+      ws.onerror = function (event) {
+        console.log('发生错误:' + event.toString())
+      }
     },
     methods: {
       sidebarChange: function () {

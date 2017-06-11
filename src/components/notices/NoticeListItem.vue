@@ -73,6 +73,7 @@
         const self = this
         this.$http.get('/society/' + this.notice.society)
           .then(function (response) {
+            console.log(response.data.name)
             self.societyName = response.data.name
           })
       }

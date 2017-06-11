@@ -50,7 +50,7 @@
               <p class="name">{{item.name}}</p>
               <p class="summary">{{item.summary}}</p>
               <p class="createTime">
-                创建时间： {{new Date(item.createTime).getFullYear()}}-{{new Date(item.createTime).getMonth()}}-{{new Date(item.createTime).getDay()}}</p>
+                创建时间： {{new Date(item.createTime).getFullYear()}}-{{new Date(item.createTime).getMonth()+1}}-{{new Date(item.createTime).getDate()}}</p>
               <p class="master">负责人：{{item.principal.nickName}}</p>
 
               <div class="member" v-for="(member,index) in item.member" v-if="index < 5">

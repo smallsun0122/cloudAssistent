@@ -21,3 +21,7 @@ export const getRoomMembers = (state) => {
 export const getRoomMessages = (state) => {
   return state.roomMessages
 }
+
+export const getNoticeMessages = (state) => {
+  return state.notice
+}

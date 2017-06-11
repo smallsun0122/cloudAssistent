@@ -14,22 +14,6 @@
         <!--将这里的当个Notice抽离-->
         <li v-for="(item,index) in items">
           <notice-list-item :notice="item"></notice-list-item>
-          <!--<div class="announcement-title">-->
-            <!--<div class="announcement-user">-->
-              <!--<img src="../assets/images/portrait.png">-->
-            <!--</div>-->
-            <!--<div class="announcement-text">-->
-              <!--<span>小太阳</span>-->
-              <!--<h3>{{item.title}}</h3>-->
-              <!--<p>{{item.content}}</p>-->
-            <!--</div>-->
-          <!--</div>-->
-          <!--<div class="announcement-info">-->
-            <!--<span>{{item.time | time}}</span>-->
-
-            <!--<span class="info-society">来源:{{ getSociety(item.society)}}</span>-->
-
-          <!--</div>-->
         </li>
       </ul>
     </div>
