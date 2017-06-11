@@ -2,7 +2,7 @@
     <div id="">
       <div>
         <p>任务标题：</p>
-        <input type="text" v-model="title">
+        <input type="text" v-model="quest.title">
       </div>
       <div>
         <p>选择社团</p>
@@ -12,10 +12,21 @@
       </div>
       社团id:{{soietyId}}
       <div v-for="member in societyMember">
-        <input type="checkbox" id="jack" :value="member.userId" v-model="submitMember">
-        <label for="jack">{{member.nickName}}</label>
+        <input type="checkbox" id="i" :value="member.userId" v-model="submitMember">
+        <label for="i">{{member.nickName}}</label>
       </div>
-      {{submitMember}}
+      <div v-for="(item,i) in subTaskSet">
+        <div class="">
+          <p>子任务{{i+1}}:</p>
+          <input type="text" name="" value="" v-model="quest.subTask[i]">
+        </div>
+      </div>
+      <button type="button" name="button" @click="subTaskSet.splice(index,1)">-</button>
+      <button type="button" name="button" @click="subTaskSet.push('')">+</button>
+      参与者：{{submitMember}}
+      子任务：{{quest.subTask}}
+      <button type="button" name="button" @click="createQuest">提交</button>
+      {{quest}}
     </div>
 </template>
 
@@ -34,6 +45,7 @@
             societyLogo: '',
             summary: ''
           }],
+          subTaskSet: [],
           submitMember: [],
           societyMember: [],
           societyId: -1,
@@ -59,9 +71,11 @@
             })
         },
         createQuest: function () {
-          this.$http.post('task/add', this.quest)
+          this.quest.societyId = this.societyId
+          this.quest.executors = this.submitMember
+          this.$http.post('task', this.quest)
             .then(function (res) {
-              alert(res.data)
+              // alert(res.data)
             })
             .catch(function (err) {
               console.log(err)
