@@ -96,6 +96,7 @@
           <option value="-1">选择社团</option>
           <option v-for="(society,i) in userSociety" v-bind:value="society.id"> {{society.name}}
 
+
           </option>
         </select>
           社团id： {{societyId}}
@@ -113,11 +114,12 @@
         </div>
         {{submitMember}}
 
+
       </div>
 
       <div class="modal-footer">
         <button v-on:click="submitMeeting" class="btn btn-primary">提交</button>
-        <button @click="closeModel">关闭</button>
+        <button  class="btn btn-default" @click="closeModel">关闭</button>
       </div>
     </div>
 
@@ -130,20 +132,7 @@
 
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
-
-  .model-wrap {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    z-index: 100;
-  }
+  @import "../../assets/css/model.css";
 
   .content-wrap {
     display: flex;

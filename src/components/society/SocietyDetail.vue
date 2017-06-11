@@ -10,20 +10,14 @@
 
         <p class="name">{{society.name}}</p>
         <p class="text summary">{{society.summary}}</p>
-
-        <p class="text position">我的职位:{{myPosition.nickName}}</p>
-        <!--<p class="text">邀请成员：{{society.summary}}</p>-->
+        <p style="font-size: 18px;text-align: center;padding-bottom: 10px">社团成员:</p>
 
         <div class="members-wrap">
-          <p style="font-size: 18px;text-align: center;padding-bottom: 10px">社团成员:</p>
-          <div class="col-md-2" v-for="member in society.members">
-
+          <div class="col-md-2 member-box" v-for="member in society.members">
             <div class="member-logo">
               <img :src="member.logoUrl">
             </div>
-
             <p class="member-name"> {{member.nickName}} </p>
-
           </div>
         </div>
         <div class="apply-wrap">
@@ -35,7 +29,7 @@
         <div>
           <div style="float: left; width: 100px;" v-for="position in society.positions">
             <p>等级：{{position.grade}}</p>
-            <p>名字{{position.name}}</p>
+            <p>名字：{{position.name}}</p>
           </div>
 
         </div>
@@ -49,6 +43,14 @@
 <style scoped>
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
+
+  .member-box {
+    display: flex;
+
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+  }
 
   .logo-wrap {
     width: 25%;
@@ -91,6 +93,10 @@
   .members-wrap {
     width: 75%;
     margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .member-logo {
@@ -131,11 +137,7 @@
     props: [],
     data () {
       return {
-        society: {},
-        // todo 获取我在社团的职位
-        myPosition: {
-          nickName: ''
-        }
+        society: {}
       }
     },
     mounted: function () {

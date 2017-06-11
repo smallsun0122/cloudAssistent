@@ -24,7 +24,6 @@
         this.$router.push({path: '/society/detail', query: {'societyId': id}})
       },
       createSociety: function () {
-//        this.$router.push({path: '/society/create'})
         this.isShow = !this.isShow
       }
     }
