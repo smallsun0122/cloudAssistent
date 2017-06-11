@@ -217,8 +217,8 @@
     </div>
 
     <div @click="closeModel()" class="dialog-overlay"></div>
-
   </div>
+
 </template>
 
 <style scoped>
