@@ -4,11 +4,11 @@
 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <div class="navbar-brand header-flex option" style="width:60px;"  @click="sidebarChange" >
-						<svg style="width:24px;height:24px" viewBox="0 0 24 24"onclick="leftnavshow()">
-	    <path fill="rgba(0,0,0,0.3)" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z" />
-						</svg>
-				</div>
+      <div class="navbar-brand header-flex option" style="width:60px;" @click="sidebarChange">
+        <svg style="width:24px;height:24px" viewBox="0 0 24 24" onclick="leftnavshow()">
+          <path fill="rgba(0,0,0,0.3)" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/>
+        </svg>
+      </div>
       <div class="navbar-brand header-flex">
         <img src="../../assets/images/Cloud_small.png" alt="">
         <span>社团云助手</span>
@@ -21,12 +21,13 @@
 
         <!--通知按钮-->
         <li>
-          <a href="#" class="dropdown-toggle icon-menu" data-toggle="dropdown"
+          <a @click="showNotice()" class="dropdown-toggle icon-menu" data-toggle="dropdown"
              aria-expanded="false">
             <img src="../../assets/images/remind.png">
             <span class="badge bg-danger">5</span>
           </a>
-          <ul class="am-dropdown-content tpl-dropdown-content">
+          <ul :class="{'show-notice':isShowNotice}"
+              class="am-dropdown-content tpl-dropdown-content">
             <li class="tpl-dropdown-content-external">
               <h3>你有 <span class="tpl-color-success">5</span> 条提醒</h3>
             </li>
@@ -48,7 +49,8 @@
         <!--用户按钮-->
         <li>
           <router-link to="./setinfo/MyInfo" class="dropdown-toggle" data-toggle="dropdown">
-            <img src="../../assets/images/user1.png" style="display: block;width: 20px;height: 20px;margin-top: 4px;">
+            <img src="../../assets/images/user1.png"
+                 style="display: block;width: 20px;height: 20px;margin-top: 4px;">
           </router-link>
         </li>
 
@@ -151,11 +153,12 @@
     font-size: 14px;
   }
 
-  .navbar-nav>li>.dropdown-toggle{
+  .navbar-nav > li > .dropdown-toggle {
     padding-bottom: 0px;
-    padding-top:15px;
+    padding-top: 15px;
     height: 62px;
   }
+
   .navbar.nav-delighted.navbar-default a.logout {
     font-size: 24px;
     color: #23bab5;
@@ -167,12 +170,15 @@
     -o-transition: 300ms ease;
     transition: 300ms ease;
   }
+
   .bg-danger {
     background-color: #F9354C;
   }
+
   .badge {
     margin: -18px 0 0 -22px;
   }
+
   .am-dropdown-content {
     position: absolute;
     top: 100%;
@@ -192,18 +198,20 @@
     -webkit-animation-duration: .15s;
     animation-duration: .15s;
   }
+
   ul.tpl-dropdown-content {
     width: 260px;
     padding: 8px;
   }
+
   /*.am-dropdown-content:after,.am-dropdown-content:before {*/
-    /*position: absolute;*/
-    /*display: block;*/
-    /*content: "";*/
-    /*width: 0;*/
-    /*height: 0;*/
-    /*border: 8px dashed transparent;*/
-    /*z-index: 1;*/
+  /*position: absolute;*/
+  /*display: block;*/
+  /*content: "";*/
+  /*width: 0;*/
+  /*height: 0;*/
+  /*border: 8px dashed transparent;*/
+  /*z-index: 1;*/
   /*}*/
   .am-dropdown-content :first-child {
     margin-top: 0;
@@ -221,6 +229,7 @@
     letter-spacing: 0.5px;
     border-bottom: 1px solid #F1F4F7;
   }
+
   .tpl-dropdown-content-external h3 {
     margin: 0;
     padding: 0;
@@ -228,6 +237,7 @@
     color: #96a5aa;
     font-weight: normal;
   }
+
   .tpl-header-list li {
     color: #999;
     border-bottom: 1px solid #F1F4F7;
@@ -236,44 +246,55 @@
   .tpl-dropdown-list-bdbc {
     border-bottom: 1px solid #F1F4F7;
   }
+
   .tpl-dropdown-content-photo img {
     height: 40px;
     width: 40px;
-    -webkit-border-radius: 50%!important;
-    -moz-border-radius: 50%!important;
-    -ms-border-radius: 50%!important;
-    -o-border-radius: 50%!important;
-    border-radius: 50%!important;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    -ms-border-radius: 50% !important;
+    -o-border-radius: 50% !important;
+    border-radius: 50% !important;
   }
+
   .tpl-dropdown-content-subject {
     margin-left: 46px;
     margin-top: -30px;
     display: flex;
     justify-content: space-between;
   }
+
   .tpl-dropdown-content-time {
-     font-size: 12px;
-     font-weight: 400;
-     opacity: 0.5;
-     filter: alpha(opacity=50);
-   }
+    font-size: 12px;
+    font-weight: 400;
+    opacity: 0.5;
+    filter: alpha(opacity=50);
+  }
+
   .am-dropdown-content :first-child {
     margin-top: 0;
   }
+
   .tpl-dropdown-content-font {
-    display: block!important;
+    display: block !important;
     font-size: 12px;
     line-height: 22px;
     margin-left: 46px;
   }
+
   .tpl-dropdown-content-from {
     font-size: 13px;
     font-weight: 600;
   }
+
   ul, li {
     margin: 0;
     padding: 0;
     list-style: none;
+  }
+
+  .show-notice {
+    display: none;
   }
 </style>
 
@@ -285,7 +306,8 @@
     ],
     data () {
       return {
-        editMsg: ''
+        editMsg: '',
+        isShowNotice: false
       }
     },
     methods: {
@@ -309,6 +331,9 @@
           l[0].style.marginLeft = '220px'
           this.sidebarStatus = true
         }
+      },
+      showNotice: function () {
+        this.isShowNotice = !this.isShowNotice
       }
     }
   }

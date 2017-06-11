@@ -15,7 +15,7 @@
         <p>{{item.userId}}</p>
 
         <input type="text" placeholder="邀请理由" v-model="inviteMsg">
-        <select>
+        <select v-model="positionId">
           <option value="-1">选择职位</option>
           <option v-for="item in positions" :value="item.id">{{item.name}}</option>
         </select>
