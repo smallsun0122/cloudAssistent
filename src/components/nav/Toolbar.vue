@@ -27,24 +27,28 @@
             <img src="../../assets/images/remind.png">
             <span class="badge bg-danger">5</span>
           </a>
-          <ul :class="{'show-notice':isShowNotice}"
-              class="am-dropdown-content tpl-dropdown-content">
-            <li class="tpl-dropdown-content-external">
-              <h3>你有{{notice.length}}条未读信息</h3>
-            </li>
-            <li v-for="item in notice" class="tpl-dropdown-list-bdbc">
-              <a href="#" class="tpl-dropdown-content-message">
-                <span class="tpl-dropdown-content-photo">
-                  <img :src="item.logo" alt="">
-                </span>
-                <span class="tpl-dropdown-content-subject">
-                  <span class="tpl-dropdown-content-from"> {{item.publisher}} </span>
-                  <span class="tpl-dropdown-content-time"> {{new Date(item.time).getFullYear()}}-{{new Date(item.time).getMonth()+1}}-{{new Date(item.time).getDate()}} {{new Date(item.time).getHours()}}:{{new Date(item.time).getMinutes()}}</span>
-                </span>
-                <span class="tpl-dropdown-content-font"> {{item.info}} </span>
-              </a>
-            </li>
-          </ul>
+          <transition name="noticeFade">
+            <ul v-if="isShowNotice"
+                class="am-dropdown-content tpl-dropdown-content">
+                <div class="triangle">
+                </div>
+              <li class="tpl-dropdown-content-external">
+                <h3>你有{{notice.length}}条未读信息</h3>
+              </li>
+              <li v-for="item in notice" class="tpl-dropdown-list-bdbc">
+                <a href="#" class="tpl-dropdown-content-message">
+                  <span class="tpl-dropdown-content-photo">
+                    <img :src="item.logo" alt="">
+                  </span>
+                  <span class="tpl-dropdown-content-subject">
+                    <span class="tpl-dropdown-content-from"> {{item.publisher}} </span>
+                    <span class="tpl-dropdown-content-time"> {{new Date(item.time).getFullYear()}}-{{new Date(item.time).getMonth()+1}}-{{new Date(item.time).getDate()}} {{new Date(item.time).getHours()}}:{{new Date(item.time).getMinutes()}}</span>
+                  </span>
+                  <span class="tpl-dropdown-content-font"> {{item.info}} </span>
+                </a>
+              </li>
+            </ul>
+          </transition>
         </li>
 
         <!--用户按钮-->
@@ -219,6 +223,7 @@
     transition: all 0.3s;
   }
   .noticeFade-enter, .noticeFade-leave-active{
+    transform: translate(0px,-10px);
     opacity: 0;
   }
 

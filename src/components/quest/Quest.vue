@@ -4,15 +4,14 @@
       <p @click="modalOn">任务列表</p>
       <router-link to="./QuestCreate">123</router-link>
       {{this.allQuest}}
-      <div>
-        <p>发布者：{{}} </p>
-        <img :src="this.allQuest.userlogo" alt="">
-        <p>来自 {{this.allQuest.society_name}}</p>
-        <div v-for="(subTaskItem,i) in subTask">
-          <p>子任务{{i}}:{{subTaskItem.question}}进度：{{subTaskItem.progress}}</p>
+      <div v-for="questItem in this.allQuest.data ">
+        <p>发布者：{{questItem.publisher.nickName}} </p>
+        <img :src="questItem.publisher.userLogo" alt="" style="height:50px;width:50px;">
+        <p>来自 {{questItem.society_name}}</p>
+        <div v-for="(subTaskItem,j) in questItem.subTask">
+          <p>子任务{{j}}:{{subTaskItem.question}}进度：{{subTaskItem.progress}}</p>
         </div>
       </div>
-
     </div>
 </template>
 
@@ -30,7 +29,7 @@
           allQuest: [{
             executors: [],
             id: '',
-            publish: [{
+            publisher: [{
               nickName: '',
               userId: '',
               userLogo: ''

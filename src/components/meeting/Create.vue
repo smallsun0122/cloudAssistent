@@ -98,7 +98,7 @@
           <label for="jack">{{member.nickName}}</label>
         </div>
         {{submitMember}}
-      </div>
+      </form>
 
       <div class="modal-footer">
         <button v-on:click="submitMeeting" class="btn btn-primary">提交</button>
@@ -148,4 +148,3 @@
     z-index: 99;
   }
 </style>
->>>>>>> b8b1e82de7b0767b98eef85bbc1733fb511f4c22
