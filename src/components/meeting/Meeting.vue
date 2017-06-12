@@ -14,29 +14,44 @@
       <div class="col-md-3 " v-for="(meeting,index) in meetings">
         <div class="meeting-box">
           <router-link
-            :to="{path:'/room', query:{roomId:meeting.room.roomId,roomTitle:meeting.room.name}}">
+          :to="{path:'/room', query:{roomId:meeting.room.roomId,roomTitle:meeting.room.name}}">
 
-            <div class="box-content">
-              <div class="content-head">
-                <img src="../../assets/images/meeting-2.png">
+          <div class="box-content">
+            <div class="content-head" @click="toRoom( meeting.room.roomId, meeting.room.name)">
+              <img src="../../assets/images/meeting-2.png">
+            </div>
+            <div>
+              <div style="display: flex;justify-content: space-between">
+                <h2 @click="toRoom( meeting.room.roomId, meeting.room.name)">
+                  会议：{{meeting.name}} </h2>
+
+                <!--<div class="modify-wrap">-->
+                  <!--<i @click="showModify(meeting.room.roomId)" style="z-index: 10;text-align: right"-->
+                     <!--class="fa fa-angle-double-down fa-3x"></i>-->
+                  <!--<div @click="updateMeeting" v-if="chooseId === meeting.room.roomId"-->
+                       <!--class="modify"><p> 修改公告 </p></div>-->
+                <!--</div>-->
+
               </div>
-              <h2> 会议：{{meeting.name}} </h2>
-              <p>会议主题：{{meeting.theme}} </p>
+              <p @click=" toRoom( meeting.room.roomId, meeting.room.name)">
+                会议主题：{{meeting.theme}} </p>
 
-              <div class="publish">
+              <div class="publish" @click=" toRoom( meeting.room.roomId, meeting.room.name)">
                 <div class="user-logo">
                   <img :src="meeting.publisher.userLogo"/>
                 </div>
                 <p class="publish-name">{{meeting.publisher.nickName}}</p>
               </div>
-
             </div>
+
+          </div>
           </router-link>
         </div>
       </div>
     </div>
 
     <create v-if="isShowCreate" :isShow.sync="isShowCreate"></create>
+    <!--<create v-if="isShowUpdate" :isShow.sync="isShowUpdate"></create>-->
 
   </div>
 
@@ -48,6 +63,35 @@
 
   a {
     text-decoration: none;
+  }
+
+  .modify-wrap {
+    display: flex;
+
+    flex-flow: column;
+
+    margin-top: 22px;
+    margin-right: 10px;
+
+    position: relative;
+  }
+
+  .modify {
+    padding: 10px;
+    border: 1px solid silver;
+    border-radius: 10px;
+
+    width: 100px;
+    position: absolute;
+    top: 40px;
+    left: -50px;
+  }
+
+  .modify p {
+    font-size: 18px !important;
+    margin: 0;
+    text-align: center;
+    padding: 0 !important;
   }
 
   .add-btn {
@@ -97,6 +141,9 @@
 
     top: 0;
     transition: all 0.3s;
+
+    cursor: pointer;
+    color: #599dcc;
   }
 
   .meeting-box:hover {
@@ -165,6 +212,8 @@
       return {
         isShowCreate: false,
         societyId: null,
+        isShowModify: false,
+        isShowUpdate: false,
         societys: [{
           college: 0,
           id: 0,
@@ -185,7 +234,8 @@
           society: 1,
           meetingTime: '',
           members: []
-        }
+        },
+        chooseId: -1
       }
     },
     computed: mapGetters({
@@ -198,6 +248,24 @@
       this.$store.dispatch('initMeeting')
     },
     methods: {
+      toRoom: function (id, name) {
+        this.$router.push({
+          path: '/room',
+          query: {
+            roomId: id, roomTitle: name
+          }
+        })
+      },
+      updateMeeting: function () {
+        this.isShowUpdate = !this.isShowUpdate
+      },
+      showModify: function (id) {
+        if (this.chooseId === id) {
+          this.chooseId = -1
+          return
+        }
+        this.chooseId = id
+      },
       createMeeting: function () {
         this.isShowCreate = !this.isShowCreate
       },

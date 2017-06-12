@@ -72,11 +72,11 @@
             name: '社团管理',
             icon: 'fa-plug'
           },
-          {
-            path: '/',
-            name: '邀请成员(没写',
-            icon: 'fa-users'
-          },
+//          {
+//            path: '/',
+//            name: '邀请成员(没写',
+//            icon: 'fa-users'
+//          },
           {
             path: '/setinfo/ChangeInfo',
             name: '个人设置',

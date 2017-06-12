@@ -40,8 +40,9 @@
 
 <template>
   <div id="society">
-    <div style="">
-      <p style="text-align: center;font-size: 18px"> 社团申请 </p>
+    <div style="border: 1px solid silver;border-radius: 10px;padding: 10px;">
+      <p style="text-align: center;font-size: 24px"> 社团申请 </p>
+      <p v-if="societyApply.length === 0" style="text-align: center">无社团申请</p>
       <ul>
         <li style="background: #fff000" v-for="item in societyApply">
           <p>{{item.applierId}}</p>
@@ -58,7 +59,7 @@
 
 <style scoped>
   #society {
-    margin: 30px;
+    margin: 10px 0;
 
   }
 </style>
