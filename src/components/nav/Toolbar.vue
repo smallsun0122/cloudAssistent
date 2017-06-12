@@ -25,7 +25,7 @@
           <a  class="dropdown-toggle icon-menu" data-toggle="dropdon"
              aria-expanded="false">
             <img src="../../assets/images/remind.png">
-            <span class="badge bg-danger">5</span>
+            <span class="badge bg-danger">{{notice.length}}</span>
           </a>
           <transition name="noticeFade">
             <ul v-if="isShowNotice"

@@ -33,9 +33,6 @@
         <button class="btn btn-default"
                 :disabled="inSociety(item.userId)?disabled:''"
                 @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">邀请加入
-
-
-
         </button>
       </div>
 

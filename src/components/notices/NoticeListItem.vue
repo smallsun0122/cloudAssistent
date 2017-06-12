@@ -12,7 +12,7 @@
     </div>
     <div class="announcement-info">
       <span>{{notice.time | time}}</span>
-      <span class="info-society">来源:{{ societyName }}</span>
+      <span class="info-society">来源:{{ notice.society_name }}</span>
     </div>
   </div>
 </template>
