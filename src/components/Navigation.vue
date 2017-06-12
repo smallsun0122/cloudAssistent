@@ -85,7 +85,7 @@
     margin-right: 40px;
   }
   .btn {
-    margin: 15px 0 0 -5px;
+    margin: 15px 0 0 10px;
   }
   .btn-landing {
     background-color: transparent;

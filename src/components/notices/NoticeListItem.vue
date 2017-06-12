@@ -12,7 +12,18 @@
     </div>
     <div class="announcement-info">
       <span>{{notice.time | time}}</span>
-      <span class="info-society">来源:{{ notice.society_name }}</span>
+      <div class="">
+        <span class="info-society">
+          <div style="float:left;width:35px;">
+            来源:
+          </div>
+          <div style="float:right;width:90px;">
+            <span style="float:left;">
+              {{ notice.society_name }}
+            </span>
+          </div>
+        </span>
+      </div>
     </div>
   </div>
 </template>
@@ -46,6 +57,7 @@
   }
 
   .announcement-info {
+    width:125px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

@@ -4,12 +4,13 @@
       <p @click="modalOn">任务列表</p>
       <router-link to="./QuestCreate">123</router-link>
       {{this.allQuest}}
-      <div v-for="questItem in this.allQuest.data ">
-        <p>发布者：{{questItem.publisher.nickName}} </p>
+      <div v-for="questItem in this.allQuest.data " class="ribbon">
+        <span class="ribbon3">发布者：{{questItem.publisher.nickName}} </span>
         <img :src="questItem.publisher.userLogo" alt="" style="height:50px;width:50px;">
         <p>来自 {{questItem.society_name}}</p>
+        <p>发布时间：{{questItem.time | time}}</p>
         <div v-for="(subTaskItem,j) in questItem.subTask">
-          <p>子任务{{j}}:{{subTaskItem.question}}进度：{{subTaskItem.progress}}</p>
+          <p>子任务{{j+1}}:{{subTaskItem.question}}进度：{{subTaskItem.progress}}</p>
         </div>
       </div>
     </div>

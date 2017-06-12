@@ -140,6 +140,7 @@ h1 {
   color:#fff;
 }
 .btn-top {
+  margin-left: 10px;
   margin-top: 50px;
 }
 .btn-center {
