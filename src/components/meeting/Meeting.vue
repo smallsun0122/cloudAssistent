@@ -2,8 +2,8 @@
 
   <div id="meeting">
     <div class="container-fluid meeting-wrap">
-      <div class="add-wrap" v-on:click="createMeeting">
-        <div class="add-btn">
+      <div class="add-wrap" >
+        <div class="add-btn"v-on:click="createMeeting">
           <!--<router-link to="/meeting/create">-->
           <span><i class="fa fa-plus" aria-hidden="true"></i> 创建新会议</span>
           <!--</router-link>-->
@@ -95,10 +95,10 @@
   }
 
   .add-btn {
+    cursor: pointer;
     font-size: 25px;
     padding: 10px;
     background: #27beff;
-
     border-radius: 10px;
 
     transition: all 0.5s;
@@ -305,4 +305,3 @@
     }
   }
 </script>
-

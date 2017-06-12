@@ -3,14 +3,15 @@
       <modal v-bind:show="show"></modal>
       <p @click="modalOn">任务列表</p>
       <router-link to="./QuestCreate">123</router-link>
-      {{this.allQuest}}
-      <div v-for="questItem in this.allQuest.data " class="ribbon">
+      <!-- {{this.allQuest}} -->
+
+      <div v-for="questItem in this.allQuest.data " class="ribbon questItem">
         <span class="ribbon3">
-          <img :src="questItem.publisher.userLogo" alt="" style="height:50px;width:50px;    border: 2px solid #23bab5;border-radius:50%;">
-          发布者：{{questItem.publisher.nickName}}
+          {{questItem.publisher.nickName}}
+          <img :src="questItem.publisher.userLogo" alt="" style="height:50px;width:50px;float:left;border-radius:50px;border:1px solid #23bab5;">
         </span>
         <p>来自 {{questItem.society_name}}</p>
-        <p>发布时间：{{questItem.time | time}}</p>
+        <p>发布时间：{{new Date(questItem.time).toLocaleString()}}</p>
         <div v-for="(subTaskItem,j) in questItem.subTask">
           <p>子任务{{j+1}}:{{subTaskItem.question}}进度：{{subTaskItem.progress}}</p>
         </div>
@@ -18,9 +19,20 @@
     </div>
 </template>
 
-<style media="screen">
-  @import "../../assets/css/ribbon/style.css";
-  @import "../../assets/css/ribbon/zzsc-demo.css";
+<style scoped>
+
+  @import '../../assets/css/ribbon/style.css';
+  @import '../../assets/css/ribbon/zzsc-demo.css';
+
+  .questItem{
+    position: relative;
+    left: 10px;
+    right: 10px;
+    width:500px;
+    border:1px solid;
+    background-color: #ffffff;
+    box-shadow: 5px 5px 4px 1px rgba(0,0,0,0.3);
+  }
 
 </style>
 

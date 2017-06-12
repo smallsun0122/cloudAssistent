@@ -120,6 +120,7 @@
   }
 
   .main-content {
+    padding-left: 20px;
     -webkit-transition: 500ms ease;
     -moz-transition: 500ms ease;
     -o-transition: 500ms ease;
@@ -134,6 +135,7 @@
     /*width: 220px;*/
     z-index: 98;
     height: 100%;
+    width:220px;
     color: #80969c;
     -webkit-transition: 500ms ease;
     -moz-transition: 500ms ease;
@@ -273,6 +275,7 @@
 <script>
   import Toolbar from './components/nav/Toolbar.vue'
   import MainMenu from './components/nav/MainMenu.vue'
+  import notice from './tips'
   export default {
     data () {
       return {
@@ -286,6 +289,7 @@
       // const ws = new WebSocket('ws://127.00.1:8080/ws?roomId=' + room.id)
       ws.onmessage = function (message) {
         console.log('接收到的信息' + message.data)
+        notice.alert(1, '你有一条新提醒', 2)
         that.$store.dispatch('addNotice', JSON.parse(message.data))
       }
       ws.onopen = function () {

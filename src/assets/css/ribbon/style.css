@@ -1,54 +1,6 @@
 /*body {margin:0;font-family: 'Ubuntu', sans-serif;}*/
 section {margin:0 auto; max-width:660px;padding: 0 20px}
-h2 {
-  font-weight: normal;
-  position: relative;
-  background: #F4F9FA;
-  width: 50%;
-  color: #F8463F;
-  text-align: center;
-  padding: 10px 20px;
-  margin: 20px auto 40px;
-  text-transform: uppercase;
-  border-radius: 2px;
-}
-h2:before, h2:after {
-  content: "";
-  position: absolute;
-  display: block;
-  top: -6px;
-  border: 18px solid #DCF4F4;
-}
-h2:before {
-  left: -36px;
-  border-right-width: 18px;
-  border-left-color: transparent;
-}
-h2:after {
-  right: -36px;
-  border-left-width: 18px;
-  border-right-color: transparent;
-}
-h2 span:before, h2 span:after {
-  content: "";
-  position: absolute;
-  display: block;
-  border-style: solid;
-  border-color: #A7CECC transparent transparent transparent;
-  top: -6px;
-  -webkit-transform: rotate(180deg);
-  -ms-transform: rotate(180deg);
-  -o-transform: rotate(180deg);
-  transform: rotate(180deg);
-}
-h2 span:before {
-  left: 0;
-  border-width: 6px 0 0 6px;
-}
-h2 span:after {
-  right: 0;
-  border-width: 6px 6px 0 0;
-}
+
 .ribbon {
   display: inline-block;
   width: 48%;
@@ -150,7 +102,7 @@ h2 span:after {
   padding-left: 15px;
   background: #59324C;
   left: -8px;
-  top: 20px;
+  bottom: 20px;
   color:#ffffff;
 }
 .ribbon3:before, .ribbon3:after {
