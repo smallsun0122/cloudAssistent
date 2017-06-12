@@ -185,7 +185,7 @@
 
   .btn-border {
     color: #3DA8F5;
-    border-color: #3DA8F5 !important;
+    border: 1px solid #3DA8F5;
     background: transparent;
   }
 
