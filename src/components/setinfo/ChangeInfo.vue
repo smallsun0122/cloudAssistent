@@ -11,29 +11,27 @@
           </div>
           <div class="card-content">
             <form class="form-horizontal info-group">
+              <!--头像-->
               <div class="form-group">
                 <label class="col-sm-2 control-label avatar-label">头像</label>
                 <div class="col-sm-10">
                   <div class="avatar-wrap">
                     <div class="img-100">
+                      <!--<img :src="user.logoUrl">-->
                       <img :src="user.logoUrl">
                     </div>
                     <div class="avatar-set">
-                      <img id="preview" :src="file && URL.createObjectURL(file)">
-                      <!--<form enctype="multipart/form-data" method="post" action="http://112.74.214.252:8080/acloud/user/logo">-->
-                      <input type="file" name="photo" v-on:change="previewFile">
-                      <!--<input  value="提交" v-on:click="submitFile">-->
-                      <!--</form>-->
-
-                      <a @click="submitFile"
+                      <input ref="fileInput" style="display: none" type="file" name="photo"
+                             v-on:change="previewFile">
+                      <a @click="updateLogo"
                          class="btn btn-ghost btn-primary btn-border update-avatar">更换头像</a>
-
                     </div>
                   </div>
                 </div>
               </div>
+              <!--昵称-->
               <div class="form-group">
-                <label class="col-sm-2 control-label">姓名</label>
+                <label class="col-sm-2 control-label">昵称</label>
                 <div class="col-sm-10">
                   <input class="name-input form-control" type="text"
                          name="name" value="小太阳" v-model="name">
@@ -42,42 +40,10 @@
               <div class="form-group">
                 <label class="col-sm-2 control-label">学校</label>
                 <div class="col-sm-10">
-                  <select @click="getUserSchool" v-model="schoolId">
-                    <option value="-1">--选择学校--</option>
+                  <select @click="getUserSchool" v-model="schoolId" autocomplete="off">
+                    <option :value="user.major.college.school.id" selected="selected">{{user.major.college.school.name}}</option>
                     <option v-for="(school,index) in schools" v-bind:value="school.id">
-                      {{school.name}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                      <p>{{school.name}}</p>
                     </option>
                   </select>
                 </div>
@@ -88,48 +54,7 @@
                   <select @click="getUserCollege" v-model="collegeId">
                     <option value="-1">--选择学院--</option>
                     <option v-for="(college,index) in colleges" v-bind:value="college.id">
-                      {{college.name}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                      <p>{{college.name}}</p>
                     </option>
                   </select>
                 </div>
@@ -140,48 +65,7 @@
                   <select @click="getUserMajor" v-model="majorId">
                     <option value="-1">--选择专业--</option>
                     <option v-for="(major,index) in majors" v-bind:value="major.id">
-                      {{major.name}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+                      <p>{{major.name}}</p>
                     </option>
                   </select>
                 </div>
@@ -336,7 +220,6 @@
   export default {
     data () {
       return {
-        $file: null,
         file: null,
         name: '',
         major: '',
@@ -366,24 +249,29 @@
       }
     },
     mounted: function () {
-      this.$file = this.$el.querySelector('input[type="file"]')
+      this.name = this.user.nickName
+      this.stuId = this.user.stuId
+      this.phone = this.user.phone
     },
     computed: mapGetters({
       user: 'getCurrentUser'
     }),
     methods: {
+      updateLogo: function () {
+        this.$refs.fileInput.click()
+      },
       previewFile (e) {
         let file = e.target.files[0]
         let supportedTypes = ['image/jpg', 'image/jpeg', 'image/png']
         if (file && supportedTypes.indexOf(file.type) >= 0) {
           this.file = file
+          this.submitFile()
         } else {
           alert('文件格式只支持：jpg、jpeg 和 png')
           this.clearFile()
         }
       },
       clearFile () {
-        this.$file.value = ''
         this.file = null
       },
       submitFile () {
@@ -396,8 +284,6 @@
           .then(function () {
             alert('上传成功')
           })
-      },
-      chooseImage: function () {
       },
       saveInfo: function () {
         var name = this.name
@@ -447,7 +333,7 @@
       },
       getUserMajor: function () {
         let self = this
-        var collegeId = this.collegeId
+        const collegeId = this.collegeId
         this.$http.get('/admin/colleges/' + collegeId + '/majors')
           .then(function (res) {
             console.log(res.data)

@@ -1,26 +1,45 @@
 <template>
-  <div style="clear: both;margin-top: 100px">
+  <div
+    style="clear: both;margin-top: 10px;margin-bottom: 150px;border-radius: 10px ; border: 1px solid silver;padding: 10px;">
     <!--todo 社团邀请-->
-    <p>社团邀请</p>
-    <input style="width: 50%;" @keyup.enter="searchUser" placeholder="搜索需要邀请的人(用过userId 和 昵称 搜索" v-model="searchMsg"/>
-    <button class="btn btn-default" @click="searchUser()">搜索用户</button>
+    <p style="text-align: center;font-size: 24px">社团邀请</p>
+
+    <div style="display: flex;flex-flow: row;justify-content: center">
+      <input style="width: 50%;" @keyup.enter="searchUser" placeholder="搜索需要邀请的人(用过userId 和 昵称 搜索"
+             v-model="searchMsg"/>
+      <button class="btn btn-default" @click="searchUser()">搜索用户</button>
+    </div>
 
     <div>
-      <!--{{societyId}}-->
-      <!--{{members}}-->
+      <div class="col-md-4" style="margin: 15px 0;" v-for="item in result">
+        <div style="display: flex; flex-flow: row;align-items: center">
 
-      <div v-for="item in result">
-        <p>{{item.nickName}}</p>
-        <p>{{item.logo}}</p>
-        <p>{{item.userId}}</p>
+          <div style="width: 150px;height: 150px">
+            <img style="border-radius: 50%;width: 100%;height: 100%" :src="item.logo">
+          </div>
+          <div class="temp">
+            <p>id</p>
+            <p style="font-size: 18px">{{item.userId}}</p>
+            <p style="margin-top: 15px">名字</p>
+            <p style="font-size: 18px">{{item.nickName}}</p>
+          </div>
 
+        </div>
         <input type="text" placeholder="邀请理由" v-model="inviteMsg">
         <select v-model="positionId">
           <option value="-1">选择职位</option>
           <option v-for="item in positions" :value="item.id">{{item.name}}</option>
         </select>
-        <button class="btn btn-default" @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">邀请加入</button>
+        <button class="btn btn-default"
+                :disabled="inSociety(item.userId)?disabled:''"
+                @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">邀请加入
+
+
+
+        </button>
       </div>
+
+      <div style="clear: both;"></div>
     </div>
   </div>
 </template>
@@ -28,13 +47,17 @@
 <style scoped>
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
+
+  .temp p {
+    margin: 0;
+  }
 </style>
 
 <script>
   import Qs from 'qs'
   export default{
     name: 'invitation',
-    props: ['societyId', 'positions'],
+    props: ['societyId', 'positions', 'members'],
     data () {
       return {
         searchMsg: '',
@@ -43,6 +66,13 @@
     },
     components: {},
     methods: {
+      inSociety: function (id) {
+        const result = this.members.find(item => item.userId === id)
+        if (result === undefined) {
+          return true
+        }
+        return false
+      },
       searchUser: function () {
         const self = this
         this.$http.get('user/search?query=' + this.searchMsg)
@@ -59,6 +89,9 @@
         }), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
           .then(function (response) {
             alert('邀请成功')
+          })
+          .catch(function () {
+            alert('你没有权限邀请')
           })
       }
     }

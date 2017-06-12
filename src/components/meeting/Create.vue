@@ -20,18 +20,41 @@
           name: '',
           theme: '',
           society: -1,
-          meetingTime: '',
+//          meetingTime: {},
           members: []
 //          question: []
         }
+//        meetingData: {},
+//        meetingTime: {}
       }
     },
     components: {
       ModelDialog
     },
     mounted: function () {
+      this.getUserSociety()
     },
     methods: {
+      chooseMeetingMember: function (memberId) {
+        let result = this.submitMember.find(id => id === memberId)
+        if (result === undefined) {
+          // 添加
+          this.submitMember.push(memberId)
+        } else {
+          // 删除
+          const index = this.submitMember.indexOf(memberId)
+          if (index !== -1) {
+            this.submitMember.splice(index, 1)
+          }
+        }
+      },
+      isInMember: function (memberId) {
+        let result = this.submitMember.find(id => id === memberId)
+        if (result === undefined) {
+          return false
+        }
+        return true
+      },
       getUserSociety: function () {
         let self = this
         this.$http.get('society/user')
@@ -45,6 +68,7 @@
       submitMeeting: function () {
         this.meeting.members = this.submitMember
         this.meeting.society = this.societyId
+//        this.meeting.meetingTime = this.meetingTime.getTime()
         this.$http.post('meeting', this.meeting)
           .then(function (response) {
             alert(response.data)
@@ -55,6 +79,9 @@
       },
       closeModel: function () {
         this.$emit('update:isShow', false)
+      },
+      chooseSociety: function (societyId) {
+        this.societyId = societyId
       }
     },
     watch: {
@@ -62,6 +89,9 @@
       societyId: function () {
         // 获取社团的所有成员
         let self = this
+        // 更新社团之前，需要先清空成员
+        this.submitMember.splice(0, this.submitMember.length)
+        this.societyMember.splice(0, this.societyMember.length)
         this.$http.get('society/' + this.societyId + '/users')
           .then(function (response) {
             self.societyMember = response.data
@@ -86,40 +116,80 @@
       </div>
 
       <div class="modal-body">
-        会议名字<input type="text" name="name" v-model="meeting.name"/>
-        <br>
-        主题<input type="text" name="theme" v-model="meeting.theme"/>
-        <br>
-        <label>
-          所属社团：
-          <select name="society" v-model="societyId" v-on:click="getUserSociety">
-          <option value="-1">选择社团</option>
-          <option v-for="(society,i) in userSociety" v-bind:value="society.id"> {{society.name}}
 
-
-          </option>
-        </select>
-          社团id： {{societyId}}
-          </label>
-        <br>
-        会议时间 <input type="text" name="meetingTime"/>
-        <br>
-        开会成员{{societyMember}}
-          <br>
-
-        <div v-for="member in societyMember">
-
-          <input type="checkbox" id="jack" v-bind:value="member.userId" v-model="submitMember">
-          <label for="jack">{{member.nickName}}</label>
+        <!--名字-->
+        <div class="form-item">
+          <span class="form-label col-md-2"> 会议名字 </span>
+          <input class="form-input" type="text" v-model="meeting.name"/>
         </div>
-        {{submitMember}}
 
+        <!--主题-->
+        <div class="form-item">
+          <span class="form-label col-md-2">主题</span>
+          <textarea class="form-textarea" type="text" name="theme" v-model="meeting.theme"/>
+        </div>
 
+        <!--社团-->
+        <div class="form-item">
+
+          <span class="form-label col-md-2">所属社团</span>
+
+          <div class="col-md-10 society-wrap ">
+            <ul>
+              <li @click="chooseSociety(society.id)"
+                  style="padding-right: 20px; float: left"
+                  v-for="(society,i) in userSociety">
+                <div class="society-box">
+
+                  <div style="position: relative; width: 150px;height: 150px">
+                    <div v-if="societyId === society.id" class="choose-box">
+                      <i style="font-size: 12rem" class="fa fa-check"></i>
+                    </div>
+                    <img :src="society.societyLogo">
+                  </div>
+
+                  <p>{{society.name}}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+        <!--会议时间-->
+        <!--<div class="form-item">-->
+        <!--<span class="form-label col-md-2">会议时间</span>-->
+        <!--<input type="date" name="meetingTime" v-model="meetingData"/>-->
+        <!--<input type="time" name="meetingTime" v-model="meetingTime"/>-->
+        <!--</div>-->
+        <!--成员-->
+        <div class="form-item">
+          <p class="form-label col-md-2">开会成员</p>
+          <div class="member-wrap col-md-10">
+
+            <ul style="list-style: none">
+              <li @click="chooseMeetingMember(member.userId)"
+                  style="padding-right: 20px; float: left"
+                  class="member-box"
+                  v-for="(member,i) in societyMember">
+                <div class="member-box">
+
+                  <div style="position: relative; width: 80px;height: 80px">
+                    <div v-if="isInMember(member.userId)" class="choose-box">
+                      <i style="font-size: 8rem" class="fa fa-check"></i>
+                    </div>
+                    <img :src="member.logoUrl">
+                  </div>
+                  <p>{{member.nickName}}</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="modal-footer">
         <button v-on:click="submitMeeting" class="btn btn-primary">提交</button>
-        <button  class="btn btn-default" @click="closeModel">关闭</button>
+        <button class="btn btn-default" @click="closeModel">关闭</button>
       </div>
     </div>
 
@@ -133,6 +203,103 @@
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
   @import "../../assets/css/model.css";
+
+  .member-wrap {
+
+    margin-top: 20px;
+  }
+
+  .member-box img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+  }
+
+  .member-box p {
+    text-align: center;
+  }
+
+  .form-item {
+    margin: 10px 0;
+
+    display: flex;
+    align-items: center;
+  }
+
+  .form-label {
+    font-size: 18px;
+    text-align: right;
+  }
+
+  .form-input {
+    min-width: 30%;
+
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    padding: 10px;
+    outline: none;
+  }
+
+  .form-textarea {
+    min-width: 35%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+
+    padding: 10px;
+    outline: none;
+  }
+
+  .society-wrap {
+    margin-top: 20px;
+    padding-left: 0;
+  }
+
+  .society-wrap ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .society-wrap li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .society-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+  }
+
+  .society-box img {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+  }
+
+  .society-box p {
+    text-align: center;
+  }
+
+  .choose-box {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    border-radius: 50%;
+    background: forestgreen;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0.6;
+  }
 
   .content-wrap {
     display: flex;
