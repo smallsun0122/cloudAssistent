@@ -25,16 +25,20 @@
           <society-apply :societyId="society.id"></society-apply>
         </div>
 
-        <!--todo 社团的职位-->
-        <div>
-          <div style="float: left; width: 100px;" v-for="position in society.positions">
-            <p>等级：{{position.grade}}</p>
-            <p>名字：{{position.name}}</p>
-          </div>
+        <div style="border: 1px solid silver;padding: 10px;border-radius: 10px">
+          <p style="font-size: 24px;text-align: center"> 社团职位</p>
+          <div>
+            <div style="float: left; width: 100px;" v-for="position in society.positions">
+              <p>等级：{{position.grade}}</p>
+              <p>名字：{{position.name}}</p>
+            </div>
 
+          </div>
+          <div style="clear: both"></div>
         </div>
 
-        <invitation :societyId="society.id" :positions="society.positions"></invitation>
+        <invitation :members="society.members" :societyId="society.id"
+                    :positions="society.positions"></invitation>
       </div>
     </div>
   </div>
