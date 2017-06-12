@@ -13,7 +13,7 @@
 
       <!-- Collect the nav links, forms, and other content for toggling -->
       <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <button type="button" class="btn btn-default navbar-right" @click="loginView">登录</button>
+        <button type="button" class="btn btn-landing navbar-right" @click="loginView" :class="{ btnDefault: scrolled}">登录</button>
         <ul class="nav navbar-nav navbar-right">
           <li><a href="#">功能</a></li>
           <li><a href="#">下载</a></li>
@@ -57,26 +57,37 @@
     border-radius: 0px;
   }
 
+  .navbar,.navbar-nav>li>a{
+    -webkit-transition: all 0.5s;
+  }
+
   .navbar-landing .navbar-nav>li>a {
     font-size: 16px;
-    color: #fff;
+    color: #ffffff;
+    border-radius: 5px;
+  }
+
+  .navbar-nav>li>a:hover {
+    font-size: 16px;
+    color: #000000;
     border-radius: 5px;
   }
 
   .navbarDefault{
     background-color:#ffffff;
+    opacity: 0.87;
   }
   .navbarDefault .navbar-nav>li>a {
     font-size: 16px;
-    background-color: #ffffff;
+    background-color: transparent;
     color: #333333;
     border-radius: 5px;
   }
   .navbarDefault .navbar-nav>li>a:hover{
     font-size: 16px;
-    background-color: #d1d4d7;
+    background-color: #333333;
     color: #ffffff;
-    border-radius: 5px;
+    border-radius: 0px;
   }
   .navbar-nav {
     margin-top: 10px;
@@ -88,16 +99,25 @@
     margin: 15px 0 0 10px;
   }
   .btn-landing {
+    border:1px solid;
     background-color: transparent;
-    color: #fff;
+    color: #ffffff;
+    -webkit-transition:all 0.5s;
   }
-  .btn-default {
+  .btn-landing:hover{
+    border:1px solid;
+    color:#000000;
+    background-color: #ffffff;
+
+  }
+  .btnDefault {
     background-color: transparent;
     color: #333333;
+    -webkit-transition:all 0.5s;
   }
-  .btn-default:hover {
+  .btnDefault:hover {
     background-color: transparent;
-    background-color: #d1d4d7;
+    background-color: #333333;
     color: #ffffff;
   }
 </style>

@@ -5,8 +5,10 @@
       <router-link to="./QuestCreate">123</router-link>
       {{this.allQuest}}
       <div v-for="questItem in this.allQuest.data " class="ribbon">
-        <span class="ribbon3">发布者：{{questItem.publisher.nickName}} </span>
-        <img :src="questItem.publisher.userLogo" alt="" style="height:50px;width:50px;">
+        <span class="ribbon3">
+          <img :src="questItem.publisher.userLogo" alt="" style="height:50px;width:50px;    border: 2px solid #23bab5;border-radius:50%;">
+          发布者：{{questItem.publisher.nickName}}
+        </span>
         <p>来自 {{questItem.society_name}}</p>
         <p>发布时间：{{questItem.time | time}}</p>
         <div v-for="(subTaskItem,j) in questItem.subTask">
@@ -17,6 +19,8 @@
 </template>
 
 <style media="screen">
+  @import "../../assets/css/ribbon/style.css";
+  @import "../../assets/css/ribbon/zzsc-demo.css";
 
 </style>
 
