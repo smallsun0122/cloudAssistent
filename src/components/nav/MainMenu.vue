@@ -60,7 +60,7 @@
           {
             path: '/quest/Quest',
             icon: 'fa-calendar',
-            name: '任务(未完成)'
+            name: '任务'
           },
           {
             path: '/notices/Announcement',

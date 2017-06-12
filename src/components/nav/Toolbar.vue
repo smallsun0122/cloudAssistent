@@ -10,7 +10,7 @@
         </svg>
       </div>
       <div class="navbar-brand header-flex">
-        <img src="../../assets/images/Cloud_small.png" alt="">
+        <img src="../../assets/images/Cloud_small.png" alt="" class="cloudLogo">
         <span>社团云助手</span>
       </div>
     </div>
@@ -112,7 +112,27 @@
 
   .option {
     cursor: pointer;
-    width: 60px;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  .option:hover{
+    background-color: #e8e8e8;
+  }
+  .option:active{
+    background-color: #888888;
+  }
+
+  .cloudLogo:hover{
+    animation: myfirst .1s infinite;
+    -moz-animation: myfirst .1s infinite;
+    -webkit-animation: myfirst .1s infinite;
+    -o-animation: myfirst .1s infinite;
+  }
+  @keyframes myfirst
+  {
+    from {transform: translate(-3px,0px);}
+    to {transform: translate(3px,0px);}
   }
 
   .header-flex {
