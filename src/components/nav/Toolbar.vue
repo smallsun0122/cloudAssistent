@@ -4,7 +4,7 @@
 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <div class="navbar-brand header-flex option" style="width:60px;" @click="sidebarChange">
+      <div class="option navbar-brand header-flex" style="width:50px;" @click="sidebarChange">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24" onclick="leftnavshow()">
           <path fill="rgba(0,0,0,0.3)" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/>
         </svg>
@@ -108,19 +108,6 @@
     line-height: 60px;
     width: 220px;
     text-align: center;
-  }
-
-  .option {
-    cursor: pointer;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  .option:hover{
-    background-color: #e8e8e8;
-  }
-  .option:active{
-    background-color: #888888;
   }
 
   .cloudLogo:hover{
@@ -346,6 +333,21 @@
   .show-notice {
     opacity: 0;
     -webkit-transition: all 0.5s;
+  }
+
+  .option {
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+
+  .option:hover{
+    background-color: #e8e8e8;
+  }
+
+  .option:active{
+    background-color: #888888;
   }
 </style>
 
