@@ -1,20 +1,30 @@
 <template>
     <div id="">
 
-      <h2 @click="modalOn">任务列表</h2>
+      <h2>任务列表</h2>
       <router-link to="./QuestCreate"><button class="createQuest" type="button" name="button">创建任务</button></router-link>
       <!-- {{this.allQuest}} -->
+      <progress-push :item="questId"></progress-push>
       <div class="questSet">
-        <div v-for="questItem in this.allQuest.data " class="ribbon questItem">
+        <div v-for="questItem in this.allQuest.data " class="ribbon questItem" @click="showProgress(questItem)">
           <span class="ribbon3">
             {{questItem.publisher.nickName}}
             <img :src="questItem.publisher.userLogo" alt="">
           </span>
-          <button class="updatePro" type="button" name="button">更新进度</button>
-          <p>来自 {{questItem.society_name}}</p>
-          <p>发布时间：{{new Date(questItem.time).toLocaleString()}}</p>
-          <div v-for="(subTaskItem,j) in questItem.subTask">
-            <p>子任务{{j+1}}:{{subTaskItem.question}}进度：{{subTaskItem.progress}}</p>
+          <button class="updateProgress" type="button" name="button">更新进度</button>
+          <div class="societyName">
+            <p>来自 {{questItem.society_name}}</p>
+          </div>
+          <div class="societyTime">
+            <p>发自 {{new Date(questItem.time).toLocaleString()}}</p>
+          </div>
+          <div class="subTask">
+            <div  class="subTaskItem" v-for="(subTaskItem,j) in questItem.subTask">
+              <p>子任务{{j+1}}:{{subTaskItem.question}}</p>
+                <div class="Progressbar">
+                  <p>进度：{{subTaskItem.progress}}</p>
+                </div>
+            </div>
           </div>
         </div>
       </div>
@@ -44,6 +54,42 @@
     box-shadow: 5px 5px 4px 1px rgba(0,0,0,0.3);
   }
 
+  .societyName{
+    position: absolute;
+    left: 10px;
+    top: 10px;
+  }
+
+  .societyTime{
+    position:  absolute;
+    bottom: 0%;
+    right: 10px;
+  }
+
+  .subTask{
+    position:  absolute;
+    right:20px;
+    top: 20px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .subTaskItem{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 210px;
+  }
+
+  .updateProgress{
+    position: absolute;
+    right: 0%;
+    top:0px;
+  }
+
+  .Progressbar{
+    margin-left: 10px;
+  }
   .createQuest{
       position: absolute;
       top:90px;
@@ -63,14 +109,18 @@
      border-radius:50px;
      border:1px solid #23bab5;
   }
+
 </style>
 
 <script type="text/javascript">
     import notie from '@/tips'
     import modal from '../modal/modal.vue'
+    import ProgressPush from './ProgressPush.vue'
+
     export default {
       data () {
         return {
+          questId: [],
           show: '',
           allQuest: [{
             executors: [],
@@ -96,20 +146,12 @@
         }
       },
       components: {
-        modal
+        modal, ProgressPush
       },
       methods: {
         finsh: function () {
           // notie.alert(1 , 123 , 2 )
           alert(1)
-        },
-        modalOn: function () {
-          if (this.show) {
-            this.show = false
-          } else {
-            this.show = true
-          }
-          alert(this.show)
         },
         getUserQuest: function () {
           let self = this
@@ -122,6 +164,10 @@
             .catch(function (err) {
               alert(err)
             })
+        },
+        showProgress: function (Id) {
+          // alert(1)
+          this.questId = Id
         }
       },
       mounted: function () {

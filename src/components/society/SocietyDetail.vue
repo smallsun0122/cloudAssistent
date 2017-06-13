@@ -1,19 +1,5 @@
 <template>
   <div class="">
-    <!-- <div class="scoreboard" >
-
-      <div class="scoreBoardItem">
-        <div class="boardRank">名次</div>
-        <div class="boardScore">分数</div>
-        <div class="boardName">用户ID</div>
-      </div>
-
-      <div class="scoreBoardItem" v-for="(scoreBoardItem, i) in scoreBoard">
-        <div class="boardRank">{{i+1}}</div>
-        <div class="boardScore">{{scoreBoardItem.score}}</div>
-        <div class="boardName">{{scoreBoardItem.userId}}</div>
-      </div>
-    </div> -->
     <div class="scoreBoard">
       <div class="scoreBoardName">
         <h3>
@@ -35,11 +21,11 @@
     </div>
     <div class="container">
 
-      <button style="float: right;"
-              class="btn btn-primary"
+      <button
+              class="btn btn-primary updateInfo"
               v-if="society.principal.userId === user.userId"
-              @click="modifySociety"
-      >修改资料
+              @click="modifySociety">
+      修改资料
       </button>
 
       <div class="logo-wrap">
@@ -90,12 +76,15 @@
 <style scoped>
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
-
+  .updateInfo{
+    position: absolute;
+    right: 10px;
+  }
   .scoreBoard{
     background-color: #ffffff;
     position: absolute;
     right: 10px;
-    top: 90px;
+    top: 120px;
     border: 3px solid;
     border-radius: 10px;
     height: 300px;
@@ -103,7 +92,7 @@
     /*display: flex;
     flex-direction: column;*/
   }
-  
+
   .scoreBoardName{
     color :#D2691E;
     width: 100%;
@@ -127,8 +116,8 @@
   .scoreBoardItem>td,.scoreBoardItem>th{
     margin: 5px;
     padding: 5px;
+    min-width:70px;
     text-align: center;
-
   }
 
   .member-box {

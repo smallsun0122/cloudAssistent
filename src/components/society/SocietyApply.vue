@@ -48,7 +48,6 @@
           <p>{{item.applierId}}</p>
           <p>{{item.applyId}}</p>
           <p>{{item.reason}}</p>
-
           <button @click="handlerApply(item.applyId,true)">同意</button>
           <button @click="handlerApply(item.applyId,false)">不同意</button>
         </li>

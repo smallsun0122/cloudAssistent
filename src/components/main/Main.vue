@@ -15,6 +15,11 @@
         <button @click="handleInvication(item.invitationId,false)">不同意</button>
 
       </div>
+      <!-- <div class="apply-wrap">
+        <div class="applyItem" v-for="">
+          <society-apply :societyId="society.id"></society-apply>
+        </div>
+      </div> -->
 
     </div>
   </div>
@@ -26,6 +31,7 @@
 
 <script>
   import Qs from 'qs'
+  import SocietyApply from '../society/SocietyApply.vue'
   export default{
     name: '',
     props: [],
@@ -52,6 +58,7 @@
             alert('处理成功')
           })
       }
-    }
+    },
+    SocietyApply
   }
 </script>
