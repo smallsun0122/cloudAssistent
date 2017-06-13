@@ -95,13 +95,15 @@
     background-color: #ffffff;
     position: absolute;
     right: 10px;
-    top:90px;
+    top: 90px;
     border: 3px solid;
     border-radius: 10px;
+    height: 300px;
+    overflow-y: auto;
     /*display: flex;
     flex-direction: column;*/
   }
-
+  
   .scoreBoardName{
     color :#D2691E;
     width: 100%;

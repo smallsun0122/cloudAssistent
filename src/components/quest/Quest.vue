@@ -8,7 +8,7 @@
         <div v-for="questItem in this.allQuest.data " class="ribbon questItem">
           <span class="ribbon3">
             {{questItem.publisher.nickName}}
-            <img :src="questItem.publisher.userLogo" alt="" style="height:50px;width:50px;float:left;border-radius:50px;border:1px solid #23bab5;">
+            <img :src="questItem.publisher.userLogo" alt="">
           </span>
           <button class="updatePro" type="button" name="button">更新进度</button>
           <p>来自 {{questItem.society_name}}</p>
@@ -56,7 +56,13 @@
       border-radius: 15px;
       outline: none;
   }
-
+  .ribbon3>img{
+     height:50px;
+     width:50px;
+     float:left;
+     border-radius:50px;
+     border:1px solid #23bab5;
+  }
 </style>
 
 <script type="text/javascript">

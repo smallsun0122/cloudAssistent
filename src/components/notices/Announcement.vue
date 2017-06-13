@@ -65,6 +65,11 @@
     data () {
       return {
         items: [{
+          publisher: [{
+            userId: '',
+            nickName: '',
+            userLogo: ''
+          }],
           title: '',
           content: '',
           time: '',

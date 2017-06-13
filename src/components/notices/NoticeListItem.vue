@@ -2,10 +2,10 @@
   <div :onload="getSociety()" class="list">
     <div class="announcement-title">
       <div class="announcement-user">
-        <img src="../../assets/images/portrait.png">
+        <img :src="notice.publisher.userLogo">
       </div>
       <div class="announcement-text">
-        <span>小太阳</span>
+        <span>{{notice.publisher.nickName}}</span>
         <h3>{{notice.title}}</h3>
         <p>{{notice.content}}</p>
       </div>
@@ -41,6 +41,8 @@
     width: 50px;
     height: 50px;
     display: block;
+    border-radius: 50%;
+    border:1px solid #23bab5;
   }
 
   .announcement-title {
@@ -49,6 +51,7 @@
   }
 
   .announcement-text {
+    width:800px;
     padding: 15px 0 10px 10px;
   }
 
