@@ -289,7 +289,7 @@
       // const ws = new WebSocket('ws://127.00.1:8080/ws?roomId=' + room.id)
       ws.onmessage = function (message) {
         console.log('接收到的信息' + message.data)
-        notice.alert(1, '你有一条新提醒', 2)
+        notice.alert(1, '你有一条', 2)
         that.$store.dispatch('addNotice', JSON.parse(message.data))
       }
       ws.onopen = function () {
