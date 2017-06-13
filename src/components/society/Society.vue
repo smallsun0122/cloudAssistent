@@ -17,7 +17,7 @@
       mySociety: 'getMySociety'
     }),
     mounted: function () {
-      this.$store.dispatch('initMySociety')
+
     },
     methods: {
       toDetail: function (id) {
