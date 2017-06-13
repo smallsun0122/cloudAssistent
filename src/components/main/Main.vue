@@ -15,6 +15,7 @@
         <button @click="handleInvication(item.invitationId,false)">不同意</button>
 
       </div>
+      {{notice}}
       <!-- <div class="apply-wrap">
         <div class="applyItem" v-for="">
           <society-apply :societyId="society.id"></society-apply>
@@ -37,7 +38,8 @@
     props: [],
     data () {
       return {
-        invitation: []
+        invitation: [],
+        notice: []
       }
     },
     mounted: function () {
@@ -45,6 +47,10 @@
       this.$http.get('society/invite')
         .then(function (response) {
           self.invitation = response.data
+        })
+      this.$http.get('/message/0')
+        .then(function (res) {
+          self.notce = res.data
         })
     },
     components: {},
