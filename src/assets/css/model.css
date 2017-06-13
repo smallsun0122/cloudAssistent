@@ -17,3 +17,24 @@
 
   max-height: 90vh;
 }
+
+.dialog-active {
+  display: flex;
+}
+
+.dialog-hidden {
+  display: none;
+}
+
+.dialog-overlay {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+
+  background: #0f0f0f;
+  opacity: 0.7;
+
+  z-index: 99;
+}
