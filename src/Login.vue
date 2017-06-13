@@ -158,14 +158,7 @@
     background: #3ea751;
     width: 100%;
     padding: 18px 0;
-    border-bottom-left-radius: 15px;
-    -webkit-border-bottom-left-radius: 15px;
-    -moz-border-bottom-left-radius: 15px;
-    -o-border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    -webkit-border-bottom-right-radius: 15px;
-    -moz-border-bottom-right-radius: 15px;
-    -o-border-bottom-right-radius: 15px;
+    border-radius: 15px;
     cursor: pointer;
   }
 

@@ -8,7 +8,7 @@
           <div class="title-text">
             <div class="col-md-12">
               <h1>社 团&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;助 手</h1>
-              <p>
+              <p style="font-size: 20px">
                 一款社团协作软件<br/>
                 你只需要创建一个社团,将所有相关的社团成员添加进来。<br/>
                 全平台实时协作，线上开会突破时间即时讨论，实时任务跟踪，同时为你管理社团资料<br/>
@@ -121,7 +121,7 @@ h1 {
 }
 .header-wrap {
   width: 100%;
-  height: 650px;
+  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;

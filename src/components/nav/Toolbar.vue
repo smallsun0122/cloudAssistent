@@ -74,7 +74,7 @@
 
         <!--关闭按钮-->
         <li>
-          <a href="#" class="logout">
+          <a class="logout" @click="logout()">
             <i class="glyphicon glyphicon-off"></i>
           </a>
         </li>
@@ -397,6 +397,9 @@
       },
       showNotice: function () {
         this.isShowNotice = !this.isShowNotice
+      },
+      logout: function () {
+        window.location.href = '../../login.html'
       }
     }
   }
