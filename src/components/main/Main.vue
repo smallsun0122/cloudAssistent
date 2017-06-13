@@ -15,12 +15,56 @@
         <button @click="handleInvication(item.invitationId,false)">不同意</button>
 
       </div>
-      {{notice}}
-      <!-- <div class="apply-wrap">
-        <div class="applyItem" v-for="">
-          <society-apply :societyId="society.id"></society-apply>
+
+      <!--未读公告-->
+      <div>
+        <p>未读公告</p>
+
+        <div style="float: left;padding: 20px;" v-for="item in notice">
+          <p>id = {{item.id}}</p>
+          <p>信息 = {{item.info}}</p>
+          <p>时间 = {{item.time}}</p>
+          <p>标题 = {{item.title}}</p>
+          <button @click="read('/notice/' + item.id + '?identifier='+ item.identifier)">已读</button>
         </div>
-      </div> -->
+      </div>
+      <div style="clear: both;"></div>
+      <!--未读任务-->
+      <div>
+        <p>未读任务:</p>
+        <div style="float: left;padding: 20px;" v-for="item in task">
+          <p>id = {{item.id}}</p>
+          <p>信息 = {{item.info}}</p>
+          <p>时间 = {{item.time}}</p>
+          <p>标题 = {{item.title}}</p>
+          <button @click="read('/task/' + item.id + '?identifier='+ item.identifier)">已读</button>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+
+      <!--未读社团信息-->
+      <div>
+        <p>未读社团信息:</p>
+        <div style="float: left;padding: 20px;" v-for="item in society">
+          <p>id = {{item.id}}</p>
+          <p>信息 = {{item.info}}</p>
+          <p>时间 = {{item.time}}</p>
+          <p>标题 = {{item.title}}</p>
+          <button @click="read('/society/' + item.id + '?identifier='+ item.identifier)">已读</button>
+        </div>
+      </div>
+      <div style="clear: both;"></div>
+      <!--未读邀请，申请-->
+      <div>
+        <p>未读邀请\申请:</p>
+        <div style="float: left;padding: 20px;" v-for="item in system">
+          <p>id = {{item.id}}</p>
+          <p>信息 = {{item.info}}</p>
+          <p>时间 = {{item.time}}</p>
+          <p>标题 = {{item.title}}</p>
+          <button @click="read('/system/' + item.id + '?identifier='+ item.identifier)">>已读</button>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -39,7 +83,10 @@
     data () {
       return {
         invitation: [],
-        notice: []
+        notice: [],
+        task: [],
+        system: [],
+        society: []
       }
     },
     mounted: function () {
@@ -48,9 +95,21 @@
         .then(function (response) {
           self.invitation = response.data
         })
-      this.$http.get('/message/0')
+      this.$http.get('/message/notice')
         .then(function (res) {
-          self.notce = res.data
+          self.notice = res.data
+        })
+      this.$http.get('/message/task')
+        .then(function (res) {
+          self.task = res.data
+        })
+      this.$http.get('/message/system')
+        .then(function (res) {
+          self.system = res.data
+        })
+      this.$http.get('/message/society')
+        .then(function (res) {
+          self.society = res.data
         })
     },
     components: {},
@@ -61,6 +120,12 @@
           'isAllow': isAllow
         }), {headers: {'Content-Type': 'application/x-www-form-urlencoded'}})
           .then(function (response) {
+            alert('处理成功')
+          })
+      },
+      read: function (url) {
+        this.$http.get(url)
+          .then(function () {
             alert('处理成功')
           })
       }
