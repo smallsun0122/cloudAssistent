@@ -2,6 +2,13 @@
   <div class="">
     <div class="container">
 
+      <button style="float: right;"
+              class="btn btn-primary"
+              v-if="society.principal.userId === user.userId"
+              @click="modifySociety"
+      >修改资料
+      </button>
+
       <div class="logo-wrap">
         <img :src="society.societyLogo"/>
       </div>
@@ -10,6 +17,8 @@
 
         <p class="name">{{society.name}}</p>
         <p class="text summary">{{society.summary}}</p>
+
+
         <p style="font-size: 18px;text-align: center;padding-bottom: 10px">社团成员:</p>
 
         <div class="members-wrap">
@@ -41,6 +50,8 @@
                     :positions="society.positions"></invitation>
       </div>
     </div>
+
+  <modify v-if="isShowModify" :society="society" :isShow.sync="isShowModify"></modify>
   </div>
 </template>
 
@@ -136,14 +147,20 @@
 <script>
   import SocietyApply from './SocietyApply.vue'
   import Invitation from './Invitation.vue'
+  import Modify from './Modify.vue'
+  import { mapGetters } from 'vuex'
   export default{
     name: 'societyDetail',
     props: [],
     data () {
       return {
-        society: {}
+        society: {},
+        isShowModify: false
       }
     },
+    computed: mapGetters({
+      user: 'getCurrentUser'
+    }),
     mounted: function () {
       const societyId = this.$route.query.societyId
       const self = this
@@ -157,7 +174,7 @@
       this.initMembers(societyId)
     },
     components: {
-      SocietyApply, Invitation
+      SocietyApply, Invitation, Modify
     },
     methods: {
       initMembers: function (id) {
@@ -166,6 +183,9 @@
           .then(function (response) {
             self.members = response.data
           })
+      },
+      modifySociety: function () {
+        this.isShowModify = !this.isShowModify
       }
     }
   }
