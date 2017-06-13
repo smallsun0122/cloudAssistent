@@ -25,16 +25,17 @@
           </div>
 
         </div>
-        <input type="text" placeholder="邀请理由" v-model="inviteMsg">
-        <select v-model="positionId">
-          <option value="-1">选择职位</option>
-          <option v-for="item in positions" :value="item.id">{{item.name}}</option>
-        </select>
-        <button class="btn btn-default"
-                :disabled="inSociety(item.userId)?disabled:''"
-                @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)">
-          <p> 邀请加入 </p>
-        </button>
+        <div style="">
+          <input type="text" placeholder="邀请理由" v-model="inviteMsg">
+          <select v-model="positionId">
+            <option value="-1">选择职位</option>
+            <option v-for="item in positions" :value="item.id">{{item.name}}</option>
+          </select>
+          <button class="btn btn-default"
+                  :disabled="inSociety(item.userId)?disabled:''"
+                  @click="inviteJoin(item.userId,societyId,positionId,inviteMsg)"> 邀请加入
+          </button>
+        </div>
       </div>
 
       <div style="clear: both;"></div>

@@ -9,7 +9,12 @@
       }
     },
     mounted: function () {
-
+      if (this.societyId === undefined) return
+      const self = this
+      this.$http.get('society/join?societyId=' + this.societyId)
+        .then(function (response) {
+          self.societyApply = response.data
+        })
     },
     watch: {
       societyId: function () {
@@ -43,8 +48,8 @@
     <div style="border: 1px solid silver;border-radius: 10px;padding: 10px;">
       <p style="text-align: center;font-size: 24px"> 社团申请 </p>
       <p v-if="societyApply.length === 0" style="text-align: center">无社团申请</p>
-      <ul>
-        <li style="background: #fff000" v-for="item in societyApply">
+      <ul style="list-style: none">
+        <li style="background: #eae5b8;padding: 10px;float: left" v-for="item in societyApply">
           <p>{{item.applierId}}</p>
           <p>{{item.applyId}}</p>
           <p>{{item.reason}}</p>
@@ -52,6 +57,7 @@
           <button @click="handlerApply(item.applyId,false)">不同意</button>
         </li>
       </ul>
+      <div style="clear: both"></div>
     </div>
   </div>
 </template>
