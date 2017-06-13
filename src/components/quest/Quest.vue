@@ -1,10 +1,10 @@
 <template>
     <div id="">
 
+      <progress-push :item="questId" ref="ProgressPush"></progress-push>
       <h2>任务列表</h2>
       <router-link to="./QuestCreate"><button class="createQuest" type="button" name="button">创建任务</button></router-link>
       <!-- {{this.allQuest}} -->
-      <progress-push :item="questId"></progress-push>
       <div class="questSet">
         <div v-for="questItem in this.allQuest.data " class="ribbon questItem" @click="showProgress(questItem)">
           <span class="ribbon3">
@@ -149,10 +149,6 @@
         modal, ProgressPush
       },
       methods: {
-        finsh: function () {
-          // notie.alert(1 , 123 , 2 )
-          alert(1)
-        },
         getUserQuest: function () {
           let self = this
           this.$http('task/user')
@@ -166,7 +162,7 @@
             })
         },
         showProgress: function (Id) {
-          // alert(1)
+          this.$refs.ProgressPush.Show()
           this.questId = Id
         }
       },
