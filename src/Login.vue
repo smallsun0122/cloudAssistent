@@ -33,11 +33,13 @@
                          v-model="password" @keyup.enter="login">
                 </div>
                 <div v-show="passwordshow" class="password-error-info">
-                  <span class="password-info-text">
-                    <span>
-                      {{passwordErrorMessage}}
+                  <!-- <transition name="shake"> -->
+                    <span class="password-info-text">
+                      <span>
+                        {{passwordErrorMessage}}
+                      </span>
                     </span>
-                  </span>
+                  <!-- </transition> -->
                 </div>
               </form>
               <div class="signin">
@@ -228,7 +230,13 @@
     box-shadow: 1px 1px 1px rgba(0,0,0,.2);
     font-size: 13px;
     font-size: 1.3rem;
+
+    animation: myfirst .1s 3;
+    -moz-animation: myfirst .1s 3;
+    -webkit-animation: myfirst .1s 3;
+    -o-animation: myfirst .1s 3;
   }
+
   .user-info-text::after {
     content:'';
     width: 0;
@@ -255,6 +263,11 @@
     box-shadow: 1px 1px 1px rgba(0,0,0,.2);
     font-size: 13px;
     font-size: 1.3rem;
+
+    animation: myfirst .1s 3;
+    -moz-animation: myfirst .1s 3;
+    -webkit-animation: myfirst .1s 3;
+    -o-animation: myfirst .1s 3;
   }
   .password-info-text::after {
     content:'';
@@ -265,6 +278,12 @@
     position: absolute;
     left: -10px;
     top: 5px;
+  }
+
+  @keyframes myfirst
+  {
+    from {transform: translate(-3px,0px);}
+    to {transform: translate(3px,0px);}
   }
 </style>
 

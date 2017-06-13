@@ -1,113 +1,5 @@
-<script>
-  import ModelDialog from '../ModelDialog.vue'
-  export default {
-    name: 'create',
-    props: ['isShow'],
-    data () {
-      return {
-        userSociety: [{
-          college: 0,
-          id: 0,
-          name: '',
-          societyLogo: '',
-          summary: ''
-        }],
-        societyMember: [],
-        submitMember: [],
-        societyId: -1,
-        // 需要提交的数据
-        meeting: {
-          name: '',
-          theme: '',
-          society: -1,
-//          meetingTime: {},
-          members: []
-//          question: []
-        }
-//        meetingData: {},
-//        meetingTime: {}
-      }
-    },
-    components: {
-      ModelDialog
-    },
-    mounted: function () {
-      this.getUserSociety()
-    },
-    methods: {
-      chooseMeetingMember: function (memberId) {
-        let result = this.submitMember.find(id => id === memberId)
-        if (result === undefined) {
-          // 添加
-          this.submitMember.push(memberId)
-        } else {
-          // 删除
-          const index = this.submitMember.indexOf(memberId)
-          if (index !== -1) {
-            this.submitMember.splice(index, 1)
-          }
-        }
-      },
-      isInMember: function (memberId) {
-        let result = this.submitMember.find(id => id === memberId)
-        if (result === undefined) {
-          return false
-        }
-        return true
-      },
-      getUserSociety: function () {
-        let self = this
-        this.$http.get('society/user')
-          .then(function (response) {
-            self.userSociety = response.data
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      },
-      submitMeeting: function () {
-        this.meeting.members = this.submitMember
-        this.meeting.society = this.societyId
-//        this.meeting.meetingTime = this.meetingTime.getTime()
-        this.$http.post('meeting', this.meeting)
-          .then(function (response) {
-            alert(response.data)
-          })
-          .catch(function (error) {
-            console.log(error.data)
-          })
-      },
-      closeModel: function () {
-        this.$emit('update:isShow', false)
-      },
-      chooseSociety: function (societyId) {
-        this.societyId = societyId
-      }
-    },
-    watch: {
-      // 选择
-      societyId: function () {
-        // 获取社团的所有成员
-        let self = this
-        // 更新社团之前，需要先清空成员
-        this.submitMember.splice(0, this.submitMember.length)
-        this.societyMember.splice(0, this.societyMember.length)
-        this.$http.get('society/' + this.societyId + '/users')
-          .then(function (response) {
-            self.societyMember = response.data
-          })
-          .catch(function (error) {
-            console.log(error)
-          })
-      }
-    }
-  }
-
-</script>
 <template>
-
   <div class="model-wrap">
-
     <div class="content-wrap modal-content container"
          v-bind:class="[ isShow ? 'dialog-active':'dialog-hidden']">
 
@@ -331,3 +223,110 @@
     z-index: 99;
   }
 </style>
+
+<script>
+  import ModelDialog from '../ModelDialog.vue'
+  export default {
+    name: 'create',
+    props: ['isShow'],
+    data () {
+      return {
+        userSociety: [{
+          college: 0,
+          id: 0,
+          name: '',
+          societyLogo: '',
+          summary: ''
+        }],
+        societyMember: [],
+        submitMember: [],
+        societyId: -1,
+        // 需要提交的数据
+        meeting: {
+          name: '',
+          theme: '',
+          society: -1,
+//          meetingTime: {},
+          members: []
+//          question: []
+        }
+//        meetingData: {},
+//        meetingTime: {}
+      }
+    },
+    components: {
+      ModelDialog
+    },
+    mounted: function () {
+      this.getUserSociety()
+    },
+    methods: {
+      chooseMeetingMember: function (memberId) {
+        let result = this.submitMember.find(id => id === memberId)
+        if (result === undefined) {
+          // 添加
+          this.submitMember.push(memberId)
+        } else {
+          // 删除
+          const index = this.submitMember.indexOf(memberId)
+          if (index !== -1) {
+            this.submitMember.splice(index, 1)
+          }
+        }
+      },
+      isInMember: function (memberId) {
+        let result = this.submitMember.find(id => id === memberId)
+        if (result === undefined) {
+          return false
+        }
+        return true
+      },
+      getUserSociety: function () {
+        let self = this
+        this.$http.get('society/user')
+          .then(function (response) {
+            self.userSociety = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      },
+      submitMeeting: function () {
+        this.meeting.members = this.submitMember
+        this.meeting.society = this.societyId
+//        this.meeting.meetingTime = this.meetingTime.getTime()
+        this.$http.post('meeting', this.meeting)
+          .then(function (response) {
+            alert(response.data)
+          })
+          .catch(function (error) {
+            console.log(error.data)
+          })
+      },
+      closeModel: function () {
+        this.$emit('update:isShow', false)
+      },
+      chooseSociety: function (societyId) {
+        this.societyId = societyId
+      }
+    },
+    watch: {
+      // 选择
+      societyId: function () {
+        // 获取社团的所有成员
+        let self = this
+        // 更新社团之前，需要先清空成员
+        this.submitMember.splice(0, this.submitMember.length)
+        this.societyMember.splice(0, this.societyMember.length)
+        this.$http.get('society/' + this.societyId + '/users')
+          .then(function (response) {
+            self.societyMember = response.data
+          })
+          .catch(function (error) {
+            console.log(error)
+          })
+      }
+    }
+  }
+
+</script>
