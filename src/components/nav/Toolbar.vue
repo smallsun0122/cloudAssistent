@@ -370,7 +370,7 @@
     methods: {
       seachSociety: function () {
         this.$router.push({
-          path: 'searchSociety',
+          path: '/searchSociety',
           query: {
             msg: this.editMsg
           }

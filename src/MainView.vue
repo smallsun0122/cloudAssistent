@@ -2,7 +2,7 @@
   <div id="mainView">
     <div class="background"></div>
     <!--顶部-->
-    <toolbar ></toolbar>
+    <toolbar></toolbar>
 
     <!--侧边栏-->
     <div class="box-holder">
@@ -10,18 +10,19 @@
         <main-menu index="1"></main-menu>
       </div>
 
-      <router-view class="main-content" style="margin-left: 220px ; padding-top: 80px"></router-view>
+      <router-view class="main-content"
+                   style="margin-left: 220px ; padding-top: 80px"></router-view>
 
     </div>
   </div>
 </template>
 
 <style>
-  body{
-      font: 14px/1.5 'Cuprum',sans-serif,Tahoma,Verdana,Helvetica;
+  body {
+    font: 14px/1.5 'Cuprum', sans-serif, Tahoma, Verdana, Helvetica;
   }
 
-  .background{
+  .background {
     position: fixed;
     width: 100%;
     height: 100%;
@@ -40,7 +41,7 @@
     z-index: 98;
   }
 
-  .navbar-default{
+  .navbar-default {
     box-shadow: 0px 0px 10px 3px rgba(0, 0, 0, 0.5);
   }
 
@@ -135,7 +136,7 @@
     /*width: 220px;*/
     z-index: 98;
     height: 100%;
-    width:220px;
+    width: 220px;
     color: #80969c;
     -webkit-transition: 500ms ease;
     -moz-transition: 500ms ease;
@@ -145,7 +146,7 @@
   }
 
   .left-sidebar-hidden {
-      transform: translate(-220px,0px);
+    transform: translate(-220px, 0px);
   }
 
   .left-sidebar .user-menu {
@@ -218,8 +219,8 @@
     padding-left: 40px;
   }
 
-  .active>a{
-    box-shadow: 0px 0px 20px 5px rgba(0,0,0,0.7) inset;
+  .active > a {
+    box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.7) inset;
   }
 
   .left-sidebar .sidebar-holder .nav li.active > a img {
@@ -265,8 +266,6 @@
     color: #c2c7c1;
   }
 
-
-
   .badge {
     margin: -18px 0 0 -22px;
   }
@@ -301,6 +300,9 @@
       ws.onerror = function (event) {
         console.log('发生错误:' + event.toString())
       }
+
+      // 初始化我的社团
+      this.$store.dispatch('initMySociety')
     },
     methods: {
       sidebarChange: function () {

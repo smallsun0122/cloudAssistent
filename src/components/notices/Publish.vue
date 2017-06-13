@@ -19,10 +19,6 @@
             <option value="-1">--选择社团--</option>
             <option v-for="(society,index) in societys" v-bind:value="society.id">
               {{society.name}}
-
-
-
-
             </option>
           </select>
         </label>
@@ -39,10 +35,6 @@
           </li>
         </ul>
         {{submitMember}}
-
-
-
-
       </div>
 
       <!--提交-->

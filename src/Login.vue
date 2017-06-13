@@ -1,4 +1,4 @@
-<template>
+<template xmlns:v-validate="http://www.w3.org/1999/xhtml">
   <div class="box">
     <div class="bg"></div>
     <div class="login">
@@ -21,9 +21,23 @@
                   <input type="text" autocomplete="off" class="text" value="userName"
                          placeholder="Email" v-model="userId">
                 </div>
+                <div v-show="usershow" class="user-error-info">
+                  <span class="user-info-text">
+                    <span>
+                      {{userErrorMessage}}
+                    </span>
+                  </span>
+                </div>
                 <div class="key">
                   <input type="password" autocomplete="off" value="password" placeholder="Password"
                          v-model="password" @keyup.enter="login">
+                </div>
+                <div v-show="passwordshow" class="password-error-info">
+                  <span class="password-info-text">
+                    <span>
+                      {{passwordErrorMessage}}
+                    </span>
+                  </span>
                 </div>
               </form>
               <div class="signin">
@@ -62,6 +76,7 @@
   .login {
     width: 100%;
     height: 100vh;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -197,36 +212,62 @@
     border-radius: 50%;
     margin: 16px 10px 0px 0px;
   }
+  .user-info-text {
+    display: block;
+    position: absolute;
+    left: 90%;
+    top: 52%;
+    width: 150px;
+    height: 25px;
+    padding: 5px;
+    line-height: 12px;
+    color: #FFF;
+    background-color: #C53B37;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    font-size: 13px;
+    font-size: 1.3rem;
+  }
+  .user-info-text::after {
+    content:'';
+    width: 0;
+    height: 0;
+    border: 6px solid #C53B37;
+    border-color: transparent #C53B37 transparent transparent;
+    position: absolute;
+    left: -10px;
+    top: 5px;
+  }
+  .password-info-text {
+    display: block;
+    position: absolute;
+    left: 90%;
+    top: 65%;
+    width: 150px;
+    height: 25px;
+    padding: 5px;
+    line-height: 12px;
+    color: #FFF;
+    background-color: #C53B37;
+    border-radius: 3px;
+    -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    box-shadow: 1px 1px 1px rgba(0,0,0,.2);
+    font-size: 13px;
+    font-size: 1.3rem;
+  }
+  .password-info-text::after {
+    content:'';
+    width: 0;
+    height: 0;
+    border: 6px solid #C53B37;
+    border-color: transparent #C53B37 transparent transparent;
+    position: absolute;
+    left: -10px;
+    top: 5px;
+  }
 </style>
 
-<!--<template>-->
-<!--<div id="login">-->
-<!--<div class="bg"></div>-->
-<!--<div class="login-view">-->
-<!--<div class="container">-->
-<!--<div class="row">-->
-<!--<div class="col-md-12">-->
-<!--<div class="form-group pull-left input-username">-->
-<!--<div class="input-group">-->
-<!--<input type="text" class="form-control " readonly="readonly" value="Email">-->
-<!--<span class="input-group-addon"></span>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="form-group pull-right input-password">-->
-<!--<div class="input-group">-->
-<!--<input type="password" class="form-control " placeholder="************">-->
-<!--<span class="input-group-addon"><i class="fa fa-key"></i></span>-->
-<!--</div>-->
-<!--</div>-->
-<!--<div class="avatar">-->
-<!--<img src="./assets/images/portrait.png">-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-<!--</template>-->
 
 <script>
   import Qs from 'qs'
@@ -235,17 +276,21 @@
     data () {
       return {
         userId: '',
-        password: ''
+        password: '',
+        usershow: false,
+        passwordshow: false,
+        userErrorMessage: '',
+        passwordErrorMessage: ''
       }
     },
     methods: {
       login: function () {
         var userId = this.userId
         var password = this.password
-//        var params = new URLSearchParams()
-//
-//        params.append('userId', userId)
-//        params.append('password', password)
+        var that = this
+
+        this.checkEmail(userId)
+        this.checkPassword(password)
 
         this.$http
           .post('/login', Qs.stringify({
@@ -257,7 +302,31 @@
           })
           .catch(function (error) {
             console.log(error)
+            that.passwordshow = true
+            that.passwordErrorMessage = '密码错误'
           })
+      },
+      checkEmail: function (userId) {
+        if (userId === '') {
+          this.usershow = true
+          this.userErrorMessage = '邮箱不能为空'
+        } else if (userId !== '' && !/.+@.+\.[a-zA-Z]{2,4}$/.test(userId)) {
+          this.usershow = true
+          this.userErrorMessage = '请输入有效邮箱'
+        } else {
+          this.usershow = false
+        }
+      },
+      checkPassword: function (password) {
+        if (password === '') {
+          this.passwordshow = true
+          this.passwordErrorMessage = '密码不能为空'
+        } else if (password.length < 6) {
+          this.passwordshow = true
+          this.passwordErrorMessage = '密码要大于6位'
+        } else {
+          this.passwordshow = false
+        }
       }
     }
   }

@@ -30,9 +30,11 @@
           </div>
           <div class=" col-md-3 join">
             <input placeholder="申请加入..." type="text" v-model="reason">
-            <button @click="joinSociety(result.id,reason)"> 申请加入 {{result.name}}</button>
+            <button class="btn-default btn"
+              :disabled="isMySociety(result.id)?disabled:''"
+              @click="joinSociety(result.id,reason)"> 申请加入{{result.name}}
+            </button>
           </div>
-
         </div>
       </div>
 
@@ -67,15 +69,15 @@
     outline: none;
   }
 
-  .join button {
+  /*.join button {*/
 
-    padding: 10px;
-    border-radius: 5px;
+    /*padding: 10px;*/
+    /*border-radius: 5px;*/
 
-    border: 2px solid sandybrown;
-    background: sandybrown;
-    outline: none;
-  }
+    /*border: 2px solid sandybrown;*/
+    /*background: sandybrown;*/
+    /*outline: none;*/
+  /*}*/
 
   .logo img {
 
@@ -143,6 +145,7 @@
 </style>
 
 <script>
+  import { mapGetters } from 'vuex'
   export default{
     name: 'search',
     data () {
@@ -155,7 +158,17 @@
       this.searchContent = this.$route.query.msg
       this.searchSociety()
     },
+    computed: mapGetters({
+      mySociety: 'getMySociety'
+    }),
     methods: {
+      isMySociety: function (id) {
+        const result = this.mySociety.find(item => item.id === id)
+        if (result === undefined) {
+          return true
+        }
+        return false
+      },
       searchSociety: function () {
         const self = this
         this.$http.get('society/search?query=' + this.searchContent)
