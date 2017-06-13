@@ -88,8 +88,9 @@
   .room-message {
     height: 500px;
     padding: 0 16px;
-
     overflow: auto;
+    display: flex;
+    flex-direction: column-reverse;
   }
 
   .room-message ul {

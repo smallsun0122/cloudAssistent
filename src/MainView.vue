@@ -278,7 +278,6 @@
   export default {
     data () {
       return {
-        sidebarStatus: true,
         active: false
       }
     },
@@ -305,18 +304,6 @@
       this.$store.dispatch('initMySociety')
     },
     methods: {
-      sidebarChange: function () {
-        var l = document.getElementsByClassName('main-content')
-        if (this.sidebarStatus) {
-          document.getElementsByClassName('left-sidebar')[0].setAttribute('class', 'left-sidebar left-sidebar-hidden')
-          l[0].style.marginLeft = 0
-          this.sidebarStatus = false
-        } else {
-          document.getElementsByClassName('left-sidebar')[0].setAttribute('class', 'left-sidebar')
-          l[0].style.marginLeft = 220
-          this.sidebarStatus = true
-        }
-      }
     },
     components: {
       Toolbar, MainMenu

@@ -4,7 +4,7 @@
 
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
-      <div class="option navbar-brand header-flex" style="width:50px;" @click="sidebarChange">
+      <div class="option header-flex" style="width:50px;" @click="sidebarChange">
         <svg style="width:24px;height:24px" viewBox="0 0 24 24" onclick="leftnavshow()">
           <path fill="rgba(0,0,0,0.3)" d="M3,6H21V8H3V6M3,11H21V13H3V11M3,16H21V18H3V16Z"/>
         </svg>
@@ -337,9 +337,12 @@
 
   .option {
     cursor: pointer;
+    float: left;
+    display: flex;
     width: 50px;
     height: 50px;
     border-radius: 50%;
+    background-color: transparent;
   }
 
   .option:hover{
@@ -349,6 +352,7 @@
   .option:active{
     background-color: #888888;
   }
+
 </style>
 
 <script>
@@ -361,7 +365,8 @@
     data () {
       return {
         editMsg: '',
-        isShowNotice: false
+        isShowNotice: false,
+        sidebarStatus: true
       }
     },
     computed: mapGetters({
@@ -379,6 +384,7 @@
       },
       sidebarChange: function () {
         var l = document.getElementsByClassName('main-content')
+
         if (this.sidebarStatus) {
           document.getElementsByClassName('left-sidebar')[0].setAttribute('class', 'left-sidebar left-sidebar-hidden')
           l[0].style.marginLeft = '0px'

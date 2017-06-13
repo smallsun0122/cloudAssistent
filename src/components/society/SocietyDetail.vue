@@ -1,5 +1,38 @@
 <template>
   <div class="">
+    <!-- <div class="scoreboard" >
+
+      <div class="scoreBoardItem">
+        <div class="boardRank">名次</div>
+        <div class="boardScore">分数</div>
+        <div class="boardName">用户ID</div>
+      </div>
+
+      <div class="scoreBoardItem" v-for="(scoreBoardItem, i) in scoreBoard">
+        <div class="boardRank">{{i+1}}</div>
+        <div class="boardScore">{{scoreBoardItem.score}}</div>
+        <div class="boardName">{{scoreBoardItem.userId}}</div>
+      </div>
+    </div> -->
+    <div class="scoreBoard">
+      <div class="scoreBoardName">
+        <h3>
+          每周贡献榜
+        </h3>
+      </div>
+      <table class=""  align="center">
+        <tr class="scoreBoardItem" style="text-align:center">
+          <th class="boardRank">名次</th>
+          <th class="boardScore">分数</th>
+          <th class="boardName">用户ID</th>
+        </tr>
+        <tr class="scoreBoardItem" v-for="(scoreBoardItem, i) in scoreBoard">
+          <td class="boardRank">{{i+1}}</td>
+          <td class="boardScore">{{scoreBoardItem.score}}</td>
+          <td class="boardName">{{scoreBoardItem.userId}}</td>
+        </tr>
+      </table>
+    </div>
     <div class="container">
 
       <button style="float: right;"
@@ -50,7 +83,6 @@
                     :positions="society.positions"></invitation>
       </div>
     </div>
-
   <modify v-if="isShowModify" :society="society" :isShow.sync="isShowModify"></modify>
   </div>
 </template>
@@ -58,6 +90,44 @@
 <style scoped>
   @import "../../assets/css/bootstrap.css";
   @import "../../assets/css/font-awesome.css";
+
+  .scoreBoard{
+    background-color: #ffffff;
+    position: absolute;
+    right: 10px;
+    top:90px;
+    border: 3px solid;
+    border-radius: 10px;
+    /*display: flex;
+    flex-direction: column;*/
+  }
+
+  .scoreBoardName{
+    color :#D2691E;
+    width: 100%;
+    text-align: center;
+    margin: auto;
+  }
+
+  tr{
+    border-width:1px 0px 1px 0px;
+    border-style: solid;
+  }
+  th{
+    text-align: center;
+  }
+  .scoreBoardItem{
+    /*display: flex;
+    flex-direction: row;*/
+    text-align: center;
+  }
+
+  .scoreBoardItem>td,.scoreBoardItem>th{
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+
+  }
 
   .member-box {
     display: flex;
@@ -122,8 +192,8 @@
   }
 
   .member-logo img {
-    width: 100%;
     height: 100%;
+    width: 100%;
 
     border-radius: 50%;
   }
@@ -155,7 +225,11 @@
     data () {
       return {
         society: {},
-        isShowModify: false
+        isShowModify: false,
+        scoreBoard: [{
+          score: 0,
+          userId: ''
+        }]
       }
     },
     computed: mapGetters({
@@ -170,7 +244,11 @@
           self.society.positions = response.data.positions
           self.society.members = response.data.members
         })
-
+      this.$http.get('/scoreboard/week/' + societyId)
+        .then(function (res) {
+          // alert(JSON.stringify(res.data))
+          self.scoreBoard = res.data
+        })
       this.initMembers(societyId)
     },
     components: {

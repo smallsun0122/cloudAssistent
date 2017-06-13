@@ -110,7 +110,8 @@
   .is-self-m-r {
     left: 100%;
     right: 16px;
-    border-color: #ffffff #ffffff #ffffff peachpuff;
+    border-color: #f1f1f1;
+    border-left-color:peachpuff;
   }
 
   .message .head {
